@@ -1,0 +1,571 @@
+
+\chapter{Scenario Definitions and Network Analysis}\label{chpdata}
+
+This chapter illustrates the use of our model to represent a real world population,
+summarises the model's options and examines the properties of the underlying small world
+network representation for a variety of scenarios. It highlights and contrasts the
+model's strengths and weaknesses as compared with the original small world model
+\cite{Watts1998} and traditionally used social network models.
+
+
+\section{Scenarios}
+
+The data used to define the population scenarios for analysis and validation of this
+model comes from Brazil. A national study conducted in 2000, evaluated the sexual
+behaviour of the Brazilian population and perception of HIV/AIDS \cite{msbrasil2000}. The
+study consisted of a face to face interview of 3,600 males and females ageing between 16
+and 65 years and living in urban areas of 169 micro regions of Brazil. The micro regions
+were defined by the Brazilian 1996 census. The urban population in this age range was
+77,018,813 people and the sample region represents a population of 59,872,819 people,
+corresponding to 77.7\% of this population.
+
+A similar study was conducted in 2003 by the Brazilian National STD/AIDS programme to
+investigate the behaviour of the sexually active population in the past six months, 14
+years of age and above \cite{msibope2003}. This second study focused only on sexual
+behaviour and safe sex practice of the population; 1,298 face to face interviews were
+conducted nationwide.
+
+A further follow-up survey entitled the \emph{Knowledge, Attitudes and Practices of the
+Brazilian Population aged between 15 and 54 years} \cite{Szwarcwald2004} expanding on the
+first and second was completed in 2004. A total of 6,000 individuals were interviewed,
+the sample was stratified according to geographic region (macro-region): 900 interviews
+were conducted in the North, South and Centre-West regions, 1,100 in the Northeast region
+and 2,200 in the Southeast. In each of the major regions, the sample was carried out in
+multiple stages: States; census sectors; and households. The sectors within each of the
+States were selected by systematic sampling, with probability proportional to size.
+
+\newpage
+The data from the second and the third studies is also available and was used to adjust
+the parameters fitted to the first study due to observed sexual behavioural changes
+during the four years gap. For clarity the data is not presented here but in Appendix
+\ref{chpfitting}. The way that parameters were estimated and the model was fitted is also
+described in detail in Appendix \ref{chpfitting}. The following two scenarios will be
+used to verify and validate the model as a small world network, illustrate its use to
+represent a real world population and the flexibility of the model implementation.
+
+\subsection{Single Group}\label{scenariosingle}
+
+Table \ref{singlegroup} defines a single group representation of the population; this
+scenario will be used to illustrate the properties of the social network, the effects of
+sexual behavioural change and social interactions on the dynamics of the sexual
+transmission of HIV in a small world network.
+
+\begin{longtable}[c]{|p{9cm}|c|}
+\caption{Single group scenario definition}\label{singlegroup}\\ \hline
+\bfseries Parameters and probability distributions & \bfseries Value (months) \\\hline\hline
+\endfirsthead
+
+\multicolumn{2}{c} {{\tablename} \thetable{} -- Continued} \\\hline
+\bfseries Parameters and probability distributions & \bfseries Value (months) \\\hline\hline
+\endhead
+\multicolumn{2}{r}{\emph{Continued on next page}}
+\endfoot
+\endlastfoot
+
+Population size (\emph{n})      & 3,324  \\\hline
+Age distribution                & Weibull(181.47, 267.95, 1.46) \\\hline
+Life expectancy                 & 840 (70 years) \\\hline
+Proportion of females           & 0.55  \\\hline
+Proportion of males             & 0.45  \\\hline
+Proportion of homosexual males  & 0.05  \\\hline\hline
+HIV prevalence                  & 0.007 \\\hline
+HIV lead-time distribution                                    & Weibull(0.13, 47.78, 1.36) \\\hline
+HIV testing rate                                              & 0.28 \\\hline\hline
+Maximum number of concurrent partnerships                     & 5    \\\hline
+Probability of concurrent partnership                         & 0.11 \\\hline
+Probability of a casual partnership                           & 0.18 \\\hline
+Probability of looking for a sexual partner at any time       & 0.82 \\\hline
+Probability of searching own group first for a casual partner & 1    \\\hline\hline
+Duration of stable partnerships                                                   & Weibull(141.36, 1.10) \\\hline
+Time between stable partnerships                                                  & Gamma(20.20, 1.06) \\\hline
+Rate of sexual intercourse for stable partnership per unit of time                & Gamma(4.83, 1.41) \\\hline
+Probability of safe sex practice during sexual intercourse for stable partnership & 0.18 \\\hline\hline
+Duration of casual  partnerships                                                  & InvNormal(-2.44, 14.49, 49.60) \\\hline
+Rate of sexual intercourse for casual partnership per unit of time                & Gamma(5.02, 1.5) \\\hline
+Probability of safe sex practice during sexual intercourse for casual partnership & 0.42 \\\hline
+\end{longtable}
+
+\subsection{Multiple Groups}\label{scenariomulti}
+
+Table \ref{multigroup} defines a multi group representation of the Scenario
+\ref{scenariosingle} population. It is important to notice the overlapping of the group
+definition for \emph{under 25} and \emph{married} groups. In this case, being married has
+higher priority over age, therefore less than 25 years of age and married individuals are
+classified as part of the married sub group. This scenario will be used to evaluate the
+effects of inter core group interactions on the dynamics of the sexual transmission of
+HIV in a small world network. For simplicity the initial HIV prevalence will be kept
+unchanged.
+
+\begin{landscape}
+\begin{longtable}[c]{|p{8.1cm}|c|c|c|}
+\caption{Multi group scenario definition}\\ \hline
+\bfseries \multirow{2}{8.1cm}{Parameters and probability distributions} & \multicolumn{3}{|c|}{\bfseries Groups Definition (months)} \\
+\cline{2-4} & \bfseries Married & \bfseries Under 25 & \bfseries Others \\\hline\hline
+\endfirsthead
+
+\multicolumn{4}{c} {{\tablename} \thetable{} -- Continued} \\\hline
+\bfseries \multirow{2}{8.1cm}{Parameters and probability distributions} & \multicolumn{3}{|c|}{\bfseries Groups Definition (months)} \\
+\cline{2-4} & \bfseries Married & \bfseries Under 25 & \bfseries Others \\\hline\hline
+\endhead
+
+\multicolumn{4}{r}{\emph{Continued on next page}}
+\endfoot
+\endlastfoot
+\label{multigroup}
+Population size (\emph{n})      & 1422 & 794 & 1108 \\\hline
+Age distribution                & \small{Weibull(182.3, 336.28, 2.29)}& \small{LogNormal(143.95, 95.05, 36.99)} & \small{InvNormal(242.15, 246.94, 621.89)}\\\hline
+Life expectancy (70 years)      & 840 & 840 & 840 \\\hline
+Proportion of females           & 50\%   & 45.7\% & 62.4\% \\\hline
+Proportion of males             & 50\%   & 54.3\% & 37.6\%\\\hline
+Proportion of homosexual males  & 5\%    & 5\%    & 5\%  \\\hline\hline
+HIV prevalence                  & 0.007   & 0.007   & 0.007 \\\hline
+HIV lead-time distribution      & Weibull(64.26, 1.63) & Weibull(71.79, 1.61) & Weibull(64.26, 1.63) \\\hline
+HIV testing rate                & 16.34\% & 11.71\% & 18.29\% \\\hline\hline
+Maximum number of concurrent partnerships                     & 5 & 5 & 5 \\\hline
+Probability of concurrent partnership                         & 0.06 & 0.21 & 0.14 \\\hline
+Probability of a casual partnership                           & 0.06 & 0.40 & 0.27 \\\hline
+Probability of looking for a sexual partner at any time       & 1 & 0.78 & 0.64 \\\hline
+Probability of searching own group first for a casual partner & 0.4 & 0.8 & 0.7 \\\hline\hline
+Duration of stable partnerships                                                   & Weibull(198.19, 1.55) & LogNormal(29.77, 37.2) & Weibull(89.74, 1.01) \\\hline
+Time between stable partnerships                                                  & Gamma(20.16, 1.07) & Weibull(14.89, 1.10) & Gamma(24.38, 1.03) \\\hline
+Rate of sexual intercourse for stable partnership per unit of time                & Gamma(4.71, 1.51)  & Gamma(6.5, 1.06)     & Gamma(5.09, 1.34) \\\hline
+Probability of safe sex practice during sexual intercourse for stable partnership & 0.11 & 0.47 & 0.21 \\\hline\hline
+Duration of casual  partnerships                                                  & Gamma(8.84, 1.14) & Gamma(5.25, 1.03) & LogNormal(9.16, 14.61) \\\hline
+Rate of sexual intercourse for casual partnership per unit of time                & Gamma(5.01, 1.58) & Gamma(7.1, 1.1) & Gamma(5.31, 1.39)  \\\hline
+Probability of safe sex practice during sexual intercourse for casual partnership & 0.12 & 0.55 & 0.42 \\\hline
+\end{longtable}
+
+\begin{longtable}[c]{|c|c|c|c|}
+\caption{Multi group default mixing matrix}\\ \hline
+\label{multimixmat}
+$\Rightarrow \oslash \Rightarrow $ & Married & Under 25 & Others \\\hline
+& & & \\
+Married  & x       & 0.5      & 0.5    \\
+& & & \\\hline
+& & & \\
+Under 25 & 0.5     & x        & 0.5    \\
+& & & \\\hline
+& & & \\
+Others   & 0.5     & 0.5      & x      \\
+& & & \\\hline
+\end{longtable}
+
+\end{landscape}
+
+The population mixing matrix defined in Table \ref{multimixmat} is given as default and
+assumes that the flow of people between any two groups is the same on both directions.
+However this is not the case for most real world situations and one should tune these
+parameters in order to give a more realistic representation of the direction of external
+interactions between different core groups' populations.
+
+\subsection{HIV Infection}
+
+The variables required by the model to represent the transmissibility and natural history
+of the STD infection have been specified in section \ref{stddefsection}. Table
+\ref{hivdefinition} defines the characteristics of the HIV transmission and progress from
+infection to AIDS death without HAART intervention.
+
+\begin{longtable}[c]{|p{8cm}|c|c|}
+\caption{Transmissibility and natural history of HIV infection}\\\hline
+\label{hivdefinition}
+\textbf{Probability of HIV Transmission}     & \textbf{Value} & \textbf{References}  \\\hline
+Female to Male                               & 0.002 &  \cite{Donovan2000,Royce1997} \\\hline
+Male to Female                               & 0.003 &  \cite{Donovan2000,Royce1997} \\\hline
+Male to Male                                 & 0.010 &  \cite{Donovan2000,Royce1997} \\\hline
+\multicolumn{3}{|l|}{\textbf{Infection Characteristics}}\\\hline
+Lifelong infection?                          & Yes   &  \\\hline
+Duration of infection                        & N/A   &  \\\hline
+Allow reinfection?                           & No    &  \\\hline
+Mortality rate                               & 98\%  & \cite{UNAIDSRG2002} \\\hline
+\multicolumn{3}{|l|}{\textbf{Natural History of HIV infection}}\\\hline
+Progression from HIV infection to AIDS death & Weibull (126.12, 2.38) & \cite{UNAIDSRG2002} \\\hline
+\end{longtable}
+
+
+\subsection{Global Settings}\label{globalsettings}
+
+The model's global configuration guides how the simulation behaves during run-time as
+well as defines the constraints for calculation of the network global efficiency, length
+of simulation warm-up, distribution of the initially infected individuals within the
+population and the network structure. Table \ref{hivacsimconfig} defines the default global settings that
+will be used throughout the model evaluation and validation. Changes to this global
+configuration will be explicitly stated when they are required for the demonstration of a
+specific property or condition.
+
+\begin{longtable}[c]{|p{10cm}|c|c|}
+\caption{HIVacSim global configuration and network structure definition}\\\hline
+\label{hivacsimconfig}
+\textbf{Simulation Properties}     & \textbf{Value} & \textbf{References}  \\\hline
+Clock                                       & Month & \ref{hivacsim} \\\hline
+Duration (12 years)                         & 144   & \ref{hivacsim} \\\hline
+Replications (Runs)                         & 100   & \ref{hivacsim} \\\hline
+\multicolumn{3}{|l|}{\textbf{Global Efficiency Calculation}}\\\hline
+Switch algorithm at small world probability \emph{p} value & 0.13      & \ref{netinfo}\\\hline
+Maximum network size for numerical calculation      & 500       & \ref{netinfo}\\\hline
+Size of the geodesic sample for estimation          & 400       & \ref{netinfo}\\\hline
+\multicolumn{3}{|l|}{\textbf{Warm-up \ref{warmup} and Initial Infection}}\\\hline
+Duration (2 years)                                  & 24     & Table \ref{warmupconfig} \\\hline
+Minimum number of concurrent partnerships           & 2      & Table \ref{warmupconfig} \\\hline
+Probability of concurrent partnership               & 0.5    & Table \ref{warmupconfig} \\\hline
+Distribution of the initial infection               & Clustered & \ref{initinfdist}\\\hline
+\multicolumn{3}{|l|}{\textbf{Network Structure}}\\\hline
+Maximum size of the acquaintances list              & 50     & \ref{listsize}\\\hline
+$\beta$ (maximum number of trials)                  & 1      & \ref{searchrel}\\\hline
+Degrees of separation                               & 3      & \ref{searchrel}\\\hline
+Expected number of people in one's neighbourhood    & 50     & \ref{structure}\\\hline
+Radius of the real world (earth)                    & 6378   & \ref{structure}\\\hline
+Network topology                                    & Sphere & \ref{structure}\\\hline
+\end{longtable}
+
+The network structure settings are defined at group level and as such they may assume
+different values according with the size of each group's population. The values provided
+in Table \ref{hivacsimconfig} for size of the acquaintances list and neighbourhood are
+used for solving Equations \ref{egnofriends} and \ref{solvedistance} respectively within
+each group definition. The maximum number of trials is also dependent on the population
+size and therefore will have a similar effect on the searching for relationships
+(\ref{searchrel}, b).
+
+\section{Small World Network Properties}\label{swnproperties}
+
+The characteristics and measurements of small world networks are described in Section
+\ref{swnetworks}. This section evaluates the strengths to which the HIVacSim model
+conforms to the general theory of small world networks. Scenario \ref{scenariosingle}
+will be used for verification and validation of the small world model in this and the
+next chapter unless specified otherwise. 15 replications of each experiment are used
+throughout this exercise to produce the plots, error bars and to define confidence
+limits.
+
+The original small world model of Watts and Strogatz \cite{Watts1998} can be quantified
+by two simple statistics: the clustering coefficient \emph{C} for measuring local density
+and the mean geodesic length \emph{L} for measuring the global separation. A small world
+network is defined as a broad region between regularity and randomness in which the
+network is highly clustered and has a short path length. As discussed in Sections
+\ref{smgraphs} and \ref{geodesic}, the original formulation of the mean geodesic length
+by Watts and Strogatz \cite{Watts1998} is valid only for fully connected networks. This
+is not always the case in the real world where not everyone has friends or is involved in
+a sexual partnership all the time.
+
+Figure \ref{connected} shows the frequency of fully connected network occurrences found
+experimentally in this model as a function of the network randomness parameter \emph{p}
+(\emph{x axis has multiple scales}). This clearly illustrates the limitation of the
+original small world model formulation and supports the adoption of a more consistent and
+meaningful notation (\ref{netefficiency}) to quantify the characteristics of a small
+world network.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{connected}
+\caption{Frequency of fully connected sexual network occurrences} \label{connected}
+\end{figure}
+
+Figure \ref{originalswn} gives the small world network characteristics \emph{L} and
+\emph{C} evaluated according to the original formulation of Watts and Strogatz
+\cite{Watts1998}. Note that the \emph{L} values have been calculated only for the
+occurrences of a fully connected network. Nevertheless the small world effect is clearly
+visible. At just a small amount of randomness $(p \sim 0.1)$, \emph{L} has almost reached
+its minimum value, yet \emph{C} is about half of its maximum value.
+\begin{figure}[ht]
+\begin{center}
+\includegraphics{originalswn}
+\caption{Characteristics of a small world network} \label{originalswn}
+\end{center}
+\end{figure}
+
+Another global measure depending upon full network connectivity is the diameter, defined
+as the length of the longest geodesic (\ref{geodesic}). This measure has a close relation
+with the mean geodesic length and therefore can be evaluated only for fully connected
+networks. Figure \ref{diameter} shows the small world effect on network diameter.
+\begin{figure}[!h]
+\includegraphics{diameter}
+\caption{Small world effect on network diameter} \label{diameter}
+\end{figure}
+
+\subsection{Network Efficiency}\label{netefficiency}
+
+The concept of efficiency on small world networks has been introduced by Latora and
+Marchiori \cite{Latora2001} for measuring the global and local efficiency of a network
+(\ref{smnefficiency}); these measures are denoted by $E_g$ and $E_l$ respectively. From
+this perspective a small world network can be rephrased as a network with high global and
+high local efficiency, therefore exchanging information very efficiently both on a global
+and on a local scale. Figure \ref{efficiency} shows the HIVacSim model's efficiency.
+These values compare well with those provided by Latora and Marchiori \cite{Latora2001},
+and therefore we concluded that the HIVacSim network model indeed represents a small
+world network.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{efficiency}
+\caption{HIVacSim model's global and local efficiency} \label{efficiency}
+\end{figure}
+
+The short paths represented by the global efficiency, provide high-speed communication
+channels between distant parts of the network, thereby facilitating any dynamical process
+that requires global coordination, transmission of information or propagation of
+infectious disease. The local efficiency provides short distance communication, enabling
+high-speed propagation of information or disease through local clusters within the
+population.
+
+The network efficiency has a good agreement with the original small world model
+formulation due to Watts and Strogatz \cite{Watts1998} by reporting a normalised
+$1/E_g(p)$ and $E_l(p)$ as shown in Figure \ref{efficiencyswn}.
+\begin{figure}[h]
+\begin{center}
+\includegraphics{efficiencyswn}
+\caption{Network efficiency as the original small world characteristics}
+\label{efficiencyswn}
+\end{center}
+\end{figure}
+
+Figure \ref{efficiencyswn} compares well with Figure \ref{originalswn}, produced using
+the original formulation of the small world characteristics. The small discrepancies
+between global efficiency and \emph{L} can be attributed to the fact that the values for
+\emph{L} in Figure \ref{originalswn} have been calculated using only a fraction of the
+data produced by the experiment due to its network connectivity requirement, which is not
+the case for global efficiency.
+
+
+\subsection{Clustering Coefficient}\label{swnclustering}
+
+The small world clustering coefficient \emph{C} defined in Section \ref{clusteringcoef},
+measures the overlapping of acquaintances within the population. This measure can be
+calculated numerically for the fully connected regular (\ref{latticegraphs}), the random
+(\ref{randomgraph}) and the original small world network models (\ref{clusteringcoef}).
+However for disconnected networks there is no deterministic formulation and therefore
+this quantity has been evaluated through Monte Carlo simulation. Figure \ref{clustering}
+compares the clustering coefficient of our small world model with results obtained by
+deterministic evaluation of equivalent regular and random networks.
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{clustering}
+\caption{Small world clustering coefficient} \label{clustering}
+\end{figure}
+
+As shown in Figure \ref{connected}, regular networks are less likely to be fully
+connected due to the lack of concurrency and absence of long distance connectivity among
+individuals within the population. This behaviour has a direct impact on the clustering
+coefficient of the small world network as shown in Figure \ref{efficiencyswn}. However
+real world networks, and in particular sexual networks, rarely fall in this category as
+being regular and fully connected at the same time. Therefore we conclude that the
+clustering coefficient of our small world network model approaches both extremities of
+the theoretical spectrum for regularity and randomness with good accuracy and precision,
+so it is consistent with the general definition of the small world network theory.
+
+
+\subsection{Degree Distribution}
+
+The study of degrees has received enormous attention in social networks and as a
+consequence, it is one of the most popular terms in the sociology literature. It refers
+to the number of social connections that one possesses, the number of partners at a point
+in time and so on. From a small world perspective, the degree distribution quantifies the
+size of the lists of acquaintances, the popularity of individuals within the network.
+Figure \ref{degreeavg} shows the small world effects on the average degree of the
+individuals within our model, a non-linear relation between randomness and average degree
+can be observed.
+\begin{figure}[h]
+\includegraphics{degreeavg}
+\caption{Small world effect on the average degree distribution} \label{degreeavg}
+\end{figure}
+
+Application of degrees is as common in graph theory as it is in social networks. It forms
+the basis of the network \emph{centrality}, a measure of the varying importance of the
+individuals in a network according to some predefined criterion, a coefficient of the
+popularity of an actor, also known as degree centrality (\ref{netcentrality}). Degrees
+were also the basis of the reverse small world experiment \cite{Killworth1978}.
+
+The degree distributions of the original small world models have been defined through a
+set of equations in Section \ref{swndegreedist}. However, they do not match most real
+world networks very well since this was not a goal of the original model in the first
+place. We provide empirical results showing the small world effect on degree distribution
+of individuals within our model.
+
+Figures \ref{degreepdf} and \ref{degreecdf} give the degree probability density function
+(PDF) and cumulative distribution function (CDF) respectively. They clearly show the
+small world effect on the degrees distribution of the population as a function of the
+small world randomness parameter \emph{p}. As the randomness value of \emph{p} increases,
+the location and shape of the degree distributions also change following a non-linear
+scale as can be observed by looking at the degree CDF.
+
+\begin{figure}[ht]
+\includegraphics{degreepdf}
+\caption{Empirical degree probability density function (PDF)} \label{degreepdf}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics{degreecdf}
+\caption{Empirical degree cumulative distribution function (CDF)} \label{degreecdf}
+\end{figure}
+\clearpage
+
+\section{Topology of a Small World Network}\label{topology}
+
+Traditional analysis of social networks as it appears in well known works such as
+Wasserman and Faust \cite{Wasserman1994}, has focused almost solely on static structure
+(\ref{dynamicsw}). It fails to understand how individuals interact within a dynamic
+social structure, how the network structure itself is transformed by the actions of the
+actors and how the network efficiency will change through time \cite{Watts1999}. In a
+sexual social network, actors have different preferences and desires; however their
+actions and behaviour must be accepted or shared by their neighbours and partners in
+order for them to be socially accepted. Acceptance therefore is a key strategy and actors
+will change their behaviour, transform their clusters and dynamically reorganise the
+global network in order to achieve their goals.
+
+The network topology defines the shape and layout of a population. The way in which
+different individuals in a social network are connected to each other and how they
+communicate, propagate information or contagious disease through the network boundaries
+are partly influenced by the network's topology. As described in Section \ref{structure},
+HIVacSim model provides three topologies:
+
+\parskip=0pt
+\begin{itemize}
+    \item \emph{Free} -- a network where no geographical considerations are made, people are
+    close to each other by social distances. This is typical of traditional social
+    networks and epidemiological models with no geographical considerations;
+    \item \emph{Circle} -- the original small world networks topological model of Watts and
+    Strogatz \cite{Watts1998}, where the population lives in a lattice ring with
+    periodic boundary conditions;
+    \item \emph{Sphere} -- a topological network introduced by this model as an alternative
+    and more realistic representation of the real world where people live on the surface
+    of a sphere.
+\end{itemize}
+\parskip=\baselineskip
+
+In order to quantify the effects of topology on small world network models, we consider
+the network efficiency as the baseline for analysis. The experiment consists of running
+the HIVacSim model using Scenario \ref{scenariosingle} for each topology, gradually
+increasing the network randomness parameter \emph{p} from regularity to randomness, and
+evaluating the network efficiency (HIV Prevalence) for each experiment at the end of 144
+months (12 years).
+
+An important point about this experiment is the initial distribution of the infected
+population, or the origins of the information to be transmitted through the network
+connections. As defined in Section \ref{initinfdist}, this model provides two options for
+distributing the initial infected individuals or the sources of information within a
+network: \emph{uniform} or \emph{clustered}. These initial distributions define the two
+scenarios for the topological analysis of our small world network model.
+
+\subsection{Uniform Initial Distribution}
+
+The initially infected individuals or sources of knowledge are uniformly distributed
+within the population. This mimics the traditional social networks and epidemiological
+models with no geographical considerations. In this regime, the probability of meeting an
+infected individual geographically close to someone is the same as anywhere else in the
+network. Therefore topology should have no influence on network efficiency because the
+information or disease is already widely spread within the population as illustrated in
+Figure \ref{uniforminf}. In such a case, one is likely to get infected or acquire the
+knowledge from anywhere in the network with the same probability, independent of network
+topology or one's geographical location. Figure \ref{topologyuniform} shows the effect of
+topology on network efficiency for this experiment.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{topologyuniform}
+\caption{Network efficiency by topology with uniform distribution}
+\label{topologyuniform}
+\end{figure}
+
+The differences on network efficiency between topologies are negligible and the errors
+bars clearly confirm that no conclusive difference exists. The topology has no effect on
+network efficiency when the initially infected individuals or information holders are
+uniformly distributed within the network. In such a case, a \emph{topology free network}
+should be used as it represents the traditional structure of epidemiological models and
+provides an efficient computation time compared with the other two topologies
+(\ref{computetime}). Figure \ref{topologyudifference} shows that there is no clear
+pattern of topological differences on network efficiency for this scenario. For clarity a
+smoothed line has been included to highlight the irregularity of the differences between
+topologies.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{topologyudifference}
+\caption{Topological differences on network efficiency with uniform distribution}
+\label{topologyudifference}
+\end{figure}
+
+This experiment illustrates the limitations of social networks and epidemiological models
+that ignore the dynamics of information and infectious diseases spread through geography.
+Life experience suggests that this knowledge is not easy to find, we need to compete and
+move to have access to good universities, subscribe to scientific journals, pay for
+datasets and so on. Information holders are not uniformly distributed. The spread of
+infectious diseases on the other hand can vary enormously by geography. Take for example
+the recent SARS epidemic in the Far East where geographical boundaries were effectively
+used by health authorities and governments in order to isolate and control the spread of
+the virus.
+
+\newpage
+In the case of infectious agents with a long incubation period such as HIV, it is
+difficult to identify the source of infection and therefore geographical boundaries are
+not efficient. Although HIV has been known for more than 20 years, its prevalence
+worldwide still varies enormously by continent, country, city, community, etc.  This is
+clear evidence that geography must be taken into account when trying to model the
+dynamics of social networks and the spread of infectious diseases.
+
+
+\subsection{Clustered Initial Distribution}
+
+The initially infected individuals or sources of information are distributed by
+geographical clusters within the population as shown in Figure \ref{nonuniforminf}. In
+this case, the probability of meeting an infected individual geographically close to
+someone will depend upon one's social and geographical location within the network.
+Information or infectious diseases are dynamically transmitted within the network
+geographically through social interactions. Figure \ref{topologynuniform} shows the
+effects of topology on network efficiency for a clustered initial distribution.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{topologynuniform}
+\caption{Network efficiency by topology with clustered distribution}
+\label{topologynuniform}
+\end{figure}
+
+This result shows that within a dynamic clustered initial configuration, topology matters
+and has a distinct effect on network efficiency. It is important to notice that for $p
+>\sim 0.8$ the topological effects become inconclusive. This is caused by the amount of
+randomness added to the network interactions as it approaches its maximum value at $p =
+1.0$. At this point we have a random network and the three topologies effectively
+converge to the same network efficiency as expected.
+
+Topology has a clear effect on network efficiency and should not be overlooked. The
+\emph{circle topology} clearly has the lowest network efficiency. \emph{Topology free}
+has the highest network efficiency, however it completely ignores the geographical
+distribution of individuals and consequently is not a realistic representation of the
+real world. \emph{Spherical topology} provides an intuitive representation of the real
+world and its network efficiency lies between regularity (circle) and randomness (free).
+Figure \ref{topologynudifference} gives a different view of the convergence to a random
+network and shows how the topology affects the patterns of network efficiency.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=\textwidth]{topologynudifference}
+\caption{Topological differences on network efficiency with clustered distribution}
+\label{topologynudifference}
+\end{center}
+\end{figure}
+
+Table \ref{topologysummary} summarises the average difference between topologies on
+network efficiency for a clustered initial distribution of infection or source of
+information. It numerically quantifies the overall topological differences shown in
+Figure \ref{topologynudifference} and enforces the importance of topology on
+epidemiological and dynamic networks modelling.
+
+\begin{longtable}[c]{|l|c|c|}
+\caption{Summary of topological effects on network efficiency}\\\hline
+\label{topologysummary}
+\textbf{Topologies} & \textbf{Average difference} & \textbf{Standard deviation}  \\\hline
+Free to Circle      & 16.66\%   &   0.84\% \\\hline
+Free to Sphere      & 5.07\%    &   0.89\% \\\hline
+Sphere to Circle    & 12.43\%   &   1.12\% \\\hline
+\end{longtable}
+
+
+\subsection{Computation Times}\label{computetime}
+
+The average simulation run-time for each interaction of HIVacSim using Scenario
+\ref{scenariosingle} is affected by both the network topology and the small world
+randomness parameter \emph{p }. A laptop with an Intel Pentium Mobile processor 1.6GHz,
+2Mb of cache and 512GB of memory was used to run the experiments presented in this
+thesis. Figure \ref{runtime} shows a summary of the simulation run-times.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{runtime}
+\caption{HIVacSim run-times by topology} \label{runtime}
+\end{figure}
+
+Topologies \emph{free} and \emph{circle} have identical computational efficiency for each
+value of network randomness parameter \emph{p}. However a \emph{free} topology is
+preferred over the \emph{circle} as it mimics the structure of traditional
+epidemiological and social networks models with no geographical considerations. The
+\emph{spherical} topology however gives a better representation of the real world and the
+additional computational expense is very much worthwhile.
+
+It is important to notice that the run-times presented in Figure \ref{runtime} are for
+100 replications (\ref{globalsettings}) of Scenario \ref{scenariosingle}, in order to
+provide statistical evidence for comparison of results. However in practice, less
+replication would be needed for simulation experiments (e.g. 10) and therefore the
+run-times should be around 1/10 of the quoted values.

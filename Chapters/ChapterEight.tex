@@ -1,0 +1,295 @@
+\chapter{Concluding Remarks}\label{chpconclusion}
+
+The world has known about AIDS for more than twenty years. During this time the disease
+has spread to every corner of the world and in the worst affected countries it has set
+back human progress by decades. Turning back the HIV/AIDS epidemic is a task beyond
+individual effort, no matter how outstanding or heroic. It requires governments, nations,
+regions and communities to come together in concerted and co-ordinated action.
+
+Consistent and courageous policies can halt the spread of the disease and let those
+infected with HIV live a normal and dignified life by using four essential elements:
+prevention, treatment, human rights and resources. Such policies have proved to be very
+effective in controlling the transmission rate as well as extending the life of those
+infected. For example, Brazil has more than halved its predicted AIDS epidemic by
+ensuring free treatment. The support given by governments is fundamental to making the
+population feel encouraged to accept voluntary and confidential testing (VCT), thus
+improving the notification of HIV infection in earlier stages that otherwise would be
+hidden and passed on to other people.
+
+In the first years of the HIV epidemic, there was a great urge to look for historical
+models as a means of dealing with the AIDS pandemic by finding its similarities with
+other well known STDs. However HIV requires sophisticated approaches, capable not only of
+recognising how HIV is like past epidemics, but precisely identifying the ways in which
+it is different. Scientists have been working around the clock for more than two decades
+to develop an effective cure for HIV, but despite the success of expensive HAART
+interventions in slowing down the progress of the disease, no cure is in sight. The best
+hope for controlling the HIV/AIDS pandemic lies in the development of an effective HIV
+vaccine.
+
+Traditional epidemiological models largely disregard the complex patterns and structures
+of intimate contacts, yet they are the standard for quantifying the spread of HIV
+worldwide. These models deal with well-mixed populations, where sub-groups interact in
+proportion to their sizes ignoring the population structure altogether, or treat the
+population as spatially distributed in a medium as elements in a lattice. However, real
+populations rarely fall into either of these categories, being neither well mixed nor
+lattice. In a sexual network, individuals are strongly heterogeneous in their sexual
+preferences and the length of partnerships is extremely variable as are the frequency of
+their sexual activities.
+
+Social networks analysis embodies the social structure by addressing issues of
+centrality, which individuals are best connected to others, who is more influential and
+connectivity. The identity and precise nature of the individuals is down played, or even
+suppressed, in the hope of uncovering deeper laws. Furthermore, traditional network
+analysts still have problems with dynamics and networks are treated as the frozen
+embodiment of social forces. All one needs to do is collect network data, measure the
+right properties and all will be revealed. Unfortunately as life experience tells,
+personal and social lives are always under construction, continuously changing
+dynamically. This static structure analysis can be thought of as snapshots taken during
+this ongoing process of evolution.
+
+In a dynamic view of networks, existing structures can only be properly understood in
+terms of the nature of the processes that led to them. In response to small
+perturbations, both the network structure and the pattern of activity on the network will
+change. Furthermore, each kind of decision helps set the context in which subsequent
+decisions must be made. The HIVacSim model defines a network of spontaneous order, where
+neighbours are defined by geography and social rules. Its connectivity gives rise to rich
+forms of self-organisation, people live in a small world and diseases or information are
+always dynamically transmitted over the network.
+
+\section{Small World Networks}
+
+The original small world models \cite{Watts1998,Newman1999} have proved to be unsuitable
+for modelling social networks and the spread of infectious diseases for three main
+reasons. Firstly, the network vertices are equally considered for rewiring or shortcuts,
+which is unlike the real world as the level of interaction that an individual possesses
+will not be the same as other individuals. Secondly, they do not characterise the
+ties/link properties of edges, essential to capture the social behaviour of an individual
+within the network. And finally, connections are equally weighted or the network is
+strongly connected.
+
+Sexual networks are rarely fully connected (\ref{swnproperties}). Because of it the
+original formulation characterising the small world network global connectivity due to
+Watts and Strogatz \cite{Watts1998} cannot be used as it requires a fully connected
+network. Therefore, a small world network is better characterised by the network
+efficiency introduced by Latora and Marchiori \cite{Latora2001} for measuring the global
+and local efficiency of a network (\ref{netefficiency}). From this perspective a small
+world network is a network with high global and high local efficiency, propagating
+diseases or information very efficiently both on a global and on a local scale.
+
+In order to accommodate differential selectivity and sexual behaviour, network properties
+such as performance and concurrency, which are fundamental for the modelling of human
+sexual network and the spread of HIV must be included. We have modified the original
+small world model so that the connectedness restriction is relaxed, conditions that two
+vertices must hold in order to be connected are added, and properties for each vertex and
+edge are added in order to capture sexual behaviour changes.
+
+HIVacSim model represents a small world network and is consistent with the general
+definition of the small world theory (\ref{netefficiency}, \ref{swnclustering}). The
+short paths represent the \emph{global efficiency} and provide high-speed communication
+channels between distant parts of the network. This characteristic facilitates any
+dynamical processes that require global coordination, transmission of information or
+propagation of infectious disease. The \emph{local efficiency} provides short distance
+communication, enabling high-speed propagation of information or disease through local
+clusters within the population.
+
+The degree distribution quantifies the size of the lists of acquaintances, hence the
+popularity of individuals within a population. The small world randomness parameter
+\emph{p} has a remarkable effect on the degree distribution of individuals. As the
+randomness value \emph{p} increases, the location, shape and scale of the degree
+distribution also change following a non-linear scale.
+
+The effects of topology on network efficiency must not be overlooked. Traditional social
+networks and epidemiological models ignore the dynamics of information and infectious
+diseases spread through geography; initially infected individuals or information holders
+are uniformly distributed within the population. In such a case, one is likely to get
+infected or acquire the knowledge from anywhere in the network with the same probability,
+independent of topology or one's geographical location. However, life experience suggests
+that knowledge is not easy to find and information holders are not uniformly distributed.
+The spread of infectious diseases on the other hand can vary enormously by geography
+(e.g. HIV prevalence).
+
+In a dynamic geographically clustered distribution of initially infected individuals or
+sources of information, topology matters and has a distinct effect on network efficiency.
+The probability of meeting an infected individual close to someone will depend upon one's
+social and geographical location within the network. Information or infectious diseases
+are dynamically transmitted geographically through social interactions.
+
+
+The original \emph{circle topology} of the small world network has the lowest network
+efficiency. \emph{Topology free} networks typical of traditional social networks and
+epidemiological models with no geographical considerations, have the highest network
+efficiency, however they completely ignore the geographical distribution of individuals
+and consequently are not a realistic representation of the real world. \emph{Spherical
+topology} is a intuitive representation of the real world and its network efficiency lies
+between regularity (circle) and randomness (free). The initial distribution of infection
+or sources of information also has a significant effect on network efficiency within the
+same topology.
+
+HIVacSim allows both geographical and social distances to be taken into account as part
+of the dynamics of social interactions. Actors are uniquely represented by their personal
+and social characteristics within the system. They can choose their partners and have
+different sexual behaviour when in a partnership. The making and breaking of network ties
+take place over time, vertices can be added or removed at any point in time and the
+strength of the interactions are governed by social, cultural and structural rules. Thus,
+there is dynamics on the network and the dynamics of social networks and spread of
+diseases or information can be better understood.
+
+
+\section{Epidemiology in a Small World}
+
+The small world network theory may explain in part why HIV has managed to spread itself
+to every corner of the world, infecting and killing people from all ethnic and social
+backgrounds, surviving like no other disease has ever done in the same proportion and
+time scale. An infectious disease or information needs only a small amount of randomness
+$(p \sim 0.2)$ on network interactions in order for it to spread efficiently on a local
+and global scale.
+
+The randomness parameter of the small world (probability of casual partnership) has a
+direct and non-linear effect on HIV transmission (\ref{sweffecthiv}). The network
+efficiency peaks at about 90\% of randomness and not at 100\% as one might expect. This
+effect is caused by the differences in sexual behaviour regarding safe sex practices
+between stable and casual partnerships. The expected small world effect on the growth of
+the HIV epidemic can be achieved by assuming a homogenous sexual behaviour towards safe
+sex practices for both stable and casual partnerships.
+
+Compartmental models such as UNAIDS' EPP, used to estimate the HIV epidemic worldwide,
+can be easily represented and evaluated within HIVacSim (\ref{hivacsimsir}). However
+unlike this traditional family of epidemiological models, HIVacSim identifies the
+different routes of infection (Table \ref{outputdata}), which is fundamental for
+understanding the spread of an epidemic and planning better intervention strategies. It
+also quantifies the characteristics of the network (Table \ref{netproperties}) through
+which the transmission occurs, providing a detailed local and global view of the
+epidemic's development. This enables targeted intervention strategies to be planned
+globally and delivered at different levels within the population such as a local
+community or specific risk group.
+
+The course of the HIV/AIDS epidemic is changing rapidly at the level of the virus,
+treatment availability and within populations at risk. Nevertheless, sexual transmission
+of HIV remains the main force behind the epidemic. HIVacSim measures the impact of
+selective mixing, variations in partnership characteristics such as length and
+overlapping, and sexual behaviour changes towards safer sex practices, the single most
+effective method of preventing HIV infection.
+
+The cultural and social traditions of a community play an important role in the spread of
+HIV. In modern societies adultery may not be a norm but is usually tolerated. The results
+presented in Section \ref{swnconcurrency}, highlight the importance of concurrent
+partnerships, with exponential like increase in the number of infected individuals and
+the growth rate of the HIV epidemic during its initial phase. This result corroborates
+that presented by Morris and Kretzschmar \cite{morrism1997,Kretzschmar2000} and suggests
+that the HIV pandemic would be short lived in a monogamous society. This supports the
+small world networks theory, which states that only a small fraction of random
+connections in the network is needed in order for it to increase its efficiency and allow
+fast propagation of infectious diseases or information within its bounds.
+
+The homogeneous representation of sexual partners is not well suited for modelling the
+spread of STDs. It provides little information about population structure and
+increases the overall epidemic. The core group approach, which divides the population
+into risk groups according to their level of sexual activity and exposure to the disease,
+gives a better understanding of the population. Not everyone has the same risk of
+acquiring and passing on HIV infection to new partners due to the heterogeneity in the
+sexual behaviour and different individual immune responses to the virus.
+
+Despite the effectiveness of HAART in delaying the development of AIDS among HIV infected
+individuals, the development of a preventive HIV vaccine is the best hope of controlling
+the HIV pandemic in the long-term. However an eventual vaccine will not be a magic
+bullet, it is likely that the first preventive HIV vaccine will be only partially
+effective due to genetically distinct subtypes of the HIV virus. Nevertheless the search
+continues and even a low 25\% efficacy vaccine can reduce the HIV transmission if
+coverage is high, while a vaccine with 75\% efficacy could markedly reduced HIV pandemic
+with relatively low coverage (\ref{swnvaccine}).
+
+\newpage
+In any case, vaccine intervention must go alongside education and a wide range of
+effective prevention programmes. Those who receive the vaccine must understand that their
+risk of contracting HIV infection has lessened but has not vanished.
+
+The spread of sexually transmitted diseases and, in particular, HIV results from a
+complex network of dynamic social interactions and other factors related to culture,
+sexual behaviour, demography, geography and disease characteristics, as well as the
+availability, accessibility and delivery of public healthcare. This thesis gives an
+overview of the historical development of STDs, highlights the challenges facing the
+world to control the HIV/AIDS epidemic, examines traditional epidemiological models and
+introduces HIVacSim, a new modelling framework based upon the small world theory. We
+conclude with the following statements:
+\begin{itemize}
+    \item Sexual behaviour changes towards unsafe sex practices and concurrent partnerships
+    dramatically increase the size of the sexually transmitted epidemic;
+
+    \item The introduction of the dynamics of selectivity in interactions for the small
+    world network models is as important as the network definition itself;
+
+    \item Connectivity alone will not capture the dynamics, variability and uncertainty
+    present in human social and sexual behaviour;
+
+    \item Nodal and edge properties must be taken into account in order to quantify both
+    the connections and the spread of disease or information through the network;
+
+    \item Prevention has to be viewed in a global context, however actions must be taken
+    locally, at different levels of the community. They should target the sources of long
+    range links in the network, responsible for the global spread of the epidemics;
+
+    \item A general behaviour model for the description of human sexual contacts, which
+    incorporates actor heterogeneity and dependence, is essential for the future social
+    network models of epidemiology. In this context, we developed HIVacSim as our
+    contribution to this new era of dynamic networks and epidemiological models.
+\end{itemize}
+
+\newpage
+\section{Further Work}
+
+The development of the HIVacSim model was successful on meeting the aims of the proposed
+research given the available time. The project is a starting point for a long-term
+development, which will require further improvements of the model in order to incorporate
+the outcome of new research on the dynamics of social interactions, HIV transmission,
+treatment and preventive HIV vaccine. Although significant progress has been undoubtedly
+achieved, it is vital to continue the research on the dynamics of sexual networks,
+improve the knowledge about the rampant HIV pandemic facing the world and add these new
+techniques to the HIVacSim model. The following is a list of desired features that should
+be carried forward in further development of HIVacSim model:
+\parskip=0pt
+\begin{itemize}
+    \item \emph{Migration} - provides an important factor to the spread of HIV worldwide.
+    It includes people travelling for professional reasons (truck drivers, traders,
+    military, airline personnel, etc) as well as those running away from their home
+    countries, fleeing persecution because of their beliefs, political activism, or wars.
+    However, being a migrant, in and of itself, is not a risk factor for HIV. It is the
+    situations encountered and the activities undertaken during the migration process that
+    are the risk factors. HIVacSim provides external contacts between core group
+    populations, but does not allow physical migration of individuals to take place
+    between core groups. This is a potential feature to be added to the model, but let
+    us not forget that migration is a complex subject in its own right;
+
+    \item \emph{Treatment} - in the absence of an effective HIV vaccine, the availability
+    of free HAART treatment has become high in the agenda of governments around the world.
+    At present, HIVacSim only accounts for vaccine interventions. Adding support
+    for HAART would enable the model to evaluate both preventive and treatment interventions;
+
+    \item \emph{Infectiousness} - the rate of HIV transmission varies by types of exposure
+    as well as other facts such as viral load and CD4 cell count \cite{Lifson1989,Lyles2000}. The definition of
+    infectious disease within HIVacSim only accounts for types of exposure, therefore more
+    flexibility settings should be added in order to represent the effects of treatment
+    interventions and accommodate changes to the natural history of the HIV infection;
+
+    \item \emph{HIV subtypes} - it is not clear at the time of this writing if the
+    different HIV strains could be dealt with a single vaccine, or if subtype-specific
+    vaccines will be needed. The fact however, is that most the vaccines currently under
+    development are targeting strains commonly found in North America and Europe. In this
+    light, HIV subtypes should be incorporated into HIVacSim;
+
+    \item \emph{Software} - although the current implementation of HIVacSim is very
+    flexible from a developer's point of view, it does not provide a friendly GUI to enable
+    non computer literate people to use it without expert assistance. The design and
+    implementation of a GUI for HIVacSim in order to improve its usability has high
+    priority for future development. From a developer's perspective, HIVacSim should be
+    made thread safe in order to enable distributed and parallel execution of different
+    scenarios, thereby taking advantage of multi-processor computers.
+\end{itemize}
+\parskip=\baselineskip
+
+There is a great need worldwide to promote the evolved framework and developed model
+described within this thesis to a wider healthcare audience. The structure and
+flexibility of this model should contribute towards a better understanding of the effects
+of social network interactions, sexual behaviour changes and concurrency on the dynamics
+of HIV transmission. This would help improve the planning and management of resources to
+prevent HIV infection in the first place and make life for those HIV infected individuals
+more human and comfortable.

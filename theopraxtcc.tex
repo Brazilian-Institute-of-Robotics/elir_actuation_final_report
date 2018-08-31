@@ -1,0 +1,278 @@
+%%%*******************************************************************************
+%  Classe Latex THEOPRAX, Version 0.0.0 31/10/2017
+%
+%  Define as normas e estilo das dissertações, teses ou tcc do SENAI CIMATEC
+%
+%%%-------------------------------------------------------------------------------
+
+%%%-------------------------------------------------------------------------------
+% Changes log
+%%%-------------------------------------------------------------------------------
+% Version 0.0.0 - 00/00/2000
+% - 
+%%%-------------------------------------------------------------------------------
+
+%%%-------------------------------------------------------------------------------
+%  DOCUMENTATION WITH EXAMPLE
+%%%*******************************************************************************
+
+%%%-------------------------------------------------------------------------------
+%%% Thesis default options
+%%%-------------------------------------------------------------------------------
+%\documentclass[subook]{Classes/THEOPRAX}
+%\documentclass[sureport]{Classes/THEOPRAX}
+
+%%%-------------------------------------------------------------------------------
+%%% Thesis custom options
+%%%-------------------------------------------------------------------------------
+
+%%% Fancy page headings
+%\documentclass[fancyheadings, subook]{Classes/THEOPRAX}
+%\documentclass[fancyheadings, sureport]{Classes/THEOPRAX}
+
+%%% Fancy chapters and sections headings
+%\documentclass[fancychapter, subook]{Classes/THEOPRAX}
+%\documentclass[fancychapter, sureport]{Classes/THEOPRAX}
+
+%%% Fancy page , chapters and sections headings
+%\documentclass[fancyheadings, fancychapter, subook]{Classes/THEOPRAX}
+%\documentclass[fancyheadings, fancychapter, sureport]{Classes/THEOPRAX}
+\documentclass[fancyheadings, fancychapter, sureport]{Classes/THEOPRAX}
+
+%%%-------------------------------------------------------------------------------
+%%% Thesis Commands (ONLY with fancy page headings)
+%%%-------------------------------------------------------------------------------
+
+%%%Page header line width
+%\footlinewidth{value}
+
+%%%Page footer line width
+%\headlinewidth{value}
+
+%%%Page header and footer line width
+%\headingslinewidth{value}
+
+%%%Page header and footer lines without text
+%\headingslinesonly
+
+%%%The default line width is 0.3pt.
+%%%Set the value to 0pt to remove the page header and/or footer line
+
+%%%-------------------------------------------------------------------------------
+%%% SUThesis Supported Graphic Formats
+%%%-------------------------------------------------------------------------------
+% The figures formats supported depend upon the selected output file
+% Include your figure without the extention, the SUThesis will automatically
+% search the predefined `Figures' directory tree for the right file format.
+%
+% - The pdfLaTEX (PDF) supports graphics inclusions in PDF, JPG, PNG, and
+%   MetaPost (with .mps extention) formats.
+%
+% - The Latex (DVI) supports graphics inclusions in EPS and PS formats.
+%%%-------------------------------------------------------------------------------
+
+
+%%%-------------------------------------------------------------------------------
+%%% Árvore de diretório THEOPRAX
+%%%-------------------------------------------------------------------------------
+%  Diretório
+%       \Classes        (requerido)
+%       \Figures        (requerido) --------------------------------->
+%       \Figures\PDF    (optional)
+%       \Figures\JPG    (optional) Figures located within these
+%       \Figures\PNG    (optional) folders are searched automatically
+%       \Figures\MPS    (optional)  by the THEOPRAX class.
+%       \Figures\EPS    (optional)
+%       \Figures\PS     (optional) <--------------------------------
+%       \Tables         (requerido)
+%       \Others         (requerido)
+%       \Chapters       (requerido)
+%       \Appendices     (optional)
+%       \References     (requerido)
+%%%-------------------------------------------------------------------------------
+
+%%%-------------------------------------------------------------------------------
+%%% PDF File Summary
+%%%-------------------------------------------------------------------------------
+\ifpdf
+    \hypersetup{backref,
+                colorlinks  = true,
+                pdftitle    = Modelo de visualização de informação de redes complexas utilizando sistemas de identificação de gestos e realidade virtual,
+                pdfauthor   = {Marco Reis, marco.a.reis@gmail.com},
+                pdfsubject  = Mestre em Engenharia,
+                pdfcreator  = Subtitulo,
+                pdfproducer = PDFLatex,
+                pdfkeywords = {Palavra-chave1, Palavra-chave2, Palavra-chave3}
+    }
+ \fi
+
+%%%-------------------------------------------------------------------------------
+%%% Required packages
+%%%-------------------------------------------------------------------------------
+% - ifthen
+% - setspace
+% - amsmath
+% - amsfonts
+% - amssymb
+% - amsthm
+% - eucal
+% - graphics
+% - fancyhdr
+%%%-------------------------------------------------------------------------------
+
+%%%-------------------------------------------------------------------------------
+%%% Optional packages
+%%%-------------------------------------------------------------------------------
+%\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{longtable}
+\usepackage{dcolumn}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{float,subfigure}
+\usepackage{cite}
+\usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
+%\usepackage[alf,abnt-etal-list=5]{abntcite}
+\usepackage[alf]{abntex2cite}
+\usepackage{ifpdf}
+\usepackage{shadow}
+\usepackage{wrapfig}
+\usepackage[normalem]{ulem}
+\usepackage{makeidx} % cria indice remissivo
+\usepackage{yfonts}
+\makeindex % cria o indice remissivo
+%Tables and Figures Caption
+\setlength{\LTcapwidth}{\textwidth}
+
+%%Package to add the legend for pictures
+\usepackage{caption}
+\newcommand{\source}[1]{\caption*{Fonte: {#1}} }
+
+
+
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+
+
+
+
+%\newtheorem{theorem}{Teorema}
+%\newtheorem{definition}[theorem]{Defini\c{c}\~ao}
+
+
+%%%-------------------------------------------------------------------------------
+%%% Start thesis root document
+%%%-------------------------------------------------------------------------------
+\begin{document}
+    %%----------------------------------------------------------------------------
+    %% Define the title page
+    %%----------------------------------------------------------------------------
+    \university{Centro Universitário SENAI CIMATEC}
+%    \faculty{Pro\-gra\-ma de P\'os-gra\-dua\-\c{c}\~ao em Mo\-de\-la\-gem Com\-pu\-ta\-cio\-nal e Tec\-no\-lo\-gia In\-dus\-trial}
+    %\faculty{Centro Universitário Senai Cimatec}
+%    \school{School of Mathematics}
+% ********************************************** TCC ****************
+    \course{Engenharia Elétrica}
+    \typework{Projeto Theoprax de Conclusão de Curso}
+% ********************************************************************
+% ********************************************* Mestrado ******************
+%    \course{Mestrado em Modelagem Computacional e Tecnologia Industrial}
+%    \typework{Disserta\c{c}\~ao de mestrado}
+%    \typework{Exame de Qualificação de Mestrado}
+% ********************************************** Doutorado ****************
+%    \course{Engenharia Elétrica}
+%    \typework{Tese de doutorado}
+%    \typework{Exame de Qualificação de doutorado}
+% ********************************************************************
+ \thesistitle{Desenvolvimento do robô de inspeção.}
+    \hidevolume
+    \thesisvolume{Volume 1 of 1}
+    \thesisauthor{Michael Faraday}
+    \thesisauthorr{John Nash}
+    \thesisauthorrr{James Clerk Maxwell}
+    \thesisauthorrrr{Nikola Tesla}
+    \thesisadvisor{Prof. Marco Reis, M.Eng.}
+    \hidecoadvisor
+    %\thesiscoadvisor{Marco Reis}
+    \thesisdegreetitle{Bacharel em Engenharia}
+    %\thesisdegreetitle{Doutor em }
+%    \thesismonthyear{M\^es de Ano}
+    \thesismonthyear{Setembro de 2018}
+
+
+    \maketitlepage
+
+    %%----------------------------------------------------------------------------
+    %% Inserir Folha de rosto, Nota de estilo, folha de assinaturas, dedicatoria
+    %%----------------------------------------------------------------------------
+    \include{Others/FolhaRosto}
+    %\include{Others/NotaEstilo}
+    %\include{Others/FolhaAssinaturas}
+    \include{Others/dedicatoria}
+    \include{Others/agradecimentos}
+
+
+    %%----------------------------------------------------------------------------
+    %% Resumo/abstract, sumário e siglas
+    %%----------------------------------------------------------------------------
+    \begin{romanpagenumbers}
+        \include{Others/resumo}
+        \include{Others/abstract}
+        % Make list of contents, tables and figures
+        \thesiscontents
+        %Include other required section
+        \include{Others/abbreviation}
+        \include{Others/simbolos}
+        %Switch the page numbering back to the default format
+    \end{romanpagenumbers}
+
+    %%----------------------------------------------------------------------------
+    %% Include thesis chapters
+    %%----------------------------------------------------------------------------
+    \parskip=\baselineskip
+    \include{Chapters/ChapterOne}
+    \include{Chapters/ChapterTwo}
+    \include{Chapters/ChapterThree}
+    \include{Chapters/ChapterFour}
+    %\include{Chapters/ChapterFive}
+    %\include{Chapters/ChapterSix}
+    %\include{Chapters/ChapterSeven}
+    %\include{Chapters/ChapterEight}
+    \include{Chapters/ChapterConsideracoesfinais}
+    % include more chapters ...
+
+   %%----------------------------------------------------------------------------
+    %% Include thesis appendices
+    %%----------------------------------------------------------------------------
+
+    \begin{thesisappendices}
+        \include{Appendices/qfd}
+        \include{Appendices/diagmec}
+        \include{Appendices/diagele}
+        \include{Appendices/wireframes}
+        \include{Appendices/logbook}
+    \end{thesisappendices}
+
+    %%----------------------------------------------------------------------------
+    %% Configurar as referencias bibliograficas
+    %%----------------------------------------------------------------------------
+
+
+    \addcontentsline{toc}{chapter}{Referências}
+    %\bibliographystyle{abnt-alf}
+
+
+    \bibliography{References/referencias}
+
+    %%----------------------------------------------------------------------------
+    %% Finishing
+    %%----------------------------------------------------------------------------
+
+    \include{Others/ultimafolha}
+\end{document}
+%%%-------------------------------------------------------------------------------
+%%% Here we finished with your thesis formating. Good luck with the contents
+%%%-------------------------------------------------------------------------------
