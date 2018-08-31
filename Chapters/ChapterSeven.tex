@@ -1,0 +1,521 @@
+\chapter{Epidemiological Verification}\label{chpvalidate}
+
+\parskip=15pt
+This chapter describes the use of HIVacSim model for representing, examining and solving
+real world problems. The effects of living in a small world, sexual behaviour changes and
+social interactions on the dynamics of HIV transmission are verified and validated
+against existing models and related published data in the literature. The use of
+preventive HIV vaccine intervention to control the HIV pandemic is evaluated
+experimentally, though no HIV vaccine is available at the time of this writing.
+
+In the previous chapter, we showed the importance of topology on networks and
+epidemiological models (\ref{topology}). The \emph{spherical topology} provides a good
+representation of the real world and will be used as the default network topology for the
+rest of this thesis. The initial distribution of infection within a population must not
+be overlooked when modelling the dynamics of disease propagation through networks. It not
+only influences the network efficiency between topologies but also within the same
+topology. Figures \ref{initdistprevalence} and \ref{initdistincidence} show the effect of
+the initial distribution of infection on HIV transmission as the epidemic progresses over
+time in a spherical topology (though the results are point values, we have for clarity
+used a continuous graph).
+\begin{figure}[h]
+\includegraphics{initialdistprevalence}
+\caption{Effects of the initial distribution of infection on HIV prevalence}
+\label{initdistprevalence}
+\end{figure}
+\parskip=\baselineskip
+
+\begin{figure}[ht]
+\includegraphics{initialdistincidence}
+\caption{Effects of initial distribution of infection on HIV incidence}
+\label{initdistincidence}
+\end{figure}
+
+The effects of the initial distributions of infection as well as that of a small world
+are evident. At a low level of randomness $(p < 0.4)$, which includes the relevant region
+for HIVacSim (see Figure \ref{connected}), the gap between random and clustered initial
+distributions of infection remains wide for longer than otherwise due to the clustering
+property of the network. As the network randomness increases beyond this level, the
+difference between initial distributions decreases faster as the global network
+efficiency starts to converge to that of a random network. This result confirms the
+importance of geography and shows the effects of the initial distribution of infection on
+the propagation of an epidemic within a dynamic small world network.
+
+
+\section{Small World Effects on Sexual Transmission of HIV}\label{sweffecthiv}
+
+In order to quantify the effects of a small world network on the sexual transmission of
+HIV, we use Scenario \ref{scenariosingle}, where we gradually increment the probability
+of a casual partnership (small world randomness probability \emph{p}) from regularity $(p
+= 0.0)$ to randomness $(p = 1.0)$ and evaluate the development of the HIV epidemic over
+time for each experiment.  Figures \ref{swneffectprevoriginal} and
+\ref{swneffectincidoriginal} summarise the results for this experiment by showing the
+small world effect on the HIV prevalence and HIV incidence respectively as the epidemic
+progresses over time in a dynamic network.
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{swneffectprevoriginal}
+\caption{Small world effect on HIV prevalence} \label{swneffectprevoriginal}
+\end{figure}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{swneffectincidoriginal}
+\caption{Small world effect on HIV incidence} \label{swneffectincidoriginal}
+\end{figure}
+\clearpage
+
+The results show that the small world randomness parameter (probability of casual
+partnership) directly affects the speed of the HIV transmission. However the rate of
+change on the network randomness value does not have a linear effect on HIV transmission,
+as can be observed. For example, an increase of 0.1 in the network randomness $(0.0
+\rightarrow 0.1)$ results in a 33\% increase in HIV prevalence and a 42\% in HIV
+incidence after 12 years compared with the regular network as the baseline.
+
+The slow decrease in HIV prevalence over time in Figure \ref{swneffectprevoriginal} is
+explained by the number of AIDS related deaths within the population. The growth rate of
+the HIV epidemic increases very fast during its initial phase. In the absence of
+treatment intervention to improve and extend the lives of those HIV infected individuals,
+the AIDS symptoms will develop naturally and kill those infected. Figure
+\ref{swneffectnodeath} confirms this argument by showing the HIV prevalence for the
+scenario above but now assuming that HIV infection will not lead to AIDS and subsequent
+death. In the model, the \emph{HIV mortality rate} is set to \emph{zero} (see Table
+\ref{hivdefinition}).
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{swneffectnodeath}
+\caption{Small world effect on HIV prevalence without AIDS deaths}
+\label{swneffectnodeath}
+\end{figure}
+
+This result shows the importance of treatment for those infected with HIV and highlights
+the world's need to understand the long term consequences of widely accessible HAART
+treatment for the HIV epidemic as a whole. A balance between prevention and treatment is
+crucial, the effectiveness of HAART might be less important than behavioural influences
+on the progress of the HIV epidemic \cite{Dangerfield2001}.
+
+In order to illustrate the consequences of treatment interventions in the HIV epidemics,
+we experimentally evaluate the efficacy of a HAART programme with 100\% HIV positive
+population coverage (infectivity is kept unchanged). Assuming that through HAART we could
+double the life expectancy of those infected individuals, Figure \ref{swneffecthaart}
+shows the effects of HAART on the HIV prevalence as the epidemic progresses over time
+with different levels of randomness in the network.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{swneffecthaart}
+\caption{Effects of HAART intervention on HIV prevalence} \label{swneffecthaart}
+\end{figure}
+
+This result clearly shows that widely accessible HAART treatment dramatically increases
+the number of HIV positive individuals within the general population over time.
+Governments and health authorities must be aware of the long term consequences of such
+HAART programmes in order to improve the planning and management of resources to prevent
+HIV infection in the first place and make the life of those infected more human and
+comfortable.
+
+The small world network efficiency peaks at about 90\% of randomness and not at 100\% as
+one might expect (see Figures \ref{swneffectprevoriginal} to \ref{swneffecthaart}). This
+rather curious occurrence is explained by the difference in sexual behaviour regarding
+safe sex practices between stable (18\%) and casual (42\%) partnerships. Figures
+\ref{swneffectprevcondom} and \ref{swneffectincidcondom} confirms this argument by
+showing the HIV prevalence and incidence for the scenario above by now assuming the same
+rate of safe sex practice (18\%) for both casual and stable partnerships.
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{swneffectprevcondom}
+\caption{Same rate of safe sex practice effects on HIV prevalence}
+\label{swneffectprevcondom}
+\end{figure}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{swneffectincidcondom}
+\caption{Same rate of safe sex practice effects on HIV incidence}
+\label{swneffectincidcondom}
+\end{figure}
+\clearpage
+
+The small world network theory may explain in part why HIV has managed to spread itself
+to every corner of the world, infecting and killing people from all ethnic and social
+backgrounds, surviving like no other disease has ever done in the same proportion and
+time scale. An infectious disease or information needs only a small amount of randomness
+$(p \sim 0.2)$ in the network interactions in order for it to efficiently propagate on a
+local and global scale.
+
+By examining the small world effects on the HIV epidemic for the original population
+definition shown in Figures \ref{swneffectprevoriginal} and \ref{swneffectincidoriginal},
+one can observe that there is no major increase in network efficiency or epidemic growth
+after 12 years for randomness parameter $p > 0.5$. At $p \approx 0.5$, the network has
+already reached over 70\% of its maximum efficiency $(p \sim 0.9)$. These results were
+corroborated by Kuperman and Abramson \cite{Kuperman2001} for a SIR model using the
+original small world model.
+
+Figure \ref{smallpertubation} shows that small perturbations in the system such as the
+experimental changes in safe sex practices illustrated by Figures
+\ref{swneffectprevcondom} and \ref{swneffectincidcondom}, can have an unpredictable
+effect on the network efficiency and therefore on the course of the HIV epidemic. Error
+bars used in plots throughout this chapter represent a 95\% confidence interval for the
+mean.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{smallpertubation}
+\caption{The effects of small perturbations on network efficiency}
+\label{smallpertubation}
+\end{figure}
+\clearpage
+
+This result highlights the importance of preventive intervention strategies such as sex
+education and free condoms to fight the HIV pandemic. It also illustrates the network
+sensitivity to small behaviour changes among individuals and shows how such changes are
+dynamically propagated within the network.
+
+The magnitude of the small world effect on the HIV epidemic can be quantified by both
+prevalence and incidence as above. This experiment highlights the flexibility of the
+HIVacSim model in representing different aspects of the infectious disease in question,
+identifying and quantifying the causes leading to the transmission and evaluating the
+consequences of small behavioural changes for the future development of the epidemic.
+
+
+\section{HIVacSim as a Compartmental Model}\label{hivacsimsir}
+
+The basic compartmental models of disease spread, also known as SIR models are still the
+standard in epidemiology (\ref{sirmodels}). This traditional family of models are
+represented within HIVacSim by the HIV infection state of each individual given as
+\emph{Susceptible}, \emph{Infected} or \emph{Protected} (\ref{hivacsim}) respectively.
+The \emph{protected} or \emph{removed} state can represent either natural or preventive
+vaccine protection against HIV infection.
+
+Deaths are quantified and classified as natural or caused by HIV/AIDS infection to
+provide detailed information on the epidemic death rate. At any moment in time, one can
+evaluate the number of individuals in each compartment within a group and quantify the
+epidemic in the traditional way. The small world probability \emph{p} can be tuned to
+represent the current spread of HIV as predicted by existing compartmental models. In
+order to demonstrate this feature, we fitted HIVacSim experimentally to the Epidemiologic
+Projection Package (EPP) \cite{UNAIDSRG2002,Ghys2004}. EPP is a four parameter
+compartmental model developed by the UNAIDS Epidemiology Reference Group to estimate and
+project adult HIV prevalence from surveillance data in countries with generalised
+epidemics.
+
+To conduct this experiment, the EPP model was set up using UNAIDS previously published
+HIV prevalence estimates for Brazil (1997 = 0.63\% \cite{UNAIDS1998}, 1999 = 0.57\%
+\cite{UNAIDS2000}, 2001 = 0.6\% \cite{UNAIDS2002} and 2003 = 0.7\% \cite{UNAIDS2004}) as
+input data. In order to avoid a sudden drop in EPP's HIV prevalence estimate, the HIV
+prevalence for Brazil in 2005 was estimated to be 0.8\%, assuming a linear pattern of the
+epidemic from the past two years. EPP was then tuned to estimate HIV prevalence for
+Brazil up to 2013, which produced the HIV/AIDS epidemic curve shown in Figure
+\ref{eppbrazil}. \newpage
+
+\begin{figure}[ht]
+\includegraphics{eppbrazil}
+\caption{EPP estimated of HIV prevalence for Brazil} \label{eppbrazil}
+\end{figure}
+
+The next step was to run HIVacSim using different values for probability of casual
+partnerships or the small world randomness probability \emph{p} (0.0, 0.01, 0.02 . . .
+0.1, 0.2 . . . 1.0) for scenario 6.1.1 population. The 95\% confidence interval (CI) of
+the mean HIV prevalence was then calculated for each value of \emph{p} and this range
+(�95\% CI) was compared with that of the EPP estimate. The closest matches ranged from
+0.06 - 0.08, therefore the middle point (\emph{p} = 0.07) was chosen as the small world
+randomness parameter \emph{p}, which best represents the HIV epidemic in Brazil in
+accordance with EPP, as shown in Figure \ref{swnbrazil}. This value is smaller than that
+found in the literature for Brazil (0.18), but remains inside the relevant region, as
+defined in Figure \ref{connected}.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{swnbrazil}
+\caption{HIVacSim estimate of the HIV epidemic in Brazil} \label{swnbrazil}
+\end{figure}
+
+Although this seems a very simplistic way to define the small world randomness parameter,
+the UNAIDS plausibility bounds  \cite{Glassly2004}, used around the EPP estimate, are
+very large (e.g. 2003 = 0.7 [0.3 - 1.1]) and therefore it is difficult to define a more
+accurate value. The slight difference in heights of peaks at the beginning of the
+epidemic curve in Figure \ref{swnbrazil} is attributed to the difference in starting
+conditions for the two models. In particular there is a twenty years gap between the
+starting of the epidemic within the two models. Nevertheless, this exercise illustrates
+the flexibility of HIVacSim to estimate the HIV epidemics worldwide.
+
+A fundamental limitation of the EPP model is that only HIV prevalence is given as output,
+there is no identification of the different routes of infection which is fundamental to
+the understanding of  the spread of an epidemic and the planning of better intervention
+strategies. HIVacSim quantifies prevalence, incidence, sources of infection, types and
+scope of partnerships and many other variables (see Table \ref{outputdata}). It also
+quantifies the network characteristics (Table \ref{netproperties}) through which the
+transmission occurs, providing a detailed local and global view of the epidemic's
+development. Thus, it enables targeted intervention strategies to be planned, delivered
+and evaluated at different levels within a local community or the overall population.
+
+
+\section{Sexual Behaviour Changes and HIV}
+
+Sexual transmission of HIV remains the main force behind the AIDS epidemic worldwide.
+Sexual behaviour change towards safer sex practice is the single most effective method of
+preventing HIV infection. The risk-taking behaviour among already infected individuals
+and the daily life management of their disease must be closely monitored in order to keep
+pace with the rapid evolution of the epidemic and societal responses to it.
+
+In an epidemic where changes are occurring rapidly at the level of the virus, treatment
+and populations at risk, models addressing social structure, geography and also measuring
+the impact of dynamic sexual behaviour changes are urgently needed. These models provide
+a valuable support to decision makers when defining the course of action for delivering
+good intervention strategies to control the epidemics.
+
+\parskip=13pt
+From a modelling perspective, sexual behaviour changes must be measured not as an
+individual phenomenon but through relationships, appreciating the fact that sexual risk
+behaviour directly involves two people. The focus therefore should be directed towards
+selective mixing, safe sex practices and the variations in partnership patterns such as
+length, strength and overlapping. In the following sections we examine the effects of
+condom use and concurrent partnerships on HIV transmission.
+\parskip=\baselineskip
+
+\subsection{Safe Sex Practices}
+
+Consistent condom use was shown by Weller and Davis \cite{Davis1999,Weller2004} to
+dramatically reduce the risk of sexual transmission of HIV infection. They estimated that
+compared with no condom use, consistent condom use results in an overall 80\% reduction
+in risk of HIV transmission, with best-case and worst-case scenarios ranging from 35\% to
+94\%.
+
+In order to illustrate the effectiveness of consistent condom use on the sexual
+transmission of HIV, we experimentally consider the following three scenarios:
+\parskip=0pt
+\begin{itemize}
+    \item \emph{No safe sex} -- there is no condom use;
+    \item \emph{Original}    -- the rates of condom use for stable and casual partnerships
+    are as found in the literature for Brazil as 18\% and 42\% respectively;
+    \item \emph{Intervention} -- defines a public campaign promoting consistent condom
+    use among stable partners as a family planning strategy, which results in increasing
+    the rate of consistent condom usage among stable partners to that of casual partnerships (42\%).
+\end{itemize}
+
+Figures \ref{safesexcondom} shows the impact of consistent safe sex practices on reducing
+the HIV epidemic (prevalence and incidence) within our model for the above scenarios.
+\parskip=\baselineskip
+\begin{figure}[!h]
+\includegraphics[width=\textwidth]{safesexcondom}
+\caption{Safe sex practice influence on HIV transmission} \label{safesexcondom}
+\end{figure}
+
+The observed use of condoms in Brazil is high for casual partnerships among young people;
+however it is relatively low among married couples. This result clearly illustrates the
+efficacy of consistent condom use in preventing HIV transmission. Additionally, the
+result supports the promotion of public campaigns, targeting not only the most vulnerable
+groups but the entire population, inducing sexual behaviour changes towards safer sex
+practices.
+
+\subsection{Concurrent Partnerships}\label{swnconcurrency}
+
+The effects of simultaneous sexual partnerships on the spread of STDs have been the
+subject of many studies in epidemiology and social networks (see \ref{concurrencynet}).
+In particular Morris and Kretzschmar (\cite{morrism1997} \emph{Figures} 3-4 and
+\cite{Kretzschmar2000} \emph{Figure} 3) have shown that concurrent partnerships
+exponential like increases the number of infected individuals and the growth rate of
+the HIV epidemics during its initial phase.
+
+The concurrency property of HIVacSim is governed by two variables: the maximum number of
+concurrent partnerships that one is allowed to have at any time (maximum concurrency) and
+the probability of concurrent partnerships within the population (\ref{popdefinition}).
+Figure \ref{concurrency3d} shows the effects of multiple sexual partners or extramarital
+partnerships on the sexual transmission of HIV within the population for different levels
+of these two variables of concurrency of the HIVacSim network model.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{concurrency3d}
+\caption{Effects of concurrency on the HIV epidemic} \label{concurrency3d}
+\end{figure}
+
+In a monogamous population (maximum concurrency = 1), the network necessarily
+disintegrates into $\frac{n}{2}$ isolated dyads, thus limiting any outbreak of an
+epidemic. This suggested that in the absence of concurrent partnerships, the HIV/AIDS
+epidemic would die off by itself rapidly, as can be observed in Figure
+\ref{concurrency3d} (\emph{green region}). On the other hand, when concurrent
+partnerships are allowed (maximum concurrency $> 1$ and probability of concurrent
+partnership $> 0$), the network starts to exhibit a large connected component thereby
+enabling the outbreak of an epidemic to reach an increasing fraction of the population,
+as can be observed by the different colours regions in Figure \ref{concurrency3d}.
+
+The exponential like growth of the HIV epidemic can be observed as a function of the
+level of concurrency in the network. Figure \ref{concurrency3dbar} gives a different view
+of Figure \ref{concurrency3d} in order to illustrate how each level of concurrency in the
+population affects the HIV/AIDS pandemics.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{concurrency3dbar}
+\caption{Exponential growth of the HIV epidemic as concurrency increases}
+\label{concurrency3dbar}
+\end{figure}
+
+Figures \ref{concurrencyprob} and  \ref{concurrencymax} give yet another view of the
+impact of concurrent partnerships on the sexual transmission of HIV by illustrating the
+sensitivity, the relationship and the role played by the maximum number of concurrent
+partners and the probability of concurrent partnership in the prevalence of HIV within
+the population.
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{concurrencyprob}
+\caption{Maximum number of concurrent partners effect on HIV prevalence}
+\label{concurrencyprob}
+\end{figure}
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{concurrencymax}
+\caption{Probability of concurrent partnership effect on HIV prevalence}
+\label{concurrencymax}
+\end{figure}
+\clearpage
+
+The cultural and social traditions of a community play an important role in the spread of
+HIV. In modern societies adultery may not be a norm but is usually tolerated. The
+previous results highlight the importance of concurrent partnerships on the sexual
+transmission of HIV and compares well with those reported by Morris and Kretzschmar
+\cite{morrism1997,Kretzschmar2000}. These results strongly suggest that the HIV pandemic
+would be short lived in a regular network or monogamous social structure.
+
+In their experiments, Morris and Kretzschmar allowed a maximum of ten concurrent
+partnerships to take place (\cite{Morris1995} Table 1), though this maximum has never
+been reached in practice (\cite{Kretschmar1996} Table 2). In our experiment we allowed a
+maximum of five overlapping partnerships, yet the effects of concurrency are clearly
+corroborated.
+
+Figure \ref{partnershipdist} concludes this analysis by showing the effects of
+concurrency on the distribution of number of partnerships within the population. In this
+experiment a maximum of five concurrent partnerships was allowed, the probability of
+concurrent partnership (\emph{pcp}) was then tuned from serial monogamy $(pcp = 0.0)$ to
+promiscuity $(pcp = 1.0)$. The level of concurrency, represented by \emph{pcp}, is shown
+in the upper right corner of each plot ($pcp = 0.11$ is the value for the Brazilian data,
+see Table \ref{singlegroup}). As the level of concurrency increases the distribution of
+number of partnerships within the population also changes following a non-linear scale.
+\begin{figure}[h]
+\includegraphics{partnershipdist}
+\caption{Concurrency effects on the distribution of partnerships} \label{partnershipdist}
+\end{figure}
+
+\section{Multi Group Interactions}
+
+The assumption of homogeneous and random interactions between sexual partners is not well
+suited for modelling the spread of STDs as was shown in Section \ref{Heterogeneity}. The
+traditional approach to deal with different levels of sexual activity between partners
+within a population is to divide the population into core groups or risk groups according
+to the level of sexual activity and exposure to the disease. The models are typically
+evaluated for two scenarios: isolation or assortative interaction (like with like), and
+disassortative interaction (like with unlike).
+
+In HIVacSim a population mixing matrix is used to define the level of interaction between
+distinct core groups (\ref{mixingpat}). In order to evaluate the effects of heterogeneity
+in sexual behaviour and transmission of HIV, we used the multi group Scenario
+\ref{scenariomulti} and three different population mixing strategies:
+\parskip=0pt
+\begin{itemize}
+    \item \emph{Isolation} --  each core group population interacts within its bounds,
+    no external interaction is allowed. This scenario is meant solely for the evaluation of
+    population heterogeneity, we appreciate the fact that married people will not have
+    concurrent partnerships only among themselves. Table \ref{isolationmixmat} defines
+    the assortative mixing matrix for this scenario;
+    \begin{longtable}[c]{|c|c|c|c|}
+    \caption{Isolation population mixing matrix}\\ \hline
+    \label{isolationmixmat}
+    $\Rightarrow \oslash \Rightarrow $ & Married & Under 25 & Others \\\hline
+    Married  & x       & 0.0      & 0.0    \\\hline
+    Under 25 & 0.0     & x        & 0.0    \\\hline
+    Others   & 0.0     & 0.0      & x      \\\hline
+    \end{longtable}
+
+    \item \emph{Default} -- external interactions between core groups are disassortative
+    and equally likely as defined in Table \ref{multimixmat}, replicated in
+    Table \ref{defaultmixmat} for convenience;
+    \begin{longtable}[c]{|c|c|c|c|}
+    \caption{Default population mixing matrix}\\ \hline
+    \label{defaultmixmat}
+    $\Rightarrow \oslash \Rightarrow $ & Married & Under 25 & Others \\\hline
+    Married  & x       & 0.5      & 0.5    \\\hline
+    Under 25 & 0.5     & x        & 0.5    \\\hline
+    Others   & 0.5     & 0.5      & x      \\\hline
+    \end{longtable}
+
+    \item \emph{Custom} --  the level and direction of the sexual activities between
+    distinct core groups are customised in order to represent a non-uniform distribution
+    of external interactions between individuals from different core groups.
+    Table \ref{custommixmat} defines the population customised mixing matrix.
+    \begin{longtable}[c]{|c|c|c|c|}
+    \caption{Custom population mixing matrix}\\ \hline
+    \label{custommixmat}
+    $\Rightarrow \oslash \Rightarrow $ & Married & Under 25 & Others \\\hline
+    Married  & x       & 0.4      & 0.6    \\\hline
+    Under 25 & 0.2     & x        & 0.8    \\\hline
+    Others   & 0.3     & 0.7      & x      \\\hline
+    \end{longtable}
+\end{itemize}
+\parskip=\baselineskip
+
+Figure \ref{multigovertime} shows the influence of heterogeneity and different levels of
+sexual interactions on the HIV epidemic over time. The results are compared with a
+homogeneous population and clearly illustrate the effects of heterogeneity and population
+mixing on the development of the epidemic.
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{multigovertime}
+\caption{Heterogeneity effects on the HIV epidemics over time} \label{multigovertime}
+\end{figure}
+
+Figures \ref{multigmixprevalence} and \ref{multigmixincidence} compare the impact of
+heterogeneity (core groups) and population mixing respectively on the HIV prevalence and
+incidence after 12 years. The results clearly show that a homogeneous population
+structure, represented as single group, increases the size of the overall HIV
+epidemic.\clearpage
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{multigmixprevalence}
+\caption{Heterogeneity effects on HIV prevalence} \label{multigmixprevalence}
+\end{figure}
+
+\begin{figure}[!ht]
+\includegraphics[width=\textwidth]{multigmixincidence}
+\caption{Heterogeneity effects on HIV incidence} \label{multigmixincidence}
+\end{figure}
+
+This analysis concludes that the core group approach provides a better representation of
+the population structure and the dynamics of social interactions. In the real world not
+everyone has the same risk of acquiring and passing on HIV infection to new partners due
+to the heterogeneity in the sexual behaviour and different individual immune responses to
+the virus.\clearpage
+
+\section{Preventive HIV Vaccine Intervention}\label{swnvaccine}
+
+The development of a preventive HIV vaccine is the best hope of controlling the HIV
+pandemic worldwide in the long-term. Unfortunately no effective HIV vaccine is available
+or in sight at the time of this writing (\ref{vaccine}). The dynamics of HIV transmission
+is a highly complex process and varies enormously. Not only is the HIV epidemic dynamic
+in terms of treatment options, prevention strategies and disease progression, but also in
+terms of sexual behaviour. In this section we evaluate the effects of a preventive HIV
+vaccine on the HIV/AIDS epidemic.
+
+In this experiment, we consider lifelong immunisation interventions using preventive HIV
+vaccines with varying levels of  efficacy (25\%, 50\% and 75\%) and population coverage
+(No vaccination, 25\%, 50\%, 75\% and 100\%). Vaccination covers only HIV negative
+individuals and takes place at the beginning of the simulation (time = 1). As the
+prevalence of HIV transmission diminishes in the population due to immunisation, each
+individual's risk of contracting HIV also lessens regardless of whether they are directly
+protected. Figures \ref{vaccineprevefficacy} and \ref{vaccineincdefficacy} show the
+effects of the different preventive HIV vaccination strategies in the HIV prevalence and
+incidence respectively according to vaccine efficacy and intervention coverage.
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{vaccineprevefficacy}
+\caption{Preventive vaccine effects on HIV prevalence} \label{vaccineprevefficacy}
+\end{figure}
+\clearpage
+
+\begin{figure}[ht]
+\includegraphics[width=\textwidth]{vaccineincdefficacy}
+\caption{Preventive vaccine effects on HIV incidence} \label{vaccineincdefficacy}
+\end{figure}
+
+This result compares well with that reported by Gray at al \cite{Gray2003} (\emph{50\%
+efficacy vaccine with 75\% coverage could reduce the HIV prevalence by 80\% over 20 years
+-- see Figure 3 and Table 3 of this reference}). It shows that even a low efficacy
+vaccine (e.g. 25\%) can reduce HIV transmission if coverage is high (e.g. 100\%). However
+the epidemics would not be under control as the HIV incidence remains relatively high. On
+the other hand, with higher vaccine efficacy the HIV pandemic could be markedly reduced.
+Even a moderately protective HIV vaccine of 50\% efficacy with broad population coverage
+of 75\% could reduce the HIV prevalence and incidence by as much as 44\% and 51\%
+respectively over 12 years; while a vaccine with 75\% efficacy could achieve 58\% and
+68\% reduction respectively within the same time scale for a similar coverage.
+
+Although a preventive HIV vaccine could potentially halve the HIV epidemics in the short
+term, any effective HIV vaccine intervention must go alongside education and a wide range
+of effective prevention programmes. If the availability of a HIV vaccine results in a
+generalised disinhibition in the whole population towards risky sexual behaviour, then the
+benefits of low efficacy preventive HIV vaccine could be overshadowed. It is important to
+point out in such programmes that vaccine efficacy is not 100\% and those who receive the
+vaccine must understand that although their risk of contracting HIV infection has
+lessened, it has not vanished.
