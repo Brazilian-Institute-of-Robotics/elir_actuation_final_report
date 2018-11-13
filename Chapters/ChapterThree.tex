@@ -108,18 +108,18 @@ A saída desta funcionalidade é o movimento da estrutura física do robô, que 
 \label{ssec:power}
 \subsubsection{Definição da funcionalidade}
 
-A funcionalidade de \textit{Power Management} é responsável por administrar o fornecimento de energia para os dispositivos eletrônicos do robô, nos níveis adequados de tensão e corrente.
-
+A funcionalidade de \textit{Power Management} é responsável pelo gerenciamento de alimentação elétrica dos componentes elétricos e eletrônicos do robô, através da integração das funcionalidades de seu firmware no ambiente ROS.
 \subsubsection{Dependências}
-Essa funcionalidade depende da comunicação serial por meio da biblioteca \textit{rosserial} e da operacionalização do firmware embarcado no hardware (placa) de acordo com as necessidades do projeto.
+Essa funcionalidade depende da comunicação serial por meio da biblioteca \textit{rosserial} para compatibilização e integração das funcionalidades de firmware no ambiente ROS. Operacionalização e customização do firmware embarcado no hardware de acordo com as necessidades do projeto e da alimentação fornecida pela placa multiplexadora, por meio de baterias Li-Ion NH2054 14.4 volts.
 
 \subsubsection{Premissas Necessárias}
 Para o correto funcionamento desse módulo de \textit{Power Management}, devem ser consideradas as seguintes premissas:
 \begin{itemize}
 	\item A placa multiplexadora estará conectada diretamente ao módulo de \textit{Power Management} 
 	\item Todos os dispositivos estarão conectados nas suas respectivas entradas
-	\item A placa deverá ser alimentada por 2 baterias
+	\item A placa deverá ser alimentada por 2 baterias de 14.4 Volts e 3 Amperes, totalizando um fornecimento de até 6 Amperes
 	\item A placa estará conectada diretamente na NUC, por meio de uma USB	
+	
 \end{itemize}
 \begin{figure}[h]
 	\centering
@@ -129,12 +129,27 @@ Para o correto funcionamento desse módulo de \textit{Power Management}, devem s
 	\source{Própria}
 \end{figure}
 \subsubsection{Descrição da Funcionalidade}
-A placa de \textit{Power Management} fornece diversos recursos para integração com o ROS. Seu firmware, além de realizar as medições e controle dos níveis de tensão e corrente para alimentação do robô, estará adaptado com as seguintes funcionalidades para que haja integração do hardware com o ROS:
+A funcionalidade \textit{Power Management} é responsável  fornece diversos recursos em sua totalidade. O hardware utilizado (placa Zord) possui um sensor de corrente e tensão para cada porta de saída, permitindo o monitoramento individual de cada uma das portas. O microcontrolador utilizado Atmega32U4 possui um firmware embarcado onde toda a compatibilização com o ambiente ROS é realizada, o que torna essencial o uso do pacote rosserial para o seu funcionamento. O firmware é responsável pela ativação dos relés digitais em caso de surtos de corrente para proteção dos dispositivos elétricos. 
+Os limites nos valores de corrente funcionam justamente para que o hardware interrompa a alimentação em um possível caso de surto de corrente. Todos os aspectos importantes para o funcionamento do sistema de gerenciamento de energia pode ser configurado tanto via ROS, por meio das configurações dos serviços, ou por meio do firmware, modificando os parâmetros do tempo de duração dos picos de corrente. Os principais serviços e tópicos criados pela funcionalidade Power Management no ROS são:
 \begin{itemize}
-	\item \textit{Publishers} que contém os status das portas em níveis de tensão e corrente; avisos de surtos de corrente ou sobre-corrente; disponibilidade do hardware de \textit{Power Management}
-	\item \textit{Serviços} para realizar a verificação dos níveis de corrente; definição dos limites de corrente nas portas; realização de comandos on-off
+	\item \textit{Tópicos}
+	\begin{itemize}
+		\item \textit{PowerOutput}
+		Este tópico disponibiliza os valores de tensão e corrente de todas as portas da placa em tempo real.
+		\item \textit{TakeStatus}
+		Disponibiliza o estado de cada porta da placa, informando os eventos ocorridos e a porcentagem de corrente demandada durante a ocorrência do evento.
+	\end{itemize} 
+	\item \textit{Serviços} 
+	\begin{itemize}
+	\item \textit{GetCurrentLimitCommand}
+	Este comando retorna o valor de corrente máxima de saída configurado para a porta escolhida
+	\item \textit{SetCurrentLimitCommand}
+	Este comando realiza a configuração do valor máximo de corrente de saída em uma determinada porta
+	\item \textit{PowerOnOffCommand}
+	Este comando realiza a ação de ativação ou desligamento de uma determinada porta.
+	\end{itemize}
 \end{itemize}
-O conjunto de baterias fornecerá a energia para o sistema, a placa de \textit{Power Management} irá administrar a distribuição da energia para os seguintes componentes:
+A placa de Gerenciamento de energia irá receber a carga das baterias pela placa multiplexadora e irá realiza o controle de alimentação dos seguintes componentes:
 \begin{itemize}
 	\item Grupos de servo motores
 	\item Grupo de sensores de corrente
@@ -142,6 +157,9 @@ O conjunto de baterias fornecerá a energia para o sistema, a placa de \textit{P
 	\item Interface HUB
 	\item Câmera LWIR
 	\item Sensor ultrassônico
+	\item Phidgets
+	\item STM Nucleo
+	\item Módulo GPS
 \end{itemize}
 
 \subsubsection{Saídas}
