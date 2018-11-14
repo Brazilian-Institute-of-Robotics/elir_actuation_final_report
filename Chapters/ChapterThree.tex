@@ -1,6 +1,8 @@
 \chapter{Materiais e Métodos}
 \label{chap:mat}
-asdfasdfsdf
+
+
+
 
 %--------- NEW SECTION ----------------------
 \section{Especificação dos componentes}
@@ -19,25 +21,60 @@ asfkjdsahfkjs
 %--------- NEW SECTION ----------------------
 \section{Diagramas mecânicos}
 \label{sec:diagm}
-asdfsdaf
+
+
 
 %--------- NEW SECTION ----------------------
 \section{Modelo esquemático de alimentação e comunicação}
 \label{sec:modesq}
-asdfadsfsdfs
+
+
 
 \subsection{Diagramas elétricos}
 \label{sec:diage}
-asdfsdaf
+
+
+
 
 \subsection{Esquemas eletrônicos}
 \label{ssec:esqe}
-asdfsdaf
+
+
+
 
 %--------- NEW SECTION ----------------------
 \section{Especificação das funcionalidades}
 \label{sec:espf}
-asdfadsfsdfs
+Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chapter:introducao}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
+
+\begin{enumerate}%[itemsep=1pt]
+	%\setlength\itemsep{1em}
+	\item sistema de verificação da integridade
+	\item gerenciamento de energia
+	\item aquisição
+	\item localização
+	\item planejamento de movimento
+	\item atuação
+	\item detecção
+	\item classificação
+	\item interface do usuário
+	\item autonomia
+	\item simulação
+\end{enumerate}
+
+A Figura \ref{img:elirfluxo} apresenta o fluxo de informações entre as funcionalidades. Este fluxo deve ser compreendido para que seja estabelecida as relações entre as funcionalidades e o entendimento entre elas, essa compreensão impactará na melhor elaboração da árvore de falhas do sistema e proporcionará um sistema mais confiável.
+
+%---------------picture------------------------------------
+\begin{figure} [h!]	
+	\caption{Fluxo de informações do sistema.}
+	\label{img:elirfluxo}											 
+	\centering													 
+	\includegraphics[width=1.0\textwidth]{Figures/flxinfofunctionalities}
+	%\fautor			 											 
+\end{figure}													 
+%----------------------------------------------------------
+
+Nas seções seguintes são apresentados em maiores detalhes sobre cada uma das funcionalidades do sistema robótico. Para que fosse melhor compreendido, o desenvolvimento destas funcionalidades foram agrupadas em cinco áreas: movimentação, percepção, interface do usuário, autonomia e simulação. As duas áreas iniciais foram subdivididas em planejamento de movimento, sistema de verificação de integridade, atuação e gerenciamento de energia para a primeira área de nome \textbf{movimentação}, que tem como principal objetivo garantir a execução da missão e transposição de obstáculos. Para a segunda área, nominada por percepção, a subdivisão ficou da seguinte forma: aquisição, detecção, classificação e localização, que como o significado do próprio nome apresenta como objetivo principal a percepção do robô diante do ambiente inserido.
 
 \subsection{Fluxo das informações}
 \label{ssec:fluxo}
@@ -65,7 +102,7 @@ A configuração correta do moveit possibilita que se utilizem as funções da s
 
 O moveit fornece uma \textit{user interface} que recebe o end-effector,a nomenclatura atribuída ao node feito em python que recebe o \textit{end-effector} é \verb|moveit_commander|. O  \textit{node} responsável por fazer a integração da user interface com os parâmetros recebidos pelo \textit{ROS Parameter Server} com o \textit{end-effector} para fazer os cálculos é denominado \verb|move_group|. O \textit{node} \verb|move_group| também pode receber parâmetros como leituras dos sensores do robô e nuvens de pontos.
 
-\begin{figure}[H]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{motion_plan_func.png}
 	\caption{Fluxograma de funcionamento da funcionalidade de Motion Planning}
@@ -199,13 +236,15 @@ Será disponibilizado no sistema uma rotina para iniciar a missão. Ao receber o
 \subsubsection{Saídas}
 No início da rotina de inspeção, a funcionalidade será responsável por enviar o sinal inicia a missão. Caso todos os sistemas checados estejam funcionando, a inspeção ocorrerá normalmente, se algum sistema apresentar defeitos, o defeito será mostrado no \textit{terminal}, registrado em log e a missão será abortada.
 %--------- NEW SECTION ----------------------
-\section{Interface do Usuário}
-\label{sec:ui}
-asdfadsfsdfs
+%\section{Interface do Usuário}
+%\label{sec:ui}
+%Este item será abordado pelo time Perception
+
 
 %--------- NEW SECTION ----------------------
 \section{Simulação do sistema}
 \label{sec:sim}
-asdfadsfsdfs
+
+
 
 
