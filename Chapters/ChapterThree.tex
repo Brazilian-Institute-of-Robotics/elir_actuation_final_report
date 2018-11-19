@@ -52,6 +52,58 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 	\end{tabular}
 \end{table}
 
+\subsection{Placa de Gerenciamento de Energia (Power Management)}
+A placa de gerenciamento de energia é responsável pela distribuição de corrente e tensão para todos os componentes elétricos e eletrônicos do robô, além de monitorar os níveis de tensão e corrente demandados durante a operação. 
+
+Além de realizar o monitoramento do consumo em cada porta individualmente, a placa possui um sistema de proteção, cortando a alimentação em casos de surto de corrente. A placa funciona através da alimentação de 14.4 Volts provenientes da placa multiplexadora, responsável por transmitir a carga de duas baterias Li-Ion de 14.4 Volts e 6Ah.
+
+Na placa de Power Management existem conversores DC/DC responsáveis por fazer a conversão dos níveis de 14.4 Volts para 12 Volts em cada porta de saída da placa. As 7 portas de saída  possuem sensores de tensão e corrente individuais, feitos com amplificadores de instrumentação INA226. Existem duas portas de saída que disponibilizam tensões em valores menores, de 5 Volts. 
+
+O monitoramento dos níveis de tensão e corrente se dá principalmente pela inteligência do sistema, um firmware embarcado em um microcontrolador Atmega32u4, responsável por fazer as leituras dos parâmetros em cada uma das portas, verificando se os seus níveis estão de acordo com os limites configurados, cortando a alimentação via relés digitais caso esses valores sejam ultrapassados.
+
+\subsection{ROS (Robot Operating System)}
+Framework, no ambiente de programação, é um espaço onde compatibiliza códigos comuns a fim de otimizar o trabalho e tempo, muito utilizado na área de desenvolvimento. A abstração de hardware, códigos de baixo nível, drivers de sensores, simuladores, etc - são as grandes vantagens de se utilizar essa aplicação, podendo assim o desenvolvedor focar somente nas soluções de problemas específicos do seu projeto.
+
+Foi utilizado durante todo o desenvolvimento do ELIR o framework ROS, já que reúne uma série de ferramentas importantes para o desenvolvimento de um robô. Como colocado no site oficial do ROS temos que “O Sistema Operacional de Robótica é um flexível framework para escrita de softwares para robótica. É uma coleção de ferramentas, bibliotecas e convenções que serve para simplificar a tarefa de criar complexos e robustos comportamentos de robôs diante a uma variedade de plataformas.” (SITE ROS) 
+
+A grosso modo, cada câmera, motor ou periférico ligado ao ROS, estão associados ao um nó. A comunicação entre os nós se dá através de tópicos ou de serviços, a diferença é que o primeiro a informação é trocada de forma constante com certo intervalo de tempo e o segundo somente quando solicitado.
+
+Assim é feita toda a comunicação e interligação entre os periféricos no ROS, forma simples de integração de componentes.
+
+\subsection{MoveIt!}
+Durante a inspeção de linha, é necessário que o robô realize a ultrapassem dos diferentes tipos de obstáculos que existem nas linhas de transmissão. O MoveIt! é um ferramenta que funciona de forma integrada com o ROS, apresentando funcionalidades de planejamento de movimento, percepção 3D,controle , manipulação e cinemática inversa. 
+
+A cinemática é o estudo do movimento, no âmbito da robótica designa o estudo do controle da posição do robô no espaço. Esse controle pode representar do robô como um todo, sua posição geográfica, ou controle de alguma parte sua em específico, como seu braço e a posição relativa desse braço e o robô.  A cinemática direta é o cálculo onde se encontra a posição do robô para determinado valor de velocidade ou posição de suas juntas. Analogamente, na cinemática inversa, se encontra os valores de velocidade ou posição das juntas para uma posição no espaço,onde essa posição é denominada end-effector, geralmente sendo definido como a parte do robô que interage com o mundo, como por exemplo a garra no caso de manipuladores. O cálculo da cinemática inversa envolve equações complexas e retorna diferentes soluções, assim sendo necessário encontrar a solução que melhor atende às diretrizes do movimento, o MoveIt! já realiza esse cálculo e fornece uma trajetória otimizada baseada em parâmetros do usuário.
+
+Outra das suas vantagens é utilizar o modelo URDF do robô. URDF é uma sigla para Unified Robot Description Format, e designa um arquivo com extensão \verb|.urdf| e sintaxe em XML. É um dos tipos de modelos mais utilizados na robótica atual,sendo escolhido pois apresenta uma sintaxe simples e dinâmica, proporcionando conversões em outros formatos de forma fácil. Define o robô como um conjunto de partes, chamadas de links onde a união entre essas partes é uma junta. Onde cada link vai ter um link pai, que é determinado pela definição da junta, assim o modelo apresenta uma estrutura em árvore, onde todos os links vão ter um pai até chegar ao link da raíz,essa definição é importante pois a partir disso é feita a cinemática inversa do robô. Um erro no modelo URDF acarreta em uma mudança no comando que é mandado para o robô original.
+
+Durante o desenvolvimento do projeto, foi possível realizar a integração do MoveIt! com o robô real, sendo possível realizar movimentos físicos utilizando a ferramenta de visualização para posicionamento de end-effector pelo usuário. Porém, ao tentar se enviar um comando com o valor de posição para o end-effector se mover, o programa falhou em encontrar soluções para a cinemática. Mesmo se utilizando os diversos solucionadores providos e enviando valores possíveis de se calcular, o programa sempre estava falhando em encontrar uma solução.
+
+O MoveIt! é designado para funcionar com robôs de 6 graus de liberdade, onde cada grau de liberdade indica uma coordenada que o end-effector pode se mover e um dos 3 eixos de referência (x,y,z) que ele pode girar. A grande quantidade de graus de liberdade faz com que os solucionadores utilizem formas de cálculos complexas, assim robôs que possuem menos que 6 graus de liberdade precisam ser compatibilizados, já que a solução leva em consideração todas as direções e giros. O Elir possuI somente 2 graus de liberdade, e as soluções que antes funcionavam não estavam se utilizando especificamente da solução de cinemática inversa provida pelo MoveIt!. Assim, decidiu-se realizar o cálculo da cinemática inversa por meio de um código python, que utiliza a equação de cinemática inversa específica para o tipo de braço do robô e fornece os ângulos de junta necessários para o end-effector especificado. 
+
+Com o ângulo de junta em mãos, é feita a integração do robô com a ferramenta, de forma que o planejamento de movimento ocorre, só que com o software recebendo um ângulo desejado. Conhecendo os possíveis valores de end-effector, o que pode ser encontrado pela ferramenta de visualização, é possível realizar o movimento no robô enviando somente um comando de coordenadas.
+
+Implementar o controle de movimento nessa plataforma possibilita uma série de implementações futuras que aumentam a autonomia do robô e robustez do sistema, como odometria, ferramentas de percepção e mapeamento.
+
+\subsection{Gazebo}
+O software Gazebo é software utilizado para simulação de robôs. Tem uma licença de uso livre e apresenta diversas formas de integração com o ROS, sendo o principal simulador utilizado em conjunto com essa plataforma, possibilitando a inserção de plugins como câmeras e sonares, que se comunicam com o ROS de forma fiel a dispositivos reais.
+
+Nele é possível simular também o ambiente do robô, definindo parâmetros físicos como aceleração da gravidade e vento. Oferece suporte para a inserção de modelos 3D de softwares CAD, assim podendo ser inseridas diversas estruturas que já foram modeladas para outros propósitos no software.
+
+\subsection{Visual Studio Code}
+Para que todas as funcionalidades do robô sejam configuradas e desenvolvidas de forma correta a nível de software, é necessário o desenvolvimento de diversos códigos em diferentes linguagens para a configuração de aspectos específicos do projeto.
+
+Foi utilizada durante o desenvolvimento do projeto a ferramenta Visual Studio Code. Trata-se de um editor de códigos open source desenvolvido pela Microsoft em 2015, sendo possível desenvolver códigos em diversas linguagens como C++, C, Python entre outros. Durante todo o desenvolvimento do ELIR a ferramenta fora utilizada para o desenvolvimento de arquivos nas extensões .py, .yaml, .launch e .urdf.  
+
+Por ter uma interface simples e amigável, o VSCode mostrou-se uma ferramenta extremamente útil para a escrita e desenvolvimento de códigos durante todas as fases do projeto. 
+
+\subsection{PlatformIO}
+Na interface do VSCode existem diversas extensões que podem ser instaladas para adicionar novas funcionalidades na plataforma.
+
+Uma das extensões utilizadas fora o PlatformIO, um ecossistema desenvolvido especificamente para o desenvolvimento de códigos e firmwares em plataformas microcontroladas, sendo extremamente versátil, tendo suporte para diversas plataformas como STM, MSP430, Arduino entre outras, tornando desnecessário o uso de uma IDE específica para se realizar a configuração e desenvolvimento de firmwares durante o projeto.
+
+A necessidade de se utilizar essa extensão se deu principalmente pela necessidade de se embarcar o firmware da Power Management na placa. O PlatformIO possui as funcionalidades de debug e gravação, sendo assim, todos os procedimentos necessários para atualizar o firmware são atendidos na extensão.
+
 
 %--------- NEW SECTION ----------------------
 \section{Diagramas mecânicos}
@@ -65,20 +117,22 @@ asdfadsfsdfs
 
 \subsection{Diagramas elétricos}
 \label{sec:diage}
-asdfsdaf
+Devido à quantidade de motores presentes no robô e a forma com que eles estão distribuídos na estrutura, foram desenvolvidos dois modelos de hubs para a conexão dos motores na rede.
 
 \subsection{Esquemas eletrônicos}
 \label{ssec:esqe}
-asdfsdaf
+Nas unidades de tração do robô, os hubs contam com um conector de alimentação, um para a entrada de dados e 6 de saída para os motores.
+IMAGEM
+Já na unidade central, o hub além de conectar os seis motores ali presentes, também é responsável pela conexão dos hubs das unidades de tração e do conversor rs485 que está ligado à NUC.
 
 %--------- NEW SECTION ----------------------
 \section{Especificação das funcionalidades}
 \label{sec:espf}
-asdfadsfsdfs
+
 
 \subsection{Fluxo das informações}
 \label{ssec:fluxo}
-asdfsaf
+
 
 \subsection{Motion Planning}
 \label{ssec:motion}
@@ -253,14 +307,18 @@ Será disponibilizado no sistema uma rotina para iniciar a missão. Ao receber o
 
 \subsubsection{Saídas}
 No início da rotina de inspeção, a funcionalidade será responsável por enviar o sinal inicia a missão. Caso todos os sistemas checados estejam funcionando, a inspeção ocorrerá normalmente, se algum sistema apresentar defeitos, o defeito será mostrado no \textit{terminal}, registrado em log e a missão será abortada.
-%--------- NEW SECTION ----------------------
-\section{Interface do Usuário}
-\label{sec:ui}
-asdfadsfsdfs
+
 
 %--------- NEW SECTION ----------------------
 \section{Simulação do sistema}
 \label{sec:sim}
-asdfadsfsdfs
+A simulação de sistemas robóticos consistem em um dos pilares para o desenvolvimento de projetos. Com a simulação é possível testar aplicações sem a necessidade de adquirir componentes, os membros da equipe de projeto conseguem trabalhar de forma simultânea no robô enquanto o protótipo físico fica reservado para testes específicos.
+
+O ROS oferece ferramentas de visualização já integradas no seu sistema, o RVIz, que possibilita o usuário visualizar os modelos do robô e também administrar plugins, como de mapeamento e planejamento de movimento, que é o caso do MoveIt!.
+
+Para a simulação do robô no ambiente aberto, é utilizado  o software Gazebo. A integração entre ROS e Gazebo consegue fazer com que o modelo URDF, por mais que não seja o nativo do gazebo, seja aceito na simulação. Parâmetros do mundo podem ser ajustados e a integração de plugins como câmeras e sensores faz com que a simulação consiga ser utilizada em diferentes estudos. Algoritmos de imagem podem ser testados com os plugins de câmera já implementados, proporcionando um auxílio para demonstrar conceitos e teorias de funcionamentos
+
+A simulação fornecida possui os controladores de juntas já implementados, fazendo com que testes de códigos de movimentação e testes de controles já pudessem ser previamente testados, poupando riscos de dano ao protótipo e possibilitando trabalho simultâneo.
+
 
 
