@@ -472,8 +472,8 @@ Como pode-se observar e de forma abrangente, os principais elementos que compõe
 A Figura \ref{img:elirmodesq} é somente uma representação esquemática para o desenvolvimento da tese, no Apêndice \ref{appendix:elet} é apresentado os diagramas elétricos e eletrônicos para a compreensão total do sistema eletro-eletrônico considerado para este trabalho.
 
 %--------- NEW SUB SECTION ----------------------
-\subsection{Especificação técnica}
-\label{ssec:espt}
+%\subsection{Especificação técnica}
+%\label{ssec:espt}
 
 
 %--------- NEW SUB SECTION ----------------------
@@ -523,6 +523,49 @@ O \textit{framework} ROS possibilita a integração de todas essas funcionalidad
 %--------- NEW SECTION --------------------------
 \section{Desdobramento da função qualidade}
 \label{sec:qfd}
+O desenvolvimento do QFD\footnote{Quality Function Deployment, em português Desdobramento da Função Qualidade} foi desenvolvido na fase inicial do projeto, e é muito importante para compreender as relações entre os requisitos do cliente e os requisitos técnicos do projeto.
+Neste primeiro ciclo do QFD os requisitos técnicos são avaliados e discutidos frente ao requisitos do cliente. Faz-se também necessário a avaliação das correlações entre os requisitos técnicos e avaliação destes requisitos com relação as possíveis soluções para o projeto, dessa forma de acordo com o Capítulo xxx os competidores foram avaliados perante as metas estabelecidas para cada requisitos técnico e requisitos do cliente.
+A Figura \ref{fig_qfd1} representa o primeiro ciclo do projeto.
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=0.6]{Figures/elirqfd20180710cxf.png}
+	\end{center}
+	\caption{Desdobramento da Função Qualidade - primeiro ciclo.}
+	%\legend{Fonte: \cite[p. 00]{asdkf}}
+	\label{fig_qfd1}
+\end{figure}
+
+Nesta avaliação de primeiro ciclo foi identificado alguns requisitos técnicos que devem ter uma maior preocupação no desenvolvimento do sistema, vale ressaltar que todos os requisitos devem ser buscados até alcançar as metas estabelecidas e apontadas no QFD (Figura \ref{fig_qfd1}).
+Estes requisitos são os seguintes:
+\begin{itemize}
+	\item realizar as funções de forma autônoma	
+	\item transpor obstáculos e cadeia de isoladores	
+	\item realizar georeferenciamento	
+	\item realizar odometria visual	
+	\item deslocar-se através do  uso de energia elétrica (bateria VCC)	
+	\item propulsão realizada por servomotores	
+	\item realizar inspeção visual da linha, estrutura e obstáculos	
+	\item realizar inspeção de temperatura da linha, estrutura e obstáculos	
+	\item realizar inspeção da linha de servidão	
+	\item disponibilizar os vídeos da missão	
+	\item monitorar humidade e temperatura do protótipo	
+\end{itemize}
+
+%O QFD também aponta e avalia os concorrentes ao sistema idealizado neste projeto (conforme capítulo \ref{chap:estudo}) , tanto em relação aos requisitos apontados pelo cliente para aqueles técnicos.
+
+Para o segundo ciclo do QFD, os requisitos técnicos foram confrontados com as funcionalidades pensadas para o sistema robótico, conforme Figura \ref{fig_qfd2}
+
+\begin{figure}[htb]
+	\begin{center}
+		\includegraphics[scale=0.6]{Figures/elirqfd20180710txf.png}
+	\end{center}
+	\caption{Desdobramento da Função Qualidade - segundo ciclo.}
+	%\legend{Fonte: \cite[p. 00]{asdkf}}
+	\label{fig_qfd2}
+\end{figure}
+
+Para mais detalhes quanto aos objetivos e as descrições das funcionalidades, as mesmas estão contidas na secção \ref{sec:espf}; encontra-se também no Apêndice
 
 %--------- NEW SUB SECTION ----------------------
 \subsection{Requisitos técnicos}
