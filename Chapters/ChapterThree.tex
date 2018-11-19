@@ -1,19 +1,56 @@
 \chapter{Materiais e Métodos}
 \label{chap:mat}
-asdfasdfsdf
+Esta seção destaca o que é necessário para construção do projeto, contendo a lista de materiais, especificação dos componentes, funcionalidades, modelo esquemático de comunicação e de alimentação
+
 
 %--------- NEW SECTION ----------------------
 \section{Especificação dos componentes}
 \label{sec:espc}
-asjdflkdjsaf
+Serão detalhados os componentes utilizados para confecção do protótipo, sendo eles físicos ou digitais.
 
 \subsection{Estrutura analítica do protótipo}
 \label{ssec:pbs}
-asdkjfsdalkjf
+
 
 \subsection{Lista de componentes}
 \label{ssec:list}
-asfkjdsahfkjs
+
+\subsection{Servomotor}
+Os servomotores são responsáveis pelo atuação do robô, realizando os movimentos das juntas dos braços e das garras, além de atuarem as rodas que deslocam o robô na linha. São utilizados os servomotores da Robotis, Dynamixel MX-106R e MX-28. Esses motores foram escolhidos pois apresentam drivers prontos para o ROS , que possibilitam uma integração mais fácil com as ferramentas de controle, apresentando bom torque, peso reduzido e fácil integração para controle conjunto.
+
+
+\begin{table}[]
+	\begin{tabular}{ll}
+		\multicolumn{2}{c}{Robotis Dynamixel MX-28R}                                            \\
+		Peso (g)                     & 77                                                       \\
+		Dimensões (mm)               & 35.6 x 60.6 x 35.5                                       \\
+		Torque (N.m)                 & 2.3 (em 11.1V), 2.5 (em 12V) e 3.1 (em 14.4V)            \\
+		Temperatura de operação (ºC) & -5 até +80                                               \\
+		Tensão de operação (V)       & 10 até 14.8 (Tensão recomendada: 12V)                    \\
+		Baud rate                    & 8000bps até 4.5Mbps                                      \\
+		Protocolo de comunicação     & RS485                                                    \\
+		Resolução                    & 0.088º                                                   \\
+		ID                           & 254 ID (0 até 253)                                       \\
+		Feedback                     & Posição, temperatura, carga, tensão de alimentação, etc.
+	\end{tabular}
+\end{table}
+
+
+\begin{table}[]
+	\begin{tabular}{ll}
+		\multicolumn{2}{c}{Robotis Dynamixel MX-106R}                                           \\
+		Peso (g)                     & 153                                                      \\
+		Dimensões (mm)               & 40.2 x 65.1 x 46                                         \\
+		Torque (N.m)                 & 8.0 (em 11.1V), 8.4 (em 12V) e 10.0 (em 14.4V)           \\
+		Temperatura de operação (ºC) & -5 até +80                                               \\
+		Tensão de operação (V)       & 10 até 14.8 (Tensão recomendada: 12V)                    \\
+		Baud rate                    & 8000bps até 4.5Mbps                                      \\
+		Protocolo de comunicação     & RS485                                                    \\
+		Resolução                    & 0.088º                                                   \\
+		ID                           & 254 ID (0 até 253)                                       \\
+		Feedback                     & Posição, temperatura, carga, tensão de alimentação, etc.
+	\end{tabular}
+\end{table}
 
 
 %--------- NEW SECTION ----------------------
