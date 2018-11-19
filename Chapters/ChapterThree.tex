@@ -17,7 +17,6 @@ Serão detalhados os componentes utilizados para confecção do protótipo, send
 \subsection{Servomotores}
 Os servomotores são responsáveis pelo atuação do robô, realizando os movimentos das juntas dos braços e das garras, além de atuarem as rodas que deslocam o robô na linha. São utilizados os servomotores da Robotis, \textit{Dynamixel} MX-106R e MX-28. Esses motores foram escolhidos pois apresentam drivers prontos para o \textit{ROS} , que possibilitam uma integração mais fácil com as ferramentas de controle, apresentando bom torque, peso reduzido e fácil integração para controle conjunto.
 
-
 \begin{table}[]
 	\begin{tabular}{ll}
 		
@@ -33,17 +32,26 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 		ID                           & 254 ID (0 até 253)                                       \\ \hline
 		Feedback                     & Posição, temperatura, carga, tensão de alimentação, etc. \\ \hline
 	\end{tabular}
+	\caption{Especificações Motor Robotis\textit{ Dynamixel} MX-28R  }
 \end{table}
 
  
 
 \begin{figure}[h!]												
 	\centering												
-	\includegraphics[width=0.32\textwidth]{mx-28r.jpg}				
-	\caption{Motor Robotis\textit{ Dynamixel} MX-106R.}		
-	\label{img:ihelic}												
+	\includegraphics[width=0.25\textwidth]{mx-28r.jpg}				
+	\caption{Motor Robotis\textit{ Dynamixel} MX-28R.}		
+	\label{img:mx28}												
 \end{figure}
-\hspace{2cm}
+
+\begin{figure}[h!]												
+	\centering												
+	\includegraphics[width=0.10\textwidth]{mx-106r.jpg}				
+	\caption{Motor Robotis\textit{ Dynamixel} MX-106R}		
+	\label{img:mx106}	
+	
+\end{figure}
+
 \begin{table}[]
 	\begin{tabular}{ll}
 	
@@ -59,16 +67,11 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 		ID                           & 254 ID (0 até 253)                                       \\ \hline
 		Feedback                     & Posição, temperatura, carga, tensão de alimentação, etc. \\ \hline
 	\end{tabular}
+	\caption{Especificações Motor Robotis\textit{ Dynamixel} MX-106R  }
 \end{table}
-\hspace{1cm}
 
-\begin{figure}[h!]												
-	\centering												
-	\includegraphics[width=0.2\textwidth]{mx-106r.jpg}				
-	\caption{Motor Robotis\textit{ Dynamixel} MX-106R}		
-	\label{img:ihelic}	
-	
-\end{figure}
+
+
 \subsection{Placa de Gerenciamento de Energia (Power Management)}
 A placa de gerenciamento de energia é responsável pela distribuição de corrente e de tensão para todos os componentes elétricos e eletrônicos do robô, além de monitorar os níveis de tensão e corrente demandados durante a operação. 
 
