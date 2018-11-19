@@ -17,7 +17,7 @@ Serão detalhados os componentes utilizados para confecção do protótipo, send
 \subsection{Servomotores}
 Os servomotores são responsáveis pelo atuação do robô, realizando os movimentos das juntas dos braços e das garras, além de atuarem as rodas que deslocam o robô na linha. São utilizados os servomotores da Robotis, \textit{Dynamixel} MX-106R e MX-28. Esses motores foram escolhidos pois apresentam drivers prontos para o \textit{ROS} , que possibilitam uma integração mais fácil com as ferramentas de controle, apresentando bom torque, peso reduzido e fácil integração para controle conjunto.
 
-\begin{table}[]
+\begin{table}[h!]
 	\begin{tabular}{ll}
 		
 		\multicolumn{2}{c}{Robotis Dynamixel MX-28R}                                            \\ \hline
@@ -41,18 +41,19 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 	\centering												
 	\includegraphics[width=0.25\textwidth]{mx-28r.jpg}				
 	\caption{Motor Robotis\textit{ Dynamixel} MX-28R.}		
-	\label{img:mx28}												
+	\label{img:mx28}
+	\source{\cite{robotis_site}}												
 \end{figure}
 
 \begin{figure}[h!]												
 	\centering												
-	\includegraphics[width=0.10\textwidth]{mx-106r.jpg}				
+	\includegraphics[width=0.25\textwidth]{mx-106r.jpg}				
 	\caption{Motor Robotis\textit{ Dynamixel} MX-106R}		
 	\label{img:mx106}	
-	
+	\source{\cite{robotis_site}}		
 \end{figure}
 
-\begin{table}[]
+\begin{table}[h!]
 	\begin{tabular}{ll}
 	
 		\multicolumn{2}{c}{Robotis Dynamixel MX-28R}                                            \\ \hline
@@ -84,7 +85,7 @@ O monitoramento dos níveis de tensão e corrente se dá principalmente pela int
 \subsection{\textit{ROS} (Robot Operating System)}
 \textit{Framework}, no ambiente de programação, é um espaço onde compatibiliza códigos comuns a fim de otimizar o trabalho e tempo, muito utilizado na área de desenvolvimento. A abstração de hardware, códigos de baixo nível, drivers de sensores, simuladores, etc - são as grandes vantagens de se utilizar essa aplicação, podendo assim,fazer com que o desenvolvedor foque somente nas soluções de problemas específicos do seu projeto.
 
-Foi utilizado durante todo o desenvolvimento do \textit{ELIR} o \textit{framework} \textit{ROS}, já que reúne uma série de ferramentas importantes para o desenvolvimento de um robô. Como colocado no site oficial do \textit{ROS} temos que o Sistema Operacional de Robótica é um flexível \textit{framework} para escrita de softwares para robótica. É uma coleção de ferramentas, bibliotecas e convenções que serve para simplificar a tarefa de criar complexos e robustos comportamentos de robôs diante a uma variedade de plataformas. 
+Foi utilizado durante todo o desenvolvimento do \textit{ELIR} o \textit{framework} \textit{ROS}, já que reúne uma série de ferramentas importantes para o desenvolvimento de um robô.  “O Sistema Operacional de Robótica é um flexível framework para escrita de softwares para robótica. É uma coleção de ferramentas, bibliotecas e convenções que serve para simplificar a tarefa de criar complexos e robustos comportamentos de robôs diante a uma variedade de plataformas \cite{ros_site}.”
 
 A grosso modo, cada câmera, motor ou periférico ligado ao \textit{ROS}, estão associados ao um nó. A comunicação entre os nós se dá através de tópicos ou de serviços, a diferença é que o primeiro a informação é trocada de forma constante com certo intervalo de tempo e o segundo somente quando solicitado.
 
@@ -142,14 +143,14 @@ Devido à quantidade de motores presentes no robô e a forma com que eles estão
 \begin{figure}[h!]												
 	\centering												
 	\includegraphics[width=0.4\textwidth]{esquema_hub.png}				
-	\caption{Esquema HUB.}		
+	\caption{Esquema das saídas do HUB.}		
 	\label{img:hub1}									
 \end{figure}
 
 \begin{figure}[h!]												
 	\centering												
 	\includegraphics[width=0.4\textwidth]{esquema_hub2.PNG}				
-	\caption{Esquema HUB2.}		
+	\caption{Esquema das conexões do HUB para os motores.}		
 	\label{img:hub2}									
 \end{figure}
 
