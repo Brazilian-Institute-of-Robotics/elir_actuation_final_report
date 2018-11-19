@@ -30,7 +30,8 @@ Durante vários anos, a inspeção de linhas de transmissão de alta tensão tem
 	\label{img:ihelichuma}												 
 \end{figure}													 
 %----------------------------------------------------------
-Em alguns casos, devido às características geográficas da região, condições climáticas e outros fatores que venham a dificultar o sobrevôo, há uma grande exposição dos tripulantes a riscos associados à tarefa. Além dos perigos aos quais os tripulantes são expostos, a inspeção feita com aeronaves tem um custo bastante elevado. Outra forma alternativa de inspeção é o uso de veículos terrestres, porém essa forma é muito limitada, pois boa parte das linhas de transmissão está localizada em áreas de difícil acesso terrestre, muitas vezes restritas pelas características geográficas da região. Além disso, o ângulo de visão é, muitas vezes, desfavorável para a realização da inspeção.
+
+Em alguns casos, devido às características geográficas da região, condições climáticas e outros fatores que venham a dificultar o sobrevôo, há uma grande exposição dos tripulantes a riscos associados à tarefa. Além dos perigos aos quais os tripulantes são expostos, a inspeção feita com aeronaves tem um custo bastante elevado. Outra forma alternativa de inspeção é o uso de veículos terrestres, porém essa forma é muito limitada, pois boa parte das linhas de transmissão está localizada em áreas de difícil acesso terrestre, muitas vezes restritas pelas características geográficas da região. Além disso, o ângulo de visão é, muitas vezes, desfavorável para a realização da inspeção.
 
 %---------------picture------------------------------------
 \begin{figure} [h!]												 
@@ -49,21 +50,35 @@ Neste contexto vários robôs de inspeção de linhas de transmissão foram dese
 \section{Objetivos}
 \label{sec:obj}
 
-veja
-
-Nesta se\c{c}\~ao os objetivos principal (tamb\'em
-pode-se se utilizar a palavra meta) da monografia de
-gradua\c{c}\~ao ou especializa\c{c}\~ao, disserta\c{c}\~ao de
-mestrado ou tese de doutorado s\~ao apresentados.
-
+Desenvolver um protótipo de um robô de inspeção de linhas de transmissão
 
 \subsection{Objetivos Específicos}
 \label{ssec:objesp}
+Desenvolver 4 funcionalidades para o robô, sendo elas:
+\begin{itemize}
+	\item Actuation
+	
+	Funcionalidade responsável por atuar os motores que movimentam o robô.
+	
+	
+	\item Motion Planning
+	
+	Tem como objetivo planejar a movimentação das partes do robô
+	
 
-Nesta se\c{c}\~ao os objetivos espec\'ificos (tamb\'em
-pode-se se utilizar a palavra meta) da monografia de
-gradua\c{c}\~ao ou especializa\c{c}\~ao, disserta\c{c}\~ao de
-mestrado ou tese de doutorado s\~ao apresentados.
+	\item Power Management
+	
+	Responsável pelo gerenciamento e distribuição de energia para os componentes elétricos e eletrônicos do robô.
+		
+	
+	\item System Integrity Check
+	
+	Checagem da integridade do sistema antes do robô entrar em funcionamento.
+	
+	
+	
+	content...
+\end{itemize}
 
 %--------- NEW SECTION ----------------------
 \section{Justificativa}
@@ -78,7 +93,18 @@ os argumentos forem apresentados.
 %--------- NEW SECTION ----------------------
 \section{Requisitos do cliente}
 \label{sec:reqc}
-asjdflkasjdlfjsdlk;f
+Foi especificado pelo cliente que o robô ELIR realize tais funções:
+
+\begin{itemize}
+	
+	\item Transpor obstáculos e cadeia de isoladores;
+	\item Deslocar-se através do consumo de baterias;
+	\item Deslocamento/movimento realizada por servomotores;
+	\item Realizar as funções de forma autônoma.
+	
+\end{itemize}
+
+
 
 %--------- NEW SECTION ----------------------
 \section{Organização do \thetypework}
@@ -90,8 +116,13 @@ Este documento apresenta $x$ capítulos e está estruturado da seguinte forma:
 
   \item \textbf{Capítulo \ref{chap:intro} - Introdução}: Contextualiza o âmbito, no qual a pesquisa proposta está inserida. Apresenta, portanto, a definição do problema, objetivos e justificativas da pesquisa e como este \thetypeworkthree está estruturado;
 
-  \item \textbf{Capítulo \ref{chap:concep} - Nome do capítulo}: XXX;
+  \item \textbf{Capítulo \ref{chap:concep} - Conceito do Sistema}: Conceitua o sistema por meio de diagramas que representam as arquiteturas do robô em diferentes níveis de abstração, abordando o estudo do estado da arte, desdobramento dos requisitos de qualidade e funcionamento do projeto.
+  ;
 
+  \item \textbf{Capítulo \ref{chap:mat} - Materiais e Métodos}: Mostra os materiais e métodos que foram utilizados durante o projeto, contendo a especificação de componentes, sendo eles softwares e dispositivos, assim como os esquemas elétricos e eletrônicos - e a descrição das funcionalidades;
+  
+  \item \textbf{Capítulo \ref{chap:result} - Resultados}: Exibe os resultados obtidos durante a confecção do projeto, apresentando os testes unitários e integrados, assim como as datas e quem o efetuou;
+  
 
   \item \textbf{Capítulo \ref{chap:conc} - Conclusão}: Apresenta as conclusóes, contribuições
   e algumas sugestões de atividades de pesquisa a serem desenvolvidas no futuro.
