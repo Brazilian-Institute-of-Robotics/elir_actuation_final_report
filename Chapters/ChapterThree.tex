@@ -295,7 +295,6 @@ Por meio da compatibilização do \textit{MoveIt!} com o \textit{ROS}, a saída 
 
 \subsection{Atuação }
 \label{ssec:actu}
-\subsubsection{Definição da funcionalidade}
 A funcionalidade de Atuação tem como objetivo mover a estrutura física do robô, possibilitando o controle dos movimentos das juntas, garras e unidades de tração.
 \subsubsection{Dependências}
 Essa funcionalidade depende das funcionalidades de \textit{Gerenciamento de Energia} e \textit{Planejamento de Movimento}. O \textit{Gerenciamento de Energia} será responsável por fazer alimentação dos motores, possibilitando controlar a corrente máxima fornecida para cada grupo.
@@ -323,8 +322,6 @@ A saída desta funcionalidade é o movimento da estrutura física do robô, que 
 
 \subsection{Gerenciamento de Energia}
 \label{ssec:power}
-\subsubsection{Definição da funcionalidade}
-
 A funcionalidade de \textit{Gerenciamento de Energia} é responsável pelo gerenciamento de alimentação elétrica dos componentes elétricos e eletrônicos do robô, através da integração das funcionalidades de seu firmware no ambiente \textit{ROS}.
 \subsubsection{Dependências}
 Essa funcionalidade depende da comunicação serial por meio da biblioteca \verb|rosserial| para compatibilização e integração das funcionalidades de firmware no ambiente \textit{ROS}. Operacionalização e customização do firmware embarcado no hardware de acordo com as necessidades do projeto e da alimentação fornecida pela placa multiplexadora, por meio de baterias Li-Ion NH2054 14.4 volts.
@@ -346,7 +343,8 @@ Para o correto funcionamento desse módulo de \textit{Gerenciamento de Energia},
 	\source{Própria}
 \end{figure}
 \subsubsection{Descrição da Funcionalidade}
-A funcionalidade \textit{Gerenciamento de Energia} é responsável  fornece diversos recursos em sua totalidade. O hardware utilizado (placa Zord) possui um sensor de corrente e tensão para cada porta de saída, permitindo o monitoramento individual de cada uma das portas. O microcontrolador utilizado Atmega32U4 possui um firmware embarcado onde toda a compatibilização com o ambiente \textit{ROS} é realizada, o que torna essencial o uso do pacote rosserial para o seu funcionamento. O firmware é responsável pela ativação dos relés digitais em caso de surtos de corrente para proteção dos dispositivos elétricos. 
+A funcionalidade \textit{Gerenciamento de Energia} é responsável  fornece diversos recursos em sua totalidade. O hardware utilizado (placa \textit{Zord}) possui um sensor de corrente e tensão para cada porta de saída, permitindo o monitoramento individual de cada uma das portas. O microcontrolador utilizado Atmega32U4 possui um firmware embarcado onde toda a compatibilização com o ambiente \textit{ROS} é realizada, o que torna essencial o uso do pacote rosserial para o seu funcionamento. O firmware é responsável pela ativação dos relés digitais em caso de surtos de corrente para proteção dos dispositivos elétricos.
+ 
 Os limites nos valores de corrente funcionam justamente para que o hardware interrompa a alimentação em um possível caso de surto de corrente. Todos os aspectos importantes para o funcionamento do sistema de gerenciamento de energia pode ser configurado tanto via \textit{ROS}, por meio das configurações dos serviços, ou por meio do firmware, modificando os parâmetros do tempo de duração dos picos de corrente. Os principais serviços e tópicos criados pela funcionalidade Gerenciamento de Energia no \textit{ROS} são:
 \begin{itemize}
 	\item \textit{Tópicos}
@@ -391,8 +389,6 @@ A funcionalidade irá disponibilizar a energia para o robô e as seguintes estru
 
 \subsection{Sistema de Verificação da Integridade}
 \label{ssec:check}
-
-\subsubsection{Definição da funcionalidade}
 É a funcionalidade responsável por checar a integridade do sistema antes do início da missão, verificando os subsistemas e suas variáveis.
 
 \subsubsection{Dependências}
