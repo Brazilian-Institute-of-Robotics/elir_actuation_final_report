@@ -37,7 +37,7 @@
 %%% Fancy page , chapters and sections headings
 %\documentclass[fancyheadings, fancychapter, subook]{Classes/THEOPRAX}
 %\documentclass[fancyheadings, fancychapter, sureport]{Classes/THEOPRAX}
-\documentclass[fancyheadings, fancychapter, sureport]{Classes/THEOPRAX}
+\documentclass[fancyheadings, fancychapter, sureport, table]{Classes/THEOPRAX}
 
 %%%-------------------------------------------------------------------------------
 %%% Thesis Commands (ONLY with fancy page headings)
@@ -134,7 +134,7 @@
 \usepackage{rotating}
 \usepackage{indentfirst}
 \setlength{\parindent}{1cm}
-\usepackage{float,subfigure}
+%\usepackage{float,subfigure}
 \usepackage{cite}
 \usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
 %\usepackage[alf,abnt-etal-list=5]{abntcite}
@@ -143,27 +143,31 @@
 \usepackage{shadow}
 \usepackage{wrapfig}
 \usepackage[normalem]{ulem}
+%\usepackage{table]{xcolor}
 \usepackage{makeidx} % cria indice remissivo
 \usepackage{yfonts}
+\usepackage{pdfpages}
+%\usepackage{subfigure}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{adjustbox}
+%\usepackage{supertabular}
+%\usepackage[table]{xcolor}
+%\usepackage{booktabs}
+%\usepackage{tabularx}
+%\usepackage[table,xcdraw]{xcolor}
 \makeindex % cria o indice remissivo
 %Tables and Figures Caption
 \setlength{\LTcapwidth}{\textwidth}
-
 %%Package to add the legend for pictures
 \usepackage{caption}
 \newcommand{\source}[1]{\caption*{Fonte: {#1}} }
 
-
-
 %\usepackage{algorithm}
 %\usepackage{algorithmic}
 
-
-
-
 %\newtheorem{theorem}{Teorema}
 %\newtheorem{definition}[theorem]{Defini\c{c}\~ao}
-
 
 %%%-------------------------------------------------------------------------------
 %%% Start thesis root document
@@ -256,6 +260,7 @@
         \include{Appendices/diagele}
         \include{Appendices/wireframes}
         \include{Appendices/logbook}
+        \include{Appendices/bom}
     \end{thesisappendices}
 
     %%----------------------------------------------------------------------------

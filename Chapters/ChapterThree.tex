@@ -2,6 +2,38 @@
 \label{chap:mat}
 Esta seção destaca o que é necessário para construção do projeto, contendo a lista de materiais, especificação dos componentes, funcionalidades, modelo esquemático de comunicação e de alimentação.
 
+
+\section{Estrutura analítica do protótipo}
+\label{ssec:pbs}
+De forma sistemática o projeto ELIR foi dividido em 6 subsistemas, caraterizando a estrutura analítica do projeto (Figura \ref{fig:pbselir}) em:
+
+\begin{itemize}
+	\item \textit{perception}
+	\item \textit{actuation}
+	\item \textit{power management}
+	\item \textit{processing system}
+	\item \textit{detection}
+	\item \textit{software}
+\end{itemize}
+
+Os cinco iniciais subsistemas estão mais ligados as condições físicas de hardware do que o subsistema \textbf{software}, porém as implicações de software também devem ser consideradas em cada um destes susbsistemas.
+
+O susbistema \textbf{software} foi idealizado a partir das funcionalidades desenvolvidas  para a solução final do projeto, e estão descriminadas na secção \ref{sec:espf}.
+
+%----- figure --------------------------------------
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[scale=0.6]{Figures/pbselir.png}
+	\caption{Esturutura analítica do sistema.}
+	%\legend{Fonte: os autores}
+	\label{fig:pbselir}
+\end{figure}
+%---------------------------------------------------
+
+%fazer comentário sobre os subsistemas
+
+A relação final dos componentes do sistema robótico encontra-se no Apêndice \ref{Append:bom}.
+
 %--------- NEW SECTION----------------------
 \section{Especificação dos componentes}
 \label{sec:espc}
@@ -9,6 +41,7 @@ Serão detalhados os componentes utilizados para confecção do protótipo, send
 
 \subsection{Estrutura analítica do protótipo}
 \label{ssec:pbs}
+
 
 
 \subsection{Lista de componentes}
@@ -127,8 +160,9 @@ A necessidade de se utilizar essa extensão se deu principalmente pela necessida
 
 
 %--------- NEW SECTION ----------------------
-\section{Diagramas mecânicos}
-\label{sec:diagm}
+%\section{Diagramas mecânicos}
+%\label{sec:diagm}
+
 
 
 %--------- NEW SECTION ----------------------
@@ -195,10 +229,45 @@ Já na unidade central, o hub além de conectar os seis motores ali presentes, t
 \subsection{Fluxo das informações}
 \label{ssec:fluxo}
 
+Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chap:introd}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
+
+\begin{enumerate}%[itemsep=1pt]
+	%\setlength\itemsep{1em}
+	\item sistema de verificação da integridade
+	\item gerenciamento de energia
+	\item aquisição
+	\item localização
+	\item planejamento de movimento
+	\item atuação
+	\item detecção
+	\item classificação
+	\item interface do usuário
+	\item autonomia
+	\item simulação
+\end{enumerate}
+
+A Figura \ref{img:elirfluxo} apresenta o fluxo de informações entre as funcionalidades. Este fluxo deve ser compreendido para que seja estabelecida as relações entre as funcionalidades e o entendimento entre elas, essa compreensão impactará na melhor elaboração da árvore de falhas do sistema e proporcionará um sistema mais confiável.
+
+%---------------picture------------------------------------
+\begin{figure} [h!]	
+	\caption{Fluxo de informações do sistema.}
+	\label{img:elirfluxo}											 
+	\centering													 
+	\includegraphics[width=1.0\textwidth]{Figures/flxinfofunctionalities}
+	%\fautor			 											 
+\end{figure}													 
+%----------------------------------------------------------
+
+Nas seções seguintes são apresentados em maiores detalhes sobre cada uma das funcionalidades do sistema robótico. Para que fosse melhor compreendido, o desenvolvimento destas funcionalidades foram agrupadas em cinco áreas: movimentação, percepção, interface do usuário, autonomia e simulação. As duas áreas iniciais foram subdivididas em planejamento de movimento, sistema de verificação de integridade, atuação e gerenciamento de energia para a primeira área de nome \textbf{movimentação}, que tem como principal objetivo garantir a execução da missão e transposição de obstáculos. Para a segunda área, nominada por percepção, a subdivisão ficou da seguinte forma: aquisição, detecção, classificação e localização, que como o significado do próprio nome apresenta como objetivo principal a percepção do robô diante do ambiente inserido.
+
+%\subsection{Fluxo das informações}
+%\label{ssec:fluxo}
+
+
 
 \subsection{Motion Planning}
 \label{ssec:motion}
-\subsubsection{Definição da funcionalidade}
+%\subsubsection{Definição da funcionalidade}
 A funcionalidade de \textit{Motion Planning} é responsável por realizar o planejamento da trajetória do Robô, utilizando o software \textit{MoveIt!} que realiza o cálculo da cinemática inversa para encontrar a melhor forma de ultrapassar os obstáculos.
 \subsubsection{Dependências}
 O software \textit{MoveIT!} pode utilizar o modelo matemático da cinemática inversa do robô ou um arquivo do tipo \textit{URDF}.
@@ -218,7 +287,7 @@ A configuração correta do \textit{MoveIT!} possibilita que se utilizem as fun�
 
 O \textit{MoveIT!} fornece uma \textit{user interface} que recebe o end-effector,a nomenclatura atribuída ao node feito em python que recebe o \textit{end-effector} é \verb|moveit_commander|. O  \textit{node} responsável por fazer a integração da user interface com os parâmetros recebidos pelo \textit{ROS Parameter Server} com o \textit{end-effector} para fazer os cálculos é denominado \verb|move_group|. O \textit{node} \verb|move_group| também pode receber parâmetros como leituras dos sensores do robô e nuvens de pontos.
 
-\begin{figure}[H]
+\begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{motion_plan_func.png}
 	\caption{Fluxograma de funcionamento da funcionalidade de Motion Planning}
@@ -377,6 +446,8 @@ No início da rotina de inspeção, a funcionalidade será responsável por envi
 A simulação de sistemas robóticos consistem em um dos pilares para o desenvolvimento de projetos. Com a simulação é possível testar aplicações sem a necessidade de adquirir componentes, os membros da equipe de projeto conseguem trabalhar de forma simultânea no robô enquanto o protótipo físico fica reservado para testes específicos.
 
 O \textit{ROS} oferece ferramentas de visualização já integradas no seu sistema, o RVIz, que possibilita o usuário visualizar os modelos do robô e também administrar plugins, como de mapeamento e planejamento de movimento, que é o caso do \textit{MoveIt!}.
+
+
 
 Para a simulação do robô no ambiente aberto, é utilizado  o software \textit{Gazebo}. A integração entre \textit{ROS} e \textit{Gazebo} consegue fazer com que o modelo \textit{URDF}, por mais que não seja o nativo do \textit{Gazebo}, seja aceito na simulação. Parâmetros do mundo podem ser ajustados e a integração de plugins como câmeras e sensores faz com que a simulação consiga ser utilizada em diferentes estudos. Algoritmos de imagem podem ser testados com os plugins de câmera já implementados, proporcionando um auxílio para demonstrar conceitos e teorias de funcionamentos
 
