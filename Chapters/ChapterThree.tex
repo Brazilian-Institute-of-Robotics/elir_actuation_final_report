@@ -101,12 +101,12 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 \end{table}
 
 \pagebreak
-\subsubsection{Placa de Gerenciamento de Energia (Power Management)}
+\subsubsection{Placa de Gerenciamento de Energia (Gerenciamento de Energia)}
 A placa de gerenciamento de energia é responsável pela distribuição de corrente e de tensão para todos os componentes elétricos e eletrônicos do robô, além de monitorar os níveis de tensão e corrente demandados durante a operação. 
 
 Além de realizar o monitoramento do consumo em cada porta individualmente, a placa possui um sistema de proteção, cortando a alimentação em casos de surto de corrente. A placa funciona através da alimentação de 14.4 Volts provenientes da placa multiplexadora, responsável por transmitir a carga de duas baterias \textit{Li-Íon} de 14.4 Volts e 6Ah.
 
-Na placa de \textit{Power Management} existem conversores DC/DC responsáveis por fazer a conversão dos níveis de 14.4 Volts para 12 Volts em cada porta de saída da placa. As 7 portas de saída  possuem sensores de tensão e corrente individuais, feitos com amplificadores de instrumentação INA226. Existem duas portas de saída que disponibilizam tensões em valores menores, de 5 Volts. 
+Na placa de \textit{Gerenciamento de Energia} existem conversores DC/DC responsáveis por fazer a conversão dos níveis de 14.4 Volts para 12 Volts em cada porta de saída da placa. As 7 portas de saída  possuem sensores de tensão e corrente individuais, feitos com amplificadores de instrumentação INA226. Existem duas portas de saída que disponibilizam tensões em valores menores, de 5 Volts. 
 
 O monitoramento dos níveis de tensão e corrente se dá principalmente pela inteligência do sistema, um firmware embarcado em um microcontrolador Atmega32u4, responsável por fazer as leituras dos parâmetros em cada uma das portas, verificando se os seus níveis estão de acordo com os limites configurados, cortando a alimentação via relés digitais caso esses valores sejam ultrapassados.
 
@@ -151,7 +151,7 @@ Na interface do \textit{} existem diversas extensões que podem ser instaladas p
 
 Uma das extensões utilizadas fora o \textit{PlatformIO}, um ecossistema desenvolvido especificamente para o desenvolvimento de códigos e firmwares em plataformas microcontroladas, sendo extremamente versátil, tendo suporte para diversas plataformas como STM, MSP430, Arduino entre outras, tornando desnecessário o uso de uma IDE específica para se realizar a configuração e desenvolvimento de firmwares durante o projeto.
 
-A necessidade de se utilizar essa extensão se deu principalmente pela necessidade de se embarcar o firmware da Power Management na placa. O \textit{PlatformIO} possui as funcionalidades de debug e gravação, sendo assim, todos os procedimentos necessários para atualizar o firmware são atendidos na extensão.
+A necessidade de se utilizar essa extensão se deu principalmente pela necessidade de se embarcar o firmware de Gerenciamento de Energia na placa. O \textit{PlatformIO} possui as funcionalidades de debug e gravação, sendo assim, todos os procedimentos necessários para atualizar o firmware são atendidos na extensão.
 
 
 %--------- NEW SECTION ----------------------
@@ -260,10 +260,10 @@ Nas seções seguintes são apresentados em maiores detalhes sobre cada uma das 
 
 
 
-\subsection{Motion Planning}
+\subsection{Planejamento de Movimento}
 \label{ssec:motion}
 %\subsubsection{Definição da funcionalidade}
-A funcionalidade de \textit{Motion Planning} é responsável por realizar o planejamento da trajetória do Robô, utilizando o software \textit{MoveIt!} que realiza o cálculo da cinemática inversa para encontrar a melhor forma de ultrapassar os obstáculos.
+A funcionalidade de \textit{Planejamento de Movimento} é responsável por realizar o planejamento da trajetória do Robô, utilizando o software \textit{MoveIt!} que realiza o cálculo da cinemática inversa para encontrar a melhor forma de ultrapassar os obstáculos.
 \subsubsection{Dependências}
 O software \textit{MoveIT!} pode utilizar o modelo matemático da cinemática inversa do robô ou um arquivo do tipo \textit{URDF}.
 O nome \textit{URDF} é uma sigla para \textit{Unified Robot Description Format}, esse arquivo é uma especificação em \verb|XML| utilizada para descrever robôs. Modelos em \textit{URDF} apresentam uma simplicidade na descrição do robô, e para o caso do Robô \textit{Elir}, utilizar o modelo \textit{URDF} possibilitará uma aproximação fiel ao modelo real do robô, assim para o cálculo da cinemática inversa será utilizado o seu modelo \textit{URDF} e não o seu modelo matemático.
@@ -285,7 +285,7 @@ O \textit{MoveIT!} fornece uma \textit{user interface} que recebe o end-effector
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=0.8\textwidth]{motion_plan_func.png}
-	\caption{Fluxograma de funcionamento da funcionalidade de Motion Planning}
+	\caption{Fluxograma de funcionamento da funcionalidade de Planejamento de Movimento}
 	\label{fig:flux_motion}
 	\source{Própria}
 \end{figure}
@@ -293,13 +293,13 @@ O \textit{MoveIT!} fornece uma \textit{user interface} que recebe o end-effector
 \subsubsection{Saídas}
 Por meio da compatibilização do \textit{MoveIt!} com o \textit{ROS}, a saída dessa funcionalidade são os comandos de velocidade, esforço e posição para cada junta do robô.
 
-\subsection{Actuation }
+\subsection{Atuação }
 \label{ssec:actu}
 \subsubsection{Definição da funcionalidade}
-A funcionalidade de Actuation tem como objetivo mover a estrutura física do robô, possibilitando o controle dos movimentos das juntas, garras e unidades de tração.
+A funcionalidade de Atuação tem como objetivo mover a estrutura física do robô, possibilitando o controle dos movimentos das juntas, garras e unidades de tração.
 \subsubsection{Dependências}
-Essa funcionalidade depende das funcionalidades de \textit{Power Management} e \textit{Motion Planning}. O \textit{Power Management} será responsável por fazer alimentação dos motores, possibilitando controlar a corrente máxima fornecida para cada grupo.
-A dependência em relação à funcionalidade de \textit{Motion Planning} está atrelada principalmente com o software \textit{MoveIt!}, que ao receber um \textit{end-effector},realiza o cálculo de trajetória e envia os comandos de velocidade, esforço e posição para os controladores das juntas, garras e unidades de tração.
+Essa funcionalidade depende das funcionalidades de \textit{Gerenciamento de Energia} e \textit{Planejamento de Movimento}. O \textit{Gerenciamento de Energia} será responsável por fazer alimentação dos motores, possibilitando controlar a corrente máxima fornecida para cada grupo.
+A dependência em relação à funcionalidade de \textit{Planejamento de Movimento} está atrelada principalmente com o software \textit{MoveIt!}, que ao receber um \textit{end-effector},realiza o cálculo de trajetória e envia os comandos de velocidade, esforço e posição para os controladores das juntas, garras e unidades de tração.
 
 \subsubsection{Premissas Necessárias}
 Para o correto funcionamento desse módulo, devem ser consideradas as seguintes premissas:
@@ -314,25 +314,25 @@ Após os comandos serem recebidos pelos controladores, eles serão enviados para
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.6\textwidth]{actuation_depen.png}
-	\caption{Fluxograma da funcionalidade Actuation}
+	\caption{Fluxograma da funcionalidade Atuação}
 	\label{fig:depen_actuation}
 	\source{Própria}
 \end{figure}
 \subsubsection{Saídas}
 A saída desta funcionalidade é o movimento da estrutura física do robô, que estará de acordo com o planejamento de trajetória do \textit{MoveIt!} e com as instruções para operação na linha
 
-\subsection{Power Management}
+\subsection{Gerenciamento de Energia}
 \label{ssec:power}
 \subsubsection{Definição da funcionalidade}
 
-A funcionalidade de \textit{Power Management} é responsável pelo gerenciamento de alimentação elétrica dos componentes elétricos e eletrônicos do robô, através da integração das funcionalidades de seu firmware no ambiente \textit{ROS}.
+A funcionalidade de \textit{Gerenciamento de Energia} é responsável pelo gerenciamento de alimentação elétrica dos componentes elétricos e eletrônicos do robô, através da integração das funcionalidades de seu firmware no ambiente \textit{ROS}.
 \subsubsection{Dependências}
 Essa funcionalidade depende da comunicação serial por meio da biblioteca \verb|rosserial| para compatibilização e integração das funcionalidades de firmware no ambiente \textit{ROS}. Operacionalização e customização do firmware embarcado no hardware de acordo com as necessidades do projeto e da alimentação fornecida pela placa multiplexadora, por meio de baterias Li-Ion NH2054 14.4 volts.
 
 \subsubsection{Premissas Necessárias}
-Para o correto funcionamento desse módulo de \textit{Power Management}, devem ser consideradas as seguintes premissas:
+Para o correto funcionamento desse módulo de \textit{Gerenciamento de Energia}, devem ser consideradas as seguintes premissas:
 \begin{itemize}
-	\item A placa multiplexadora estará conectada diretamente ao módulo de \textit{Power Management} 
+	\item A placa multiplexadora estará conectada diretamente ao módulo de \textit{Gerenciamento de Energia} 
 	\item Todos os dispositivos estarão conectados nas suas respectivas entradas
 	\item A placa deverá ser alimentada por 2 baterias de 14.4 Volts e 3 Amperes, totalizando um fornecimento de até 6 Amperes
 	\item A placa estará conectada diretamente na NUC, por meio de uma USB	
@@ -341,13 +341,13 @@ Para o correto funcionamento desse módulo de \textit{Power Management}, devem s
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{power_management_hardware.png}
-	\caption{Fluxograma de funcionamento da funcionalidade de Power Management}
+	\caption{Fluxograma de funcionamento da funcionalidade de Gerenciamento de Energia}
 	\label{fig:power_management_hardware}
 	\source{Própria}
 \end{figure}
 \subsubsection{Descrição da Funcionalidade}
-A funcionalidade \textit{Power Management} é responsável  fornece diversos recursos em sua totalidade. O hardware utilizado (placa Zord) possui um sensor de corrente e tensão para cada porta de saída, permitindo o monitoramento individual de cada uma das portas. O microcontrolador utilizado Atmega32U4 possui um firmware embarcado onde toda a compatibilização com o ambiente \textit{ROS} é realizada, o que torna essencial o uso do pacote rosserial para o seu funcionamento. O firmware é responsável pela ativação dos relés digitais em caso de surtos de corrente para proteção dos dispositivos elétricos. 
-Os limites nos valores de corrente funcionam justamente para que o hardware interrompa a alimentação em um possível caso de surto de corrente. Todos os aspectos importantes para o funcionamento do sistema de gerenciamento de energia pode ser configurado tanto via \textit{ROS}, por meio das configurações dos serviços, ou por meio do firmware, modificando os parâmetros do tempo de duração dos picos de corrente. Os principais serviços e tópicos criados pela funcionalidade Power Management no \textit{ROS} são:
+A funcionalidade \textit{Gerenciamento de Energia} é responsável  fornece diversos recursos em sua totalidade. O hardware utilizado (placa Zord) possui um sensor de corrente e tensão para cada porta de saída, permitindo o monitoramento individual de cada uma das portas. O microcontrolador utilizado Atmega32U4 possui um firmware embarcado onde toda a compatibilização com o ambiente \textit{ROS} é realizada, o que torna essencial o uso do pacote rosserial para o seu funcionamento. O firmware é responsável pela ativação dos relés digitais em caso de surtos de corrente para proteção dos dispositivos elétricos. 
+Os limites nos valores de corrente funcionam justamente para que o hardware interrompa a alimentação em um possível caso de surto de corrente. Todos os aspectos importantes para o funcionamento do sistema de gerenciamento de energia pode ser configurado tanto via \textit{ROS}, por meio das configurações dos serviços, ou por meio do firmware, modificando os parâmetros do tempo de duração dos picos de corrente. Os principais serviços e tópicos criados pela funcionalidade Gerenciamento de Energia no \textit{ROS} são:
 \begin{itemize}
 	\item \textit{Tópicos}
 	\begin{itemize}
@@ -389,7 +389,7 @@ A funcionalidade irá disponibilizar a energia para o robô e as seguintes estru
 	\item Serviço para ligar ou desligar energia em uma porta	
 \end{itemize}
 
-\subsection{System Integrity Check}
+\subsection{Sistema de Verificação da Integridade}
 \label{ssec:check}
 
 \subsubsection{Definição da funcionalidade}

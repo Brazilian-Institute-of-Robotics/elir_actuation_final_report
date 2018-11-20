@@ -497,12 +497,12 @@ Para que o objetivo principal fosse atendido, a arquitetura do sistema foi elabo
 A estrutura da arquitetura apresentada basea-se no \textit{framework} ROS, o qual possibilita a integração de todas as funcionalidades necessárias para o desenvolvimento do sistema robótico, trabalhando no conceito de nós, o \textit{framework} facilita a identificação de problemas durante a fase de desenvolvimento e também a modularização dos códigos.
 
 %--------- NEW SUB SUB SECTION ------------------
-\subsubsection{Arquitetura do sistema de movimentação}
+\subsubsection{Arquitetura do Sistema de Movimentação}
 De forma a garantir uma movimentação efetiva do robô é necessária a integração de diversos ferramentas físicas e de software, como a estrutura de movimentação adequada, sistema ordenamento de missão, controle de potência,demandando assim um \textit{framework} e um sistema operacional.
 
 A inspeção de linha foi denominada missão, para cade vez que o robô começar a realizar a inspeção, será considerado o início de uma nova missão. 
 
-Para garantir a execução correta da missão e ultrapassagem dos obstáculos de forma efetiva, se dividiu o sistema em 4 principais subsistemas, sendo elas : \textit{Motion Planning} , \textit{Actuation},\textit{System Integrity Check} e \textit{Power Management}. A arquitetura geral do sistema de movimentação está mostrada na figura \ref{fig:arq_geral}, ilustrando os subsistemas e suas funcionalidades. 
+Para garantir a execução correta da missão e ultrapassagem dos obstáculos de forma efetiva, se dividiu o sistema em 4 principais subsistemas, sendo elas : \textit{Planejamento de Movimento} , \textit{Atuação},\textit{Sistema de Verificação da Integridade} e \textit{Power Management}. A arquitetura geral do sistema de movimentação está mostrada na figura \ref{fig:arq_geral}, ilustrando os subsistemas e suas funcionalidades. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=1\textwidth]{Arquitetura.png}
@@ -510,11 +510,11 @@ Para garantir a execução correta da missão e ultrapassagem dos obstáculos de
 	\label{fig:arq_geral}
 	\source{Própria}
 \end{figure} 
-A estrutura física do robô foi projetada para que sejam realizados movimentos de translação e transposição de obstáculos presentes na linha de transmissão,consistindo de unidades de tração para a translação na linha e juntas nos braços e garras para a realização da ultrapassagem de obstáculos. O controle da estrutura física do robô está relacionado com a \textit{Actuation}.
-A transposição dos obstáculos é um grande desafio para essa aplicação, visto que será necessário a aplicação da cinemática inversa no robô. A cinemática inversa consiste num conjunto de equações que definem o movimento do robô para a movimentação de um ponto à outro, tal modelo é extraído à partir da estrutura do robô. A funcionalidade responsável por calcular esse modelo e encontrar como será feita a movimentação foi denominada \textit{Motion Planning}.
-Para garantir a execução correta da missão e preservar a integridade do robô foi estipulada uma funcionalidade que checa os dispositivos antes de cada missão, denominada \textit{System Integrity Check}. E com a finalidade de realizar o controle da potência no robô foi será utilizado o projeto de uma placa específica para esse papel, assim todos os aspectos relacionados à alimentação do robô, assim como consumo e monitoramento estão atrelados ao \textit{Power Management}.
+A estrutura física do robô foi projetada para que sejam realizados movimentos de translação e transposição de obstáculos presentes na linha de transmissão,consistindo de unidades de tração para a translação na linha e juntas nos braços e garras para a realização da ultrapassagem de obstáculos. O controle da estrutura física do robô está relacionado com a \textit{Atuação}.
+A transposição dos obstáculos é um grande desafio para essa aplicação, visto que será necessário a aplicação da cinemática inversa no robô. A cinemática inversa consiste num conjunto de equações que definem o movimento do robô para a movimentação de um ponto à outro, tal modelo é extraído à partir da estrutura do robô. A funcionalidade responsável por calcular esse modelo e encontrar como será feita a movimentação foi denominada \textit{Planejamento de Movimento}.
+Para garantir a execução correta da missão e preservar a integridade do robô foi estipulada uma funcionalidade que checa os dispositivos antes de cada missão, denominada \textit{Sistema de Verificação da Integridade}. E com a finalidade de realizar o controle da potência no robô foi será utilizado o projeto de uma placa específica para esse papel, assim todos os aspectos relacionados à alimentação do robô, assim como consumo e monitoramento estão atrelados ao \textit{Power Management}.
 
-O \textit{framework} ROS possibilita a integração de todas essas funcionalidades, sua estrutura baseada em nós facilita a identificação dos problemas e possibilita a modularização do código. Fornecendo também diversas ferramentas como o \textit{MoveIt!}, que será utilizada para o \textit{Motion Planning}, assim como drivers de compatibilização para os servo motores adotados no projeto.
+O \textit{framework} ROS possibilita a integração de todas essas funcionalidades, sua estrutura baseada em nós facilita a identificação dos problemas e possibilita a modularização do código. Fornecendo também diversas ferramentas como o \textit{MoveIt!}, que será utilizada para o \textit{Planejamento de Movimento}, assim como drivers de compatibilização para os servo motores adotados no projeto.
 
 %--------- NEW SUB SECTION ----------------------
 %\subsection{Arquitetura de software}
