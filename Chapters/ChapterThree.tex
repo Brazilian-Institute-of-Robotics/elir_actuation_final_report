@@ -39,21 +39,19 @@ A relação final dos componentes do sistema robótico encontra-se no Apêndice 
 \label{sec:espc}
 Serão detalhados os componentes utilizados para confecção do protótipo, sendo eles físicos ou digitais.
 
-\subsection{Estrutura analítica do protótipo}
-\label{ssec:pbs}
-
-
+%\subsection{Estrutura analítica do protótipo}
+%\label{ssec:pbs}
 
 \subsection{Lista de componentes}
 \label{ssec:list}
 
-\subsection{Servomotores}
+
+\subsubsection{Servomotores}
 Os servomotores são responsáveis pelo atuação do robô, realizando os movimentos das juntas dos braços e das garras, além de atuarem as rodas que deslocam o robô na linha. São utilizados os servomotores da Robotis, \textit{Dynamixel} MX-106R e MX-28. Esses motores foram escolhidos pois apresentam drivers prontos para o \textit{ROS} , que possibilitam uma integração mais fácil com as ferramentas de controle, apresentando bom torque, peso reduzido e fácil integração para controle conjunto.
 
 \begin{table}[h!]
 	\begin{tabular}{ll}
-		
-		\multicolumn{2}{c}{Robotis Dynamixel MX-28R}                                            \\ \hline
+		\multicolumn{2}{c}{Robotis Dynamixel MX-28R}                                       \\ \hline
 		Peso (g)                     & 153                                                      \\ \hline
 		Dimensões (mm)               & 40.2 x 65.1 x 46                                         \\ \hline
 		Torque (N.m)                 & 8.0 (em 11.1V), 8.4 (em 12V) e 10.0 (em 14.4V)           \\ \hline
@@ -67,8 +65,6 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 	\end{tabular}
 	\caption{Especificações Motor Robotis\textit{ Dynamixel} MX-28R  }
 \end{table}
-
- 
 
 \begin{figure}[h!]												
 	\centering												
@@ -104,9 +100,8 @@ Os servomotores são responsáveis pelo atuação do robô, realizando os movime
 	\caption{Especificações Motor Robotis\textit{ Dynamixel} MX-106R  }
 \end{table}
 
-
-
-\subsection{Placa de Gerenciamento de Energia (Power Management)}
+\pagebreak
+\subsubsection{Placa de Gerenciamento de Energia (Power Management)}
 A placa de gerenciamento de energia é responsável pela distribuição de corrente e de tensão para todos os componentes elétricos e eletrônicos do robô, além de monitorar os níveis de tensão e corrente demandados durante a operação. 
 
 Além de realizar o monitoramento do consumo em cada porta individualmente, a placa possui um sistema de proteção, cortando a alimentação em casos de surto de corrente. A placa funciona através da alimentação de 14.4 Volts provenientes da placa multiplexadora, responsável por transmitir a carga de duas baterias \textit{Li-Íon} de 14.4 Volts e 6Ah.
@@ -115,7 +110,7 @@ Na placa de \textit{Power Management} existem conversores DC/DC responsáveis po
 
 O monitoramento dos níveis de tensão e corrente se dá principalmente pela inteligência do sistema, um firmware embarcado em um microcontrolador Atmega32u4, responsável por fazer as leituras dos parâmetros em cada uma das portas, verificando se os seus níveis estão de acordo com os limites configurados, cortando a alimentação via relés digitais caso esses valores sejam ultrapassados.
 
-\subsection{\textit{ROS} (Robot Operating System)}
+\subsubsection{\textit{ROS} (Robot Operating System)}
 \textit{Framework}, no ambiente de programação, é um espaço onde compatibiliza códigos comuns a fim de otimizar o trabalho e tempo, muito utilizado na área de desenvolvimento. A abstração de hardware, códigos de baixo nível, drivers de sensores, simuladores, etc - são as grandes vantagens de se utilizar essa aplicação, podendo assim,fazer com que o desenvolvedor foque somente nas soluções de problemas específicos do seu projeto.
 
 Foi utilizado durante todo o desenvolvimento do \textit{ELIR} o \textit{framework} \textit{ROS}, já que reúne uma série de ferramentas importantes para o desenvolvimento de um robô.  “O Sistema Operacional de Robótica é um flexível framework para escrita de softwares para robótica. É uma coleção de ferramentas, bibliotecas e convenções que serve para simplificar a tarefa de criar complexos e robustos comportamentos de robôs diante a uma variedade de plataformas \cite{ros_site}.”
@@ -124,7 +119,7 @@ A grosso modo, cada câmera, motor ou periférico ligado ao \textit{ROS}, estão
 
 Assim é feita toda a comunicação e interligação entre os periféricos no \textit{ROS}, forma simples de integração dos componentes.
 
-\subsection{\textit{MoveIt!}}
+\subsubsection{\textit{MoveIt!}}
 Durante a inspeção de linha, é necessário que o robô realize a ultrapassem dos diferentes tipos de obstáculos que existem nas linhas de transmissão. O \textit{MoveIt!} é um ferramenta que funciona de forma integrada com o \textit{ROS}, apresentando funcionalidades de planejamento de movimento, percepção 3D,controle , manipulação e cinemática inversa. 
 
 A cinemática é o estudo do movimento, no âmbito da robótica designa o estudo do controle da posição do robô no espaço. Esse controle pode representar do robô como um todo, sua posição geográfica, ou controle de alguma parte sua em específico, como seu braço e a posição relativa desse braço e o robô.  A cinemática direta é o cálculo onde se encontra a posição do robô para determinado valor de velocidade ou posição de suas juntas. Analogamente, na cinemática inversa, se encontra os valores de velocidade ou posição das juntas para uma posição no espaço,onde essa posição é denominada \textit{end-effector}, geralmente sendo definido como a parte do robô que interage com o mundo, como por exemplo a garra no caso de manipuladores. O cálculo da cinemática inversa envolve equações complexas e retorna diferentes soluções, assim sendo necessário encontrar a solução que melhor atende às diretrizes do movimento, o \textit{MoveIt!} já realiza esse cálculo e fornece uma trajetória otimizada baseada em parâmetros do usuário.
@@ -139,19 +134,19 @@ Com o ângulo de junta em mãos, é feita a integração do robô com a ferramen
 
 Implementar o controle de movimento nessa plataforma possibilita uma série de implementações futuras que aumentam a autonomia do robô e robustez do sistema, como odometria, ferramentas de percepção e mapeamento.
 
-\subsection{\textit{Gazebo}}
+\subsubsection{\textit{Gazebo}}
 O software \textit{Gazebo} é software utilizado para simulação de robôs. Tem uma licença de uso livre e apresenta diversas formas de integração com o \textit{ROS}, sendo o principal simulador utilizado em conjunto com essa plataforma, possibilitando a inserção de plugins como câmeras e sonares, que se comunicam com o \textit{ROS} de forma fiel a dispositivos reais.
 
 Nele é possível simular também o ambiente do robô, definindo parâmetros físicos como aceleração da gravidade e vento. Oferece suporte para a inserção de modelos 3D de softwares CAD, assim podendo ser inseridas diversas estruturas que já foram modeladas para outros propósitos no software.
 
-\subsection{\textit{Visual Studio Code}}
+\subsubsection{\textit{Visual Studio Code}}
 Para que todas as funcionalidades do robô sejam configuradas e desenvolvidas de forma correta a nível de software, é necessário o desenvolvimento de diversos códigos em diferentes linguagens para a configuração de aspectos específicos do projeto.
 
 Foi utilizada durante o desenvolvimento do projeto a ferramenta \textit{Visual Studio Code}. Trata-se de um editor de códigos open source desenvolvido pela \textit{Microsoft} em 2015, sendo possível desenvolver códigos em diversas linguagens como C++, C, Python entre outros. Durante todo o desenvolvimento do \textit{ELIR} a ferramenta fora utilizada para o desenvolvimento de arquivos nas extensões .py, .yaml, .launch e .urdf.  
 
 Por ter uma interface simples e amigável, o \textit{VSCode} mostrou-se uma ferramenta extremamente útil para a escrita e desenvolvimento de códigos durante todas as fases do projeto. 
 
-\subsection{\textit{PlatformIO}}
+\subsubsection{\textit{PlatformIO}}
 Na interface do \textit{} existem diversas extensões que podem ser instaladas para adicionar novas funcionalidades na plataforma.
 
 Uma das extensões utilizadas fora o \textit{PlatformIO}, um ecossistema desenvolvido especificamente para o desenvolvimento de códigos e firmwares em plataformas microcontroladas, sendo extremamente versátil, tendo suporte para diversas plataformas como STM, MSP430, Arduino entre outras, tornando desnecessário o uso de uma IDE específica para se realizar a configuração e desenvolvimento de firmwares durante o projeto.
@@ -166,11 +161,11 @@ A necessidade de se utilizar essa extensão se deu principalmente pela necessida
 
 
 %--------- NEW SECTION ----------------------
-\section{Modelo esquemático de alimentação e comunicação}
-\label{sec:modesq}
+%\section{Modelo esquemático de alimentação e comunicação}
+%\label{sec:modesq}
 
 
-\subsection{Diagramas elétricos}
+\section{Diagramas elétricos do sistema de Movimentação}
 \label{sec:diage}
 Devido à quantidade de motores presentes no robô e a forma com que eles estão distribuídos na estrutura, foram desenvolvidos dois modelos de hubs para a conexão dos motores na rede.
 
@@ -191,7 +186,7 @@ Devido à quantidade de motores presentes no robô e a forma com que eles estão
 \subsection{Esquemas eletrônicos}
 \label{ssec:esqe}
 Nas unidades de tração do robô, os hubs contam com um conector de alimentação, um para a entrada de dados e 6 de saída para os motores.
-IMAGEM
+
 \begin{figure}[h!]												
 	\centering												
 	\includegraphics[width=0.3\textwidth]{hub_arm_SCHEMATIC.png}				
@@ -229,7 +224,7 @@ Já na unidade central, o hub além de conectar os seis motores ali presentes, t
 \subsection{Fluxo das informações}
 \label{ssec:fluxo}
 
-Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chap:introd}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
+Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chap:intro}, mais especificamente na secção \ref{sec:obj}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
 
 \begin{enumerate}%[itemsep=1pt]
 	%\setlength\itemsep{1em}

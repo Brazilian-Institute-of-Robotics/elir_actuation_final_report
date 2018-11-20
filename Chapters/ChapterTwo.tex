@@ -517,9 +517,9 @@ Para garantir a execução correta da missão e preservar a integridade do robô
 O \textit{framework} ROS possibilita a integração de todas essas funcionalidades, sua estrutura baseada em nós facilita a identificação dos problemas e possibilita a modularização do código. Fornecendo também diversas ferramentas como o \textit{MoveIt!}, que será utilizada para o \textit{Motion Planning}, assim como drivers de compatibilização para os servo motores adotados no projeto.
 
 %--------- NEW SUB SECTION ----------------------
-\subsection{Arquitetura de software}
-\label{ssec:arqs}
-
+%\subsection{Arquitetura de software}
+%\label{ssec:arqs}
+%
 %--------- NEW SECTION --------------------------
 \section{Desdobramento da função qualidade}
 \label{sec:qfd}
@@ -527,10 +527,9 @@ O desenvolvimento do QFD\footnote{Quality Function Deployment, em português Des
 Neste primeiro ciclo do QFD os requisitos técnicos são avaliados e discutidos frente ao requisitos do cliente. Faz-se também necessário a avaliação das correlações entre os requisitos técnicos e avaliação destes requisitos com relação as possíveis soluções para o projeto, dessa forma de acordo com o Capítulo xxx os competidores foram avaliados perante as metas estabelecidas para cada requisitos técnico e requisitos do cliente.
 A Figura \ref{fig_qfd1} representa o primeiro ciclo do projeto.
 
-\begin{figure}[htb]
-	\begin{center}
-		\includegraphics[scale=0.6]{Figures/elirqfd20180710cxf.png}
-	\end{center}
+\begin{figure}[h]
+	\centering
+	\includegraphics[scale=0.6]{Figures/elirqfd20180710cxf.png}
 	\caption{Desdobramento da Função Qualidade - primeiro ciclo.}
 	%\legend{Fonte: \cite[p. 00]{asdkf}}
 	\label{fig_qfd1}
@@ -556,9 +555,9 @@ Estes requisitos são os seguintes:
 
 Para o segundo ciclo do QFD, os requisitos técnicos foram confrontados com as funcionalidades pensadas para o sistema robótico, conforme Figura \ref{fig_qfd2}
 
-\begin{figure}[htb]
+\begin{figure}[h!]
 	\begin{center}
-		\includegraphics[scale=0.6]{Figures/elirqfd20180710txf.png}
+		\includegraphics[scale=0.5]{Figures/elirqfd20180710txf.png}
 	\end{center}
 	\caption{Desdobramento da Função Qualidade - segundo ciclo.}
 	%\legend{Fonte: \cite[p. 00]{asdkf}}
@@ -567,55 +566,48 @@ Para o segundo ciclo do QFD, os requisitos técnicos foram confrontados com as f
 
 Para mais detalhes quanto aos objetivos e as descrições das funcionalidades, as mesmas estão contidas na secção \ref{sec:espf}; encontra-se também no Apêndice
 
+%\pagebreak
 %--------- NEW SUB SECTION ----------------------
 \subsection{Requisitos técnicos}
 \label{ssec:reqt}
     Foi determinado pelo cliente os seguintes requisitos técnicos.
 \begin{itemize}
-	
-\item Desempenho de deslocamento: Percorrer 15km por dia
-\item Velocidade de deslocamento: Velocidade média sem obstáculos será de 0.5 m/s
-\item Ultrapassagem de obstáculos: Volume máximo dos obstáculos 410x330x150mm
-\item Autonomia de Potência: 2 horas de autonomia
-\item Sistema Operacional: Linux
-\item Backend: C++ e Python
-\item Framework: ROS Kinetic Kame
-
+	\item Desempenho de deslocamento: Percorrer 15km por dia
+	\item Velocidade de deslocamento: Velocidade média sem obstáculos será de 0.5 m/s
+	\item Ultrapassagem de obstáculos: Volume máximo dos obstáculos 410x330x150mm
+	\item Autonomia de Potência: 2 horas de autonomia
+	\item Sistema Operacional: Linux
+	\item Backend: C++ e Python
+	\item Framework: ROS Kinetic Kame
 \end{itemize}
 
 \subsubsection{Funcionamento do robô}
 O funcionamento do robô será comprovado por um teste realizado dentro da instituição, em um modelo reduzido de linha de transmissão. Sem condições ambientais adversas, realizando a parada baseada no sinal da câmera de detecção de obstáculos e com o teste operado manualmente. Serão desenvolvidas rotinas de software para: início da missão; simular detecção de obstáculo e parada emergencial. As especificações para os testes são:
 
 \begin{itemize}
-
-\item Condutor: LINNET e diâmetro: 18,3mm;
-\item Obstáculos: Grampo de suspensão e amortecedor de vibração;
-\item O robô será colocado manualmente na linha;
-\item A operação se iniciará à uma distância de 1 metro do obstáculo;
-\item A parada será realizada com base no sinal do sistema de detecção, a uma distância de 50cm do obstáculo;
-\item O comando para início da missão será feito por meio do terminal do Linux , por meio de acesso remoto;
-\item A estrutura para o teste será fornecida pela a empresa;
-
+	\item Condutor: LINNET e diâmetro: 18,3mm;
+	\item Obstáculos: Grampo de suspensão e amortecedor de vibração;
+	\item O robô será colocado manualmente na linha;
+	\item A operação se iniciará à uma distância de 1 metro do obstáculo;
+	\item A parada será realizada com base no sinal do sistema de detecção, a uma distância de 50cm do obstáculo;
+	\item O comando para início da missão será feito por meio do terminal do Linux , por meio de acesso remoto;
+	\item A estrutura para o teste será fornecida pela a empresa.
 \end{itemize}
 
 As etapas para realização do teste são:
 
 \begin{itemize}
-\item O robô será manualmente posicionado na linha, à uma distância de 1 metro do obstáculo;
-\item O comando para iniciar a inspeção será enviado via acesso remoto, por meio do terminal Linux;
-\item Após receber o comando, o robô iniciará um movimento na linha em direção ao obstáculo;
-\item Ao receber o sinal de obstáculo detectado, o robô irá parar e esperar o pós-processamento do sistema de detecção;
-\item Após o processamento, irá fazer a ultrapassagem referente ao tipo de obstáculo, e continuar se deslocando na linha;
-
+	\item O robô será manualmente posicionado na linha, à uma distância de 1 metro do obstáculo;
+	\item O comando para iniciar a inspeção será enviado via acesso remoto, por meio do terminal Linux;
+	\item Após receber o comando, o robô iniciará um movimento na linha em direção ao obstáculo;
+	\item Ao receber o sinal de obstáculo detectado, o robô irá parar e esperar o pós-processamento do sistema de detecção;
+	\item Após o processamento, irá fazer a ultrapassagem referente ao tipo de obstáculo, e continuar se deslocando na linha.
 \end{itemize}
 
-\subsubsection{Códigos da programação disponíveis em repositório online}
-Os códigos produzidos serão disponibilizados na plataforma GitHub, onde os pacotes produzidos durante o projeto estão organizados em 4 repositórios referentes às funcionalidades do robô.
+\subsubsection{Outros requisitos}
 
-\subsubsection{ Documentação técnica de final de projeto}
-A documentação foi definida como um relatório denominado Conceptual and Design Report , Databooks com as informações e logbooks com os testes.
-
-\subsubsection{Protótipo do robô}
-O cliente disponibilizou as partes mecânicas do robô, sendo entregue pela equipe o protótipo do robô montado. É incluída na montagem a disposição dos cabos e unidade de processamento do robô.
-
-
+\begin{description}
+	\item [Códigos da programação disponíveis em repositório online.] Os códigos produzidos serão disponibilizados na plataforma GitHub, onde os pacotes produzidos durante o projeto estão organizados em 4 repositórios referentes às funcionalidades do robô.
+	\item [Documentação técnica de final de projeto.] A documentação foi definida como um relatório denominado Conceptual and Design Report , Databooks com as informações e logbooks com os testes.
+	\item [Protótipo do robô.] O cliente disponibilizou as partes mecânicas do robô, sendo entregue pela equipe o protótipo do robô montado. É incluída na montagem a disposição dos cabos e unidade de processamento do robô.
+\end{description}
