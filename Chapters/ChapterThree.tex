@@ -3,36 +3,36 @@
 Esta seção destaca o que é necessário para construção do projeto, contendo a lista de materiais, especificação dos componentes, funcionalidades, modelo esquemático de comunicação e de alimentação.
 
 
-\section{Estrutura analítica do protótipo}
-\label{ssec:pbs}
-De forma sistemática o projeto ELIR foi dividido em 6 subsistemas, caraterizando a estrutura analítica do projeto (Figura \ref{fig:pbselir}) em:
-
-\begin{itemize}
-	\item \textit{perception}
-	\item \textit{actuation}
-	\item \textit{power management}
-	\item \textit{processing system}
-	\item \textit{detection}
-	\item \textit{software}
-\end{itemize}
-
-Os cinco iniciais subsistemas estão mais ligados as condições físicas de hardware do que o subsistema \textbf{software}, porém as implicações de software também devem ser consideradas em cada um destes susbsistemas.
-
-O susbistema \textbf{software} foi idealizado a partir das funcionalidades desenvolvidas  para a solução final do projeto, e estão descriminadas na secção \ref{sec:espf}.
-
-%----- figure --------------------------------------
-\begin{figure}[!htb]
-	\centering
-	\includegraphics[scale=0.6]{Figures/pbselir.png}
-	\caption{Esturutura analítica do sistema.}
-	%\legend{Fonte: os autores}
-	\label{fig:pbselir}
-\end{figure}
-%---------------------------------------------------
-
-%fazer comentário sobre os subsistemas
-
-A relação final dos componentes do sistema robótico encontra-se no Apêndice \ref{Append:bom}.
+%\section{Estrutura analítica do protótipo}
+%\label{ssec:pbs}
+%De forma sistemática o projeto ELIR foi dividido em 6 subsistemas, caraterizando a estrutura analítica do projeto (Figura \ref{fig:pbselir}) em:
+%
+%\begin{itemize}
+%	\item \textit{perception}
+%	\item \textit{actuation}
+%	\item \textit{power management}
+%	\item \textit{processing system}
+%	\item \textit{detection}
+%	\item \textit{software}
+%\end{itemize}
+%
+%Os cinco iniciais subsistemas estão mais ligados as condições físicas de hardware do que o subsistema \textbf{software}, porém as implicações de software também devem ser consideradas em cada um destes susbsistemas.
+%
+%O susbistema \textbf{software} foi idealizado a partir das funcionalidades desenvolvidas  para a solução final do projeto, e estão descriminadas na secção \ref{sec:espf}.
+%
+%%----- figure --------------------------------------
+%\begin{figure}[!htb]
+%	\centering
+%	\includegraphics[scale=0.6]{Figures/pbselir.png}
+%	\caption{Esturutura analítica do sistema.}
+%	%\legend{Fonte: os autores}
+%	\label{fig:pbselir}
+%\end{figure}
+%%---------------------------------------------------
+%
+%%fazer comentário sobre os subsistemas
+%
+%A relação final dos componentes do sistema robótico encontra-se no Apêndice \ref{Append:bom}.
 
 %--------- NEW SECTION----------------------
 \section{Especificação dos componentes}
@@ -221,39 +221,39 @@ Já na unidade central, o hub além de conectar os seis motores ali presentes, t
 \label{sec:espf}
 
 
-\subsection{Fluxo das informações}
-\label{ssec:fluxo}
-
-Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chap:intro}, mais especificamente na secção \ref{sec:obj}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
-
-\begin{enumerate}%[itemsep=1pt]
-	%\setlength\itemsep{1em}
-	\item sistema de verificação da integridade
-	\item gerenciamento de energia
-	\item aquisição
-	\item localização
-	\item planejamento de movimento
-	\item atuação
-	\item detecção
-	\item classificação
-	\item interface do usuário
-	\item autonomia
-	\item simulação
-\end{enumerate}
-
-A Figura \ref{img:elirfluxo} apresenta o fluxo de informações entre as funcionalidades. Este fluxo deve ser compreendido para que seja estabelecida as relações entre as funcionalidades e o entendimento entre elas, essa compreensão impactará na melhor elaboração da árvore de falhas do sistema e proporcionará um sistema mais confiável.
-
-%---------------picture------------------------------------
-\begin{figure} [h!]	
-	\caption{Fluxo de informações do sistema.}
-	\label{img:elirfluxo}											 
-	\centering													 
-	\includegraphics[width=1.0\textwidth]{Figures/flxinfofunctionalities}
-	%\fautor			 											 
-\end{figure}													 
-%----------------------------------------------------------
-
-Nas seções seguintes são apresentados em maiores detalhes sobre cada uma das funcionalidades do sistema robótico. Para que fosse melhor compreendido, o desenvolvimento destas funcionalidades foram agrupadas em cinco áreas: movimentação, percepção, interface do usuário, autonomia e simulação. As duas áreas iniciais foram subdivididas em planejamento de movimento, sistema de verificação de integridade, atuação e gerenciamento de energia para a primeira área de nome \textbf{movimentação}, que tem como principal objetivo garantir a execução da missão e transposição de obstáculos. Para a segunda área, nominada por percepção, a subdivisão ficou da seguinte forma: aquisição, detecção, classificação e localização, que como o significado do próprio nome apresenta como objetivo principal a percepção do robô diante do ambiente inserido.
+%\subsection{Fluxo das informações}
+%\label{ssec:fluxo}
+%
+%Diante da arquitetura apresentada anteriormente e focando nos objetivos traçados no Capítulo \ref{chap:intro}, mais especificamente na secção \ref{sec:obj}, o sistema robótico foi dimensionado para onze funcionalidades distintas:
+%
+%\begin{enumerate}%[itemsep=1pt]
+%	%\setlength\itemsep{1em}
+%	\item sistema de verificação da integridade
+%	\item gerenciamento de energia
+%	\item aquisição
+%	\item localização
+%	\item planejamento de movimento
+%	\item atuação
+%	\item detecção
+%	\item classificação
+%	\item interface do usuário
+%	\item autonomia
+%	\item simulação
+%\end{enumerate}
+%
+%A Figura \ref{img:elirfluxo} apresenta o fluxo de informações entre as funcionalidades. Este fluxo deve ser compreendido para que seja estabelecida as relações entre as funcionalidades e o entendimento entre elas, essa compreensão impactará na melhor elaboração da árvore de falhas do sistema e proporcionará um sistema mais confiável.
+%
+%%---------------picture------------------------------------
+%\begin{figure} [h!]	
+%	\caption{Fluxo de informações do sistema.}
+%	\label{img:elirfluxo}											 
+%	\centering													 
+%	\includegraphics[width=1.0\textwidth]{Figures/flxinfofunctionalities}
+%	%\fautor			 											 
+%\end{figure}													 
+%%----------------------------------------------------------
+%
+%Nas seções seguintes são apresentados em maiores detalhes sobre cada uma das funcionalidades do sistema robótico. Para que fosse melhor compreendido, o desenvolvimento destas funcionalidades foram agrupadas em cinco áreas: movimentação, percepção, interface do usuário, autonomia e simulação. As duas áreas iniciais foram subdivididas em planejamento de movimento, sistema de verificação de integridade, atuação e gerenciamento de energia para a primeira área de nome \textbf{movimentação}, que tem como principal objetivo garantir a execução da missão e transposição de obstáculos. Para a segunda área, nominada por percepção, a subdivisão ficou da seguinte forma: aquisição, detecção, classificação e localização, que como o significado do próprio nome apresenta como objetivo principal a percepção do robô diante do ambiente inserido.
 
 %\subsection{Fluxo das informações}
 %\label{ssec:fluxo}
