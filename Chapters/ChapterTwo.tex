@@ -1,18 +1,12 @@
 \chapter{Fundamentação Teória}
 \label{chap:concep}
-O termo robô vem da palavra tcheca robota que tem como uma das possíveis traduções “trabalhador forçado” e ganhou o significado atual após o escritor tcheco Karel Capek (1809 - 1938), na sua obra de ficção científica “R.U.R. Rossumovi Univerzální Roboti”, associar o termo às máquinas criadas pelo personagem principal para servi-lo. Mas a ideia de algo que desenvolva atividades de maneira autônoma é apresentada ao mundo muito tempo antes. Aristóteles em \cite{aristoteles1985traduccao} diz: “Se cada instrumento pudesse realizar sozinho a sua tarefa, obedecendo ou antecipando a nossa vontade, [...] os feitores não precisariam de servos, nem os senhores de escravos.” 
+O termo robô vem da palavra tcheca robota que tem como uma das possíveis traduções “trabalhador forçado” e ganhou o significado atual após o escritor tcheco Karel Capek (1809 - 1938), na sua obra de ficção científica “R.U.R. Rossumovi Univerzální Roboti”, associar o termo às máquinas criadas pelo personagem principal para servi-lo. Mas a ideia de algo que desenvolva atividades de maneira autônoma é apresentada ao mundo muito tempo antes. \cite{aristoteles1985traduccao} diz: “Se cada instrumento pudesse realizar sozinho a sua tarefa, obedecendo ou antecipando a nossa vontade, [...] os feitores não precisariam de servos, nem os senhores de escravos.” 
 
 Diversas obras da ficção retratam diferentes tipos de robôs criados de forma a reproduzir comportamentos semelhantes aos de um ser humano. Com o passar do tempo, juntamente com o avanço tecnológico nas áreas da eletrônica, mecânica e informática, a construção dessas máquinas se tornou possível. A indústria observou nos robôs, o potencial para automatizar e otimizar as linhas de processo, onde atividades que pudessem demandar mais tempo se fossem executadas por seres humanos, seriam executadas de forma muito mais rápida e precisa com a utilização de máquinas programadas e autônomas, aumentando a produção.
 
 A \cite{iso2012} define um robô como “mecanismo programável atuado em dois ou mais eixos com um grau de autonomia, movendo-se dentro do seu ambiente, para executar tarefas pretendidas”. É resultado da integração de componentes como: Sensores; atuadores; unidade de controle; unidade de potência e manipulador mecânico. Sensores são os componentes que fornecem parâmetros sobre o ambiente em que o robô se encontra e sobre o comportamento do próprio sistema robótico. Já os atuadores são os dispositivos que movimentam as partes, quando convertem energia elétrica, hidráulica ou pneumática em mecânica. A energia necessária para o funcionamento dos atuadores é fornecida pela unidade de potência.
 
 O gerenciamento dos parâmetros necessários para que o robô realize suas tarefas é de responsabilidade da unidade de controle. De onde também são emitidos os comandos para a movimentação. O manipulador mecânico é o conjunto de componentes estruturais do robô, elos ou links, conectados entre si por articulações comumente denominadas de juntas. Graus de liberdade, segundo \cite{romanorobotica} “É o número mínimo de variáveis independentes de posição que precisam ser especificadas para se definir inequivocamente a localização de todas as partes de um mecanismo”.
-\begin{flushright}
-  Nada é tão maravilhoso que não possa existir, \\
-  se admitido pelas leis da Natureza. \\
-  \ \\
-  (Michael Faraday)
-\end{flushright}
 
 \section{Cinemática}\label{sec:cinem}
 A cinemática é o ramo da física que descreve o movimento de um corpo, determinando características como posição, velocidade e aceleração. Na robótica, o estudo cinemático resulta em um conjunto de equações que caracterizam o movimento do robô, a complexidade da solução varia com a quantidade de graus de liberdade que esse robô tem. Em um manipulador mecânico composto por links que são conectados por juntas, cada conjunto link-junta caracteriza um grau de liberdade. Dessa maneira, um robô com $n$ conjuntos link-junta tem $n$ graus de liberdade, sendo o primeiro link a base de sustentação do robô no mundo e o último, onde está a seu end-effector.
@@ -32,10 +26,13 @@ A figura mostra dois \textit{links} ligados por uma junta de superfícies desliz
 
 Um \textit{link} pode apenas ser conectado a dois outros \textit{links} ($i-1$ e $i+1$). Assim, dois eixos de juntas são estabelecidos em ambos terminais de conexão. Os \textit{links} mantém uma configuração fixa entre as juntas e podem ser caracterizados pelos parâmetros $a_{i}$ e $\alpha_{i}$. O parâmetro $a_{i}$ é a menor distância medida ao longo da normal comum entre os eixos da junta, chamado de comprimento de \textit{twist}, já o $\alpha_{i}$ é o ângulo de \textit{twist}. Esses quatro parâmetros determinam a estrutura do \textit{link}, parâmetros da junta e a posição relativa aos \textit{links} vizinhos.
 
-A representação de Denavit-Hartenberg tem como resultado uma matriz 4 x 4 representando cada sistema de coordenadas do \textit{link} na junta em relação ao \textit{link} anterior. Essa matriz é obtida através do produto das transformações: Translação de uma distância $d_{i}$ ao longo do eixo $Z_{i-1}$ para trazer os eixos $X_{i-1}$ e $X_{i}$ na coincidência; Rotação no eixo $Z_{i-1}$ de um ângulo $\theta_{i}$ para alinhar os eixos $X_{i-1}$ e $X_{i}$; Translação ao longo do eixo $X_{i}$ de uma distância $a_{i}$ para trazer as duas origens na coincidência; Rotação do eixo $X_{i}$ um ângulo $\alpha_{i}$ para trazer os dois sistemas de coordenadas na coincidência. Isso resulta na matriz de transformação homogênea $^{i-1}A_{i}$.
+A representação de Denavit-Hartenberg \cite{denavit1955kinematic} tem como resultado uma matriz 4 x 4 representando cada sistema de coordenadas do \textit{link} na junta em relação ao \textit{link} anterior. Essa matriz é obtida através do produto das transformações: Translação de uma distância $d_{i}$ ao longo do eixo $Z_{i-1}$ para trazer os eixos $X_{i-1}$ e $X_{i}$ na coincidência; Rotação no eixo $Z_{i-1}$ de um ângulo $\theta_{i}$ para alinhar os eixos $X_{i-1}$ e $X_{i}$; Translação ao longo do eixo $X_{i}$ de uma distância $a_{i}$ para trazer as duas origens na coincidência; Rotação do eixo $X_{i}$ um ângulo $\alpha_{i}$ para trazer os dois sistemas de coordenadas na coincidência. Isso resulta na matriz de transformação homogênea $^{i-1}A_{i}$.
 
 \begin{equation}
-^{i-1}A_{i}=T_{z,d} T_{z,\theta} T_{x,a} T_{z,\alpha}=\begin{bmatrix}
+^{i-1}A_{i}=T_{z,d} T_{z,\theta} T_{x,a} T_{z,\alpha}
+\end{equation}
+\begin{equation}
+^{i-1}A_{i}=\begin{bmatrix}
 1 & 0 & 0 & 0\\ 
 0 & 1 & 0 & 0\\ 
 0 & 0 & 1 & d_{i}\\ 
@@ -55,7 +52,9 @@ sin\theta_{i} & cos\theta_{i} & 0 & 0\\
 0 & cos\alpha_{i} & -sin\alpha_{i} & 0\\ 
 0 & sin\alpha_{i} & cos\alpha_{i} & 0\\ 
 0 & 0 & 0 & 1
-\end{bmatrix}=\begin{bmatrix}
+\end{bmatrix}\end{equation}
+\begin{equation}
+^{i-1}A_{i}=\begin{bmatrix}
 cos\theta_{i} & -cos\alpha_{i}sin\alpha_{i} & sen\alpha_{i}sin\theta_{i} & a_{i}cos\theta_{i}\\ 
 sin\theta_{i} & cos\alpha_{i}cos\theta_{i} & -sin\alpha_{i}cos\theta_{i} & a_{i}sin\theta_{i}\\ 
 0 & sin\alpha_{i} & cos\alpha_{i} & d_{i}\\ 
@@ -110,7 +109,7 @@ As camadas de abstração se referenciam ao alto e baixo nível da máquina, ond
 
 \subsection{\textit{Framework}}\label{sec:framework}
 Em ambientes computacionais, a utilização de ferramentas para realização de atividades e desenvolvimento de soluções é de extrema importância. Estas ferramentas podem ser softwares específicos para execução de uma determinada atividade ou \textit{frameworks}.	
-Segundo \cite{tese_framework} “\textit{Frameworks} são estruturas de classes que constituem implementações incompletas que, estendidas, permitem produzir diferentes artefatos de software”. Os \textit{frameworks} em geral permitem o desenvolvimento de soluções computacionais baseadas em determinadas funcionalidades, seguindo uma estrutura definida pelo \textit{framework}. De acordo com \cite{maxwel_framework} os \textit{frameworks} definem uma arquitetura para um conjunto de subsistemas, dando os construtores necessários para a sua criação.
+Segundo \cite{maxwel_framework} “\textit{Frameworks} são estruturas de classes que constituem implementações incompletas que, estendidas, permitem produzir diferentes artefatos de software”. Os \textit{frameworks} em geral permitem o desenvolvimento de soluções computacionais baseadas em determinadas funcionalidades, seguindo uma estrutura definida pelo \textit{framework}. De acordo com \cite{maxwel_framework} os \textit{frameworks} definem uma arquitetura para um conjunto de subsistemas, dando os construtores necessários para a sua criação.
 A principal característica de um \textit{framework} é a sua capacidade de reutilização, afinal a sua utilização permite que diversos conjuntos de produtos possam ser gerados partindo de uma única estrutura que possua os conceitos mais gerais.
 Segundo \cite{maxwel_framework} \textit{frameworks} podem ser classificados em dois tipos principais: \textit{Frameworks} de Aplicações Orientado a Objetos e \textit{Frameworks} de Componente.
 Os \textit{frameworks} orientados a objetos geram famílias de aplicações orientadas a objetos e seus pontos de extensão são definidos como classes abstratas ou interfaces, onde se estendem por cada instância da família de aplicações.
@@ -118,8 +117,11 @@ Para \textit{frameworks} de componentes, o suporte é previsto para componentes 
 Os \textit{frameworks} utilizados para robótica, são extremamente importantes, pois o uso de suas ferramentas possibilita o desenvolvimento e criação das soluções computacionais e códigos necessários para cada funcionalidade de um robô, de forma que o funcionamento delas em conjunto seja otimizado pela natureza do \textit{framework} de realizar a compatibilização entre as estruturas.
 
 \subsection{Simulação}\label{sec:simula}
+
 Em sistemas complexos, onde diversas variáveis definem o seu funcionamento, e por consequência as suas respostas a determinados estímulos, torna-se extremamente difícil e irresponsável executar a sua fabricação antes de realizar uma validação prévia de seu funcionamento.
-Este tipo de procedimento de análise prévia do comportamento de um sistema é chamado de simulação. De acordo com \cite{definição_de_simulação} “Simulação refere-se a uma ampla coleção de métodos e aplicações para imitar o comportamento do sistema real, por meio de um computador com um \textit{software} apropriado”. Diversos tipos de sistemas se utilizam da ferramenta de simulação para validar previamente o funcionamento de projetos.
+
+Este tipo de procedimento de análise prévia do comportamento de um sistema é chamado de simulação. De acordo com \cite{definicao_de_simulacao} "Simulação refere-se a uma ampla coleção de métodos e aplicações para imitar o comportamento do sistema real, por meio de um computador com um \textit{software} apropriado". Diversos tipos de sistemas se utilizam da ferramenta de simulação para validar previamente o funcionamento de projetos.
+
 O processo de utilização de uma simulação consiste em basicamente recriar o sistema em questão em um ambiente computacional e então são fornecidas as entradas para o sistema, as rotinas de tratamento destas entradas e por fim as saídas da simulação.
 
 \begin{figure}[h!]												
@@ -127,12 +129,14 @@ O processo de utilização de uma simulação consiste em basicamente recriar o 
 	\includegraphics[width=0.5\textwidth]{simulation.png}			
 	\caption{Diagrama de funcionamento de um processo de simulação}		
 	\label{img:simulation}	
-	\source{\cite{definição_de_simulação}}		
+	\source{\cite{definicao_de_simulacao}}		
 \end{figure}
 
 
-Em sistemas robóticos, uma ferramenta extremamente útil e bastante utilizada, é a simulação. Segundo \cite{artigo_sobre_simulação} 
+Em sistemas robóticos, uma ferramenta extremamente útil e bastante utilizada, é a simulação. Segundo \cite{artigo_sobre_simulacao} 
+
 >“Quando se trabalha com robótica, o uso de uma simulação é de importância significante. Por um lado, ela permite a validação de diferentes alternativas durante o design do sistema robótico, levando assim, a melhores decisões e preservação de custos. Por outro lado, auxilia o processo de desenvolvimento de \textit{software}, disponibilizando uma reposição para robôs que não estejam em mãos”.
+
 Através do uso de \textit{softwares} de simulação é possível criar uma representação computacional não só o modelo físico de um robô, mas também os parâmetros referentes à objetos do ambiente no qual o mesmo será posto em funcionamento. A avaliação prévia da execução das tarefas e do funcionamento do robô, permite a observação do comportamento do sistema em determinadas situações, facilitando assim, a tomada de decisões mais efetivas no processo de desenvolvimento do protótipo real. 
 
 \subsection{Odometria}\label{sec:odom}
@@ -144,6 +148,7 @@ s = v*t
 \end{equation}
 
 Utilizando o medidor de tempo interno do computador embutido nos sistemas robóticos, pode se calcular a variação de espaço para um tempo muito pequeno, onde esses pequenos incrementos são somados ou subtraídos para encontrar o deslocamento do robô.
+
 A velocidade de deslocamento das roldanas pode ser encontrada utilizando a equação \ref{eq:vel} com as informações do raio da roldana $r$ e a sua velocidade de giro $w$ em radianos por segundo. A informação da velocidade de giro da roldana geralmente é extraída dos servomotores utilizados para tração.
 
 \begin{equation}\label{eq:vel}
