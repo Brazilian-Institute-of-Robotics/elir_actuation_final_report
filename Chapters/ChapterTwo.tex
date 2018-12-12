@@ -34,7 +34,8 @@ Um \textit{link} pode apenas ser conectado a dois outros \textit{links} ($i-1$ e
 
 A representação de Denavit-Hartenberg tem como resultado uma matriz 4 x 4 representando cada sistema de coordenadas do \textit{link} na junta em relação ao \textit{link} anterior. Essa matriz é obtida através do produto das transformações: Translação de uma distância $d_{i}$ ao longo do eixo $Z_{i-1}$ para trazer os eixos $X_{i-1}$ e $X_{i}$ na coincidência; Rotação no eixo $Z_{i-1}$ de um ângulo $\theta_{i}$ para alinhar os eixos $X_{i-1}$ e $X_{i}$; Translação ao longo do eixo $X_{i}$ de uma distância $a_{i}$ para trazer as duas origens na coincidência; Rotação do eixo $X_{i}$ um ângulo $\alpha_{i}$ para trazer os dois sistemas de coordenadas na coincidência. Isso resulta na matriz de transformação homogênea $^{i-1}A_{i}$.
 
-\begin{equation}^{i-1}A_{i}=T_{z,d} T_{z,\theta} T_{x,a} T_{z,\alpha}=\begin{bmatrix}
+\begin{equation}
+^{i-1}A_{i}=T_{z,d} T_{z,\theta} T_{x,a} T_{z,\alpha}=\begin{bmatrix}
 1 & 0 & 0 & 0\\ 
 0 & 1 & 0 & 0\\ 
 0 & 0 & 1 & d_{i}\\ 
@@ -59,7 +60,8 @@ cos\theta_{i} & -cos\alpha_{i}sin\alpha_{i} & sen\alpha_{i}sin\theta_{i} & a_{i}
 sin\theta_{i} & cos\alpha_{i}cos\theta_{i} & -sin\alpha_{i}cos\theta_{i} & a_{i}sin\theta_{i}\\ 
 0 & sin\alpha_{i} & cos\alpha_{i} & d_{i}\\ 
 0 & 0 & 0 & 1
-\end{bmatrix}\end{equation}
+\end{bmatrix}
+\end{equation}
 
 \subsection{Cinemática Inversa}\label{sec:cinem_inv}
 Segundo \cite{fu1987robotics} os robôs estão em um espaço onde o objeto a ser manipulado tem sua posição expressa no sistema de coordenadas do ambiente. Com o objetivo de controlar a posição e orientação do \textit{end-effector} do robô, a solução da cinemática inversa é mais adequada. A cinemática inversa consiste em, partindo de uma posição e orientação desejada, calcula-se as posições das juntas para que o robô alcance esse objetivo, é o processo inverso da cinemática direta. 
@@ -78,16 +80,28 @@ O robô ELIR tem na sua estrutura, braços que se movimentam apenas em dois eixo
 \end{figure}
 
 Usando a análise da cinemática direta, consegue-se determinar a posição do \textit{end-effector} com base nos ângulos $\theta_{1}$ e $\theta_{2}$ e nas dimensões $L_{1}$ e $L_{2}$. Logo tem-se que:
-\begin{equation}$$x=L_1cos{(\theta_1)}+L_2cos{(\theta_1 + \theta_2)}$$\end{equation}
-\begin{equation}$$y=L_1sen{(\theta_1)}+L_2sen{(\theta_1 + \theta_2)}$$\end{equation}
+\begin{equation}
+x=L_1cos{(\theta_1)}+L_2cos{(\theta_1 + \theta_2)}
+\end{equation}
+\begin{equation}
+y=L_{1}sen{(\theta_1)}+L_{2}sen{(\theta_1 + \theta_2)}
+\end{equation}
 Aplicando a lei dos cossenos ao triângulo formado pelo braço e pela linha entre a origem do braço e o seu \textit{end-effector} obtém-se: 
-\begin{equation}$$\theta_2=\pm arccos{\frac{(x^2+y^2−(L_1)^2−(L_2)^2)}{2L_1L_2}}$$\end{equation}
+\begin{equation}
+\theta_2=\pm arccos{\frac{(x^2+y^2-(L_1)^2-(L_2)^2)}{2L_1L_2}}
+\end{equation}
 Para determinar o $\theta_{1}$ considera-se a relação trigonométrica:
-\begin{equation}$$tan(A−B)=\frac{tan(A)−tan(B)}{1+tan(A) tan(B)}$$\end{equation}
+\begin{equation}
+tan{(A - B)}=\frac{tan(A)-tan(B)}{1+tan(A) tan(B)}
+\end{equation}
 e tomando:
-\begin{equation}$$tan(\beta)=\frac{L_2 sin\theta_2}{L_1 + L_2 cos\theta_2}$$\end{equation}
+\begin{equation}
+tan(\beta)=\frac{L_2 sin\theta_2}{L_1 + L_2 cos\theta_2}
+\end{equation}
 tem-se que:
-\begin{equation}$$\theta_1 = arctan[\frac{y(L_1 + L_2 cos\theta_2)−xL_2 sin\theta_2}{x(L_1 + L_2 cos\theta_2)−yL_2 sin\theta_2}]$$\end{equation}
+\begin{equation}
+\theta_1 = arctan[\frac{y(L_1 + L_2 cos\theta_2)-xL_2 sin\theta_2}{x(L_1 + L_2 cos\theta_2)-yL_2 sin\theta_2}]
+\end{equation}
 Assim é possível fazer a solução da cinemática inversa para um braço planar RR.
 
 \section{Desenvolvimento de Robôs}\label{sec:desen_robo}
@@ -96,7 +110,7 @@ As camadas de abstração se referenciam ao alto e baixo nível da máquina, ond
 
 \subsection{\textit{Framework}}\label{sec:framework}
 Em ambientes computacionais, a utilização de ferramentas para realização de atividades e desenvolvimento de soluções é de extrema importância. Estas ferramentas podem ser softwares específicos para execução de uma determinada atividade ou \textit{frameworks}.	
-Segundo \cite{“tese_framework”} “\textit{Frameworks} são estruturas de classes que constituem implementações incompletas que, estendidas, permitem produzir diferentes artefatos de software”. Os \textit{frameworks} em geral permitem o desenvolvimento de soluções computacionais baseadas em determinadas funcionalidades, seguindo uma estrutura definida pelo \textit{framework}. De acordo com \cite{maxwel_framework} os \textit{frameworks} definem uma arquitetura para um conjunto de subsistemas, dando os construtores necessários para a sua criação.
+Segundo \cite{tese_framework} “\textit{Frameworks} são estruturas de classes que constituem implementações incompletas que, estendidas, permitem produzir diferentes artefatos de software”. Os \textit{frameworks} em geral permitem o desenvolvimento de soluções computacionais baseadas em determinadas funcionalidades, seguindo uma estrutura definida pelo \textit{framework}. De acordo com \cite{maxwel_framework} os \textit{frameworks} definem uma arquitetura para um conjunto de subsistemas, dando os construtores necessários para a sua criação.
 A principal característica de um \textit{framework} é a sua capacidade de reutilização, afinal a sua utilização permite que diversos conjuntos de produtos possam ser gerados partindo de uma única estrutura que possua os conceitos mais gerais.
 Segundo \cite{maxwel_framework} \textit{frameworks} podem ser classificados em dois tipos principais: \textit{Frameworks} de Aplicações Orientado a Objetos e \textit{Frameworks} de Componente.
 Os \textit{frameworks} orientados a objetos geram famílias de aplicações orientadas a objetos e seus pontos de extensão são definidos como classes abstratas ou interfaces, onde se estendem por cada instância da família de aplicações.
