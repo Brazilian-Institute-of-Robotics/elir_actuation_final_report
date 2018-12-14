@@ -10,12 +10,43 @@ A metodologia aplicada para para o projeto toma como base o desenvolvimento de s
 	\includegraphics[scale=0.45]{Figures/flux_desen.png}
 	\caption{Fluxograma de desenvolvimento}
 	\label{fig:flux_desen}
-\end{figure}
+\end{figure}	
 
 Devido a complexidade envolvida nesse tipo de sistema, são utilizadas ferramentas específicas de desenvolvimento, assim como o cliente fornece certos parâmetros iniciais para impulsionar o projeto e guiar desenvolvimento para um resultado satisfatório. São consideradas entradas para a metodologia os requisitos do cliente, requisitos técnicos, um QFD inicial, denominado QFD 1 e o Estudo do Estado da Arte (SOTA).
 
 
-O requisito consiste na definição documentada  de uma propriedade ou comportamento que um produto ou serviço particular deve atender. Existem os requisitos do cliente, no qual são as necessidades e as expectativas do cliente, que para o caso do projeto ELIR o cliente solicitou que o robô deveria: realizar as funções de forma autônoma, transpor obstáculos e cadeia de isoladores, deslocar-se através do consumo de baterias e o deslocamento/movimento realizada por servomotores - e os requisitos técnicos que possui uma visão técnica para atender as necessidades do cliente e os objetivos do projeto, foi solicitado que o robô deveria possuir: Desempenho de deslocamento de 15km por dia, velocidade de deslocamento médio  sem obstáculos de 0.5 m/s, ultrapassagem de obstáculos de volume máximo de  410x330x150mm, autonomia de potência de 2 horas, sistema operacional Linux, backend em C++ e Python e Framework ROS Kinetic Kame.
+O requisito consiste na definição documentada  de uma propriedade ou comportamento que um produto ou serviço particular deve atender. Existem os requisitos do cliente, no qual são as necessidades e as expectativas do cliente, e os requisitos técnicos possui uma visão técnica para atender as necessidades do cliente e os objetivos do projeto.
+
+Durante a fase inicial do projeto, foi conversado com o cliente e deixado explícito seus requisitos para o ELIR, sendo eles:
+
+\begin{itemize}
+	\item Realizar as funções de forma autônoma;
+	
+	\item Transpor obstáculos e cadeia de isoladores;
+	
+	\item Deslocar-se através do consumo de baterias;
+	
+    \item Deslocamento/movimento realizada por servomotores.
+    
+\end{itemize}
+
+Foi determinado pelo cliente para que o projeto desempenhe corretamente os seguintes requisitos técnicos:
+\begin{itemize}
+	\item Desempenho de deslocamento de 15km por dia
+	
+	
+	\item Velocidade de deslocamento médio  sem obstáculos de 0.5 m/s
+	
+	
+	\item Ultrapassagem de obstáculos de volume máximo de  410x330x150mm
+	
+	\item Autonomia de potência de 2 horas
+    \item Sistema operacional Linux, 
+	\item Backend em C++ e Python
+	\item Framework ROS Kinetic Kame.
+	
+	
+\end{itemize}
 
 A ferramenta de Desdobramento da Função Qualidade (QFD) torna-se importante para guiar o projeto e a incorporar as reais necessidades do cliente.  Por meio de um conjunto de matrizes parte-se dos requisitos expostos pelos clientes e realiza-se um processo de “desdobramento” transformando-os em especificações técnicas do produto. Esse desdobramento entre os requisitos do cliente, influencia no desenvolvimento, permitindo encontrar o que impacta mais no resultado final do projeto, assim fazendo com que a prioridade de certas atividades mude.
 
@@ -24,7 +55,7 @@ O estudo do estado da arte é o mapeamento que possibilitará o conhecimento e/o
 %--------- NEW SECTION----------------------
 \section{Conceituação}
 \label{sec:conc}
-A fase da conceituação consiste na criação de um conceito para o sistema, sendo assim recolhido todo o embasamento teórico necessário para a confecção do projeto. Assim fazendo com que seja elaborada uma idéia para o sistema, o que é a base para todo o projeto, guiando as próximas fases.
+A fase da conceituação consiste na criação de um conceito para o sistema, sendo assim recolhido todo o embasamento teórico necessário para a confecção do projeto. Assim fazendo com que seja elaborada uma ideia para o sistema, o que é a base para todo o projeto, guiando as próximas fases.
 
 As entradas do cliente são de suma importância para essa etapa, onde as mesmas são a base para a ideia do sistema. Com o estudo teórico do que será necessário e o uso das ferramentas como o QFD, é possível elaborar as funcionalidades que serão desempenhadas pelo sistema. A elaboração de um segundo QFD por parte da equipe acontece em paralelo com a elaboração das funcionalidades e se utiliza do QFD 1 junto com os requisitos técnicos e do cliente, buscando conceituar o sistema de forma concreta.
 
