@@ -94,7 +94,15 @@ Para o desenvolvimento das ferramentas para ultrapassagem de obstáculos, foi ne
 
 Foi feita uma análise utilizando como referência o maior obstáculo, que foi o amortecedor, mostrado na figura \ref{fig:amortecedor} e levando em consideração a sua modelagem como um paralelepípedo de maior dimensão 535mm. Constatou-se que seria necessário que para a ultrapassagem desse obstáculo, o robô necessitaria abrir um dos braços e se deslocar somente com a unidade de tração central e outro braço. Para isso seriam necessários movimentos para abrir e fechar as garras do robô, assim como um comando específico para afastar a unidade de tração da linha a distância necessária para a abertura da garra. Assim como o movimento que abre o braço o suficiente para que esse passe abaixo do obstáculo.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figures/obstaculo.png}
+	\caption{Visualização do obstáculo no simulador}
+	\label{fig:amortecedor}
+\end{figure}
+
 A ferramenta de visualização presente no \textit{ROS}, possibilitou testar os limites de giros das juntas e visualizar como seriam as poses do robô sem a necessidade da simulação. O conhecimento relacionado à como a movimentação ia ocorrer possibilitou nortear o desenvolvimento.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.25]{Figures/rviz_garra_aberta.png}
@@ -160,8 +168,16 @@ Por apresentar os mesmos tipos de controladores do robô real, foi possível uti
 \subsection{Simulação para a rotina de ultrapassagem}\label{sec:simu_ultr}
 A automatização dos movimentos do sistema é necessária para que ocorra a ultrapassagem, sendo assim esse conjunto de movimentos denominado de rotina. As estruturas do \textit{ROS} possibilitam a criação de estruturas que quando acionadas realizam comandos específicos.
 
-Por apresentar os mesmo controladores, e com o auxílio do estudo dos movimentos necessários para a ultrapassagem, foi possível desenvolver os códigos que enviam os comandos específicos para os controladores.
+Por apresentar os mesmo controladores, e com o auxílio do estudo dos movimentos necessários para a ultrapassagem, foi possível desenvolver os códigos que enviam os comandos específicos para os controladores. 
 
+Com uso da simulação foi possivel desenvolver e testar os serviços do ROS, na figura \ref{fig:simu_garras_abertas} é possível observar o serviço de suspender o conjunto de garras em funcionamento:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{Figures/servico_simulacao_subirgarra.png}
+	\caption{Robo \textit{ELIR} no \textit{Gazebo} com garras abertas}
+	\label{fig:simu_garras_abertas}
+\end{figure}
 
 \section{Testes de Movimentação Física}\label{sec:test_mov}
 Os testes de movimentação física buscam compreender e validar os movimentos realizados pelo robô, indo desde da análise individual das partes do robô como braços e unidade de tração, até sua movimentação em conjunto.
@@ -229,8 +245,10 @@ Verificou-se que o robô respondeu bem com as baterias ficando nesta posição d
 
 \section{Análise Preliminar}\label{sec:anal_prem}
 
+Algumas situações só são expostas durante o desenvolvimento do projeto, com a aplicação das ferramentas e a vivência de testes. O desenvolvimento do projeto passou por diversas etapas, onde fora necessário realizar o retrabalho de novos estudos sobre as problema de compatibilização do modelo do robô dentro da plataforma \textit{MoveIt!}, uma vez que o \textit{software} não funciona bem com robôs que possuem apenas dois graus de liberdade, o que é o caso do robô \textit{ELIR}. A observação desse erro é fundamental para o processo de aprendizado no que tange ao desenvolvimento de robótica, tornando o \textit{MoveIt!} uma solução não indicada para o problema da solução da cinemática inversa, porém ainda se mostra muito útil para o planejamento do movimento e integração com outras tecnologias, assim compensando a solução da cinemática manualmente, para projetos de menor complexidade.
 
+Em termos de hardware, os erros que surgiram também foram importantes para ilustrar melhor como os mesmos deveriam ser configurados de maneira correta e também as suas limitações de trabalho, a exemplo dos motores \textit{Dynamixel}, estes mostraram um desempenho mais efetivo ao trabalhar com tensões mais elevadas, 14V ao invés dos tradicionais 12V, diminuindo a corrente demandada durante a operação, otimizando o consumo.      
 
-
+Ainda se tratando do uso dos motores, a necessidade do uso dos cabos de sincronização para evitar erros de sobrecarga foi um fator crucial para o desenvolvimento do projeto. Neste ponto observou-se que os motores, ao trabalharem como \textit{dual}-\textit{joint} (junta com dois motores), necessitam do uso de cabos de sincronização para transmitir a informação de carga necessária para realização do movimento, balanceando o esforço realizado pelos motores trabalhando em conjunto.
 
 
