@@ -25,7 +25,7 @@ De forma a garantir a execução da missão de forma efetiva, utilizou-se os req
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=1]{Figures/qfdelir-2.png}
+	\includegraphics[scale=0.17]{Figures/qfd2-1.png}
 	\caption{\textit{QFD} 2}
 	\label{fig:qfd2}
 \end{figure}
@@ -98,7 +98,7 @@ Uma vez que esta funcionalidade foi concebida, toda as outras integrantes do sis
 \section{Estudo da Movimentação}\label{sec:estud_mov}
 Para o desenvolvimento das ferramentas para ultrapassagem de obstáculos, foi necessária a análise dos movimentos necessários para que fosse realizada a ultrapassagem de obstáculos. Os tipos de movimento a serem realizados influenciam nas ferramentas escolhidas para o controle e operação do robô, já que se busca a otimização do movimento e também redução do tempo gasto no desenvolvimento, de forma a garantir um resultado satisfatório.
 
-Foi feita uma análise utilizando como referência o maior obstáculo, que foi o amortecedor, mostrado na figura \ref{fig:amortecedor} e levando em consideração a sua modelagem como um paralelepípedo de maior dimensão 535mm. Constatou-se que seria necessário que para a ultrapassagem desse obstáculo, o robô necessitaria abrir um dos braços e se deslocar somente com a unidade de tração central e outro braço. Para isso seriam necessários movimentos para abrir e fechar as garras do robô, assim como um comando específico para afastar a unidade de tração da linha a distância necessária para a abertura da garra. Assim como o movimento que abre o braço o suficiente para que esse passe abaixo do obstáculo.
+Foi feita uma análise utilizando como referência o maior obstáculo, que foi o amortecedor, mostrado na figura \ref{fig:amortecedor} e levando em consideração a sua modelagem como um paralelepípedo de maior dimensão 535mm. Constatou-se que seria necessário que para a ultrapassagem desse obstáculo, o robô necessitaria abrir um dos braços e se deslocar somente com a unidade de tração central e outro braço. Para isso seriam necessários movimentos para abrir e fechar as garras do robô, assim como um comando específico para afastar a unidade de tração da linha a distância necessária para a abertura da garra. Assim como o movimento que abre o braço suficiente para que esse passe abaixo do obstáculo.
 
 \begin{figure}[H]
 	\centering
@@ -176,7 +176,7 @@ A automatização dos movimentos do sistema é necessária para que ocorra a ult
 
 Por apresentar os mesmo controladores, e com o auxílio do estudo dos movimentos necessários para a ultrapassagem, foi possível desenvolver os códigos que enviam os comandos específicos para os controladores. 
 
-Com uso da simulação foi possivel desenvolver e testar os serviços do ROS, na figura \ref{fig:simu_garras_abertas} é possível observar o serviço de suspender o conjunto de garras em funcionamento:
+Com uso da simulação foi possível desenvolver e testar os serviços do \textit{ROS}, na figura \ref{fig:simu_garras_abertas} é possível observar o serviço de suspender o conjunto de garras em funcionamento:
 
 \begin{figure}[H]
 	\centering
